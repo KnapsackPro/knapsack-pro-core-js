@@ -1,4 +1,4 @@
-# knapsack-pro-js
+# knapsack-pro-core-js
 
 ## Development
 
