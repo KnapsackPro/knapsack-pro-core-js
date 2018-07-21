@@ -6,7 +6,7 @@ from 'axios';
 import { TestFile } from './test-file.model';
 
 // TODO: use fake env data for testing
-process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN = '4499425b5908312eb878ddc1a6e437c2';
+process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN = '0437763d32539d6162672d646704941b';
 process.env.KNAPSACK_PRO_FIXED_QUEUE_SPLIT = 'false';
 process.env.KNAPSACK_PRO_COMMIT_HASH = 'ae3396177d9f8ca87e2b93b4b0a25babd09d574d';
 process.env.KNAPSACK_PRO_BRANCH = 'master';
