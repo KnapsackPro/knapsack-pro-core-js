@@ -1,53 +1,29 @@
 #!/usr/bin/env node
 
-import Jasmine = require('jasmine');
-import childProcess = require('child_process');
-import path = require('path');
-
-import { KnapsackProCore } from './knapsack-pro-core';
+import { KnapsackProAPI } from './knapsack-pro-api';
 import { KnapsackProLogger } from './knapsack-pro-logger';
 import { TestFile } from './test-file.model';
 
-class KnapsackPro {
-  private knapsackProCore: KnapsackProCore;
+class KnapsackProCore {
+  private knapsackProAPI: KnapsackProAPI;
   private knapsackProLogger: KnapsackProLogger;
-  private jasmine: Jasmine;
 
-  private testFiles1: TestFile[]; // TODO: rename variable
   private testFiles2: TestFile[]; // TODO: rename variable
+  private allTestFiles: TestFile[];
 
-  constructor() {
-    this.knapsackProCore = new KnapsackProCore();
+  constructor(allTestFiles: TestFile[]) {
+    this.allTestFiles = allTestFiles;
+
+    this.knapsackProAPI = new KnapsackProAPI();
     this.knapsackProLogger = new KnapsackProLogger();
-
-    this.jasmine = new Jasmine({});
-    this.jasmine.loadConfig({
-      spec_dir: 'spec',
-      spec_files: [
-        '**/*[sS]pec.js'
-      ],
-      helpers: [
-        'helpers/**/*.js',
-      ]
-    });
-
-    let projectBaseDir = this.jasmine.projectBaseDir;
-    if (process.platform === 'win32') {
-      projectBaseDir = projectBaseDir.replace(/\\/g, '/');
-    }
-
-    this.testFiles1 = this.jasmine.specFiles.map(specFilePath => {
-      const specFile = specFilePath.replace(projectBaseDir, '.');
-      return { path: specFile };
-    });
   }
 
-  initQueueMode() {
-    this.runQueueMode(this.testFiles1, true);
+  initQueueMode(onSuccess: () => void, onFailure: () => void) {
+    this.runQueueMode(this.allTestFiles, true);
   }
 
   private runQueueMode(testFiles: TestFile[], initializeQueue = false) {
-    this.knapsackProCore.queueRequest(testFiles, initializeQueue)
+    this.knapsackProAPI.fetchTestsFromQueue(testFiles, initializeQueue)
       .then(response => {
         this.knapsackProLogger.logResponse(response);
 
@@ -69,7 +45,7 @@ class KnapsackPro {
   private runSpecFiles(testFiles: TestFile[]) {
     const testFilesEmpty = testFiles.length === 0;
     if (testFilesEmpty) {
-      this.runQueueMode(this.testFiles1);
+      this.runQueueMode(this.allTestFiles);
       return;
     }
 
@@ -96,7 +72,7 @@ class KnapsackPro {
   }
 
   private sendTestSuiteSubsetSummary(testFiles: TestFile[]) {
-    this.knapsackProCore.buildSubsetRequest(testFiles)
+    this.knapsackProAPI.createBuildSubset(testFiles)
       .then(response => {
         this.knapsackProLogger.logResponse(response);
       })
@@ -106,5 +82,5 @@ class KnapsackPro {
   }
 }
 
-const knapsackPro = new KnapsackPro();
+const knapsackPro = new KnapsackProCore([]);
 knapsackPro.initQueueMode();
