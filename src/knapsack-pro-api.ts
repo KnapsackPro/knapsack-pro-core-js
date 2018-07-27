@@ -15,14 +15,14 @@ process.env.KNAPSACK_PRO_NODE_INDEX = '1';
 // process.env.KNAPSACK_PRO_NODE_BUILD_ID = '1234';
 process.env.KNAPSACK_PRO_NODE_BUILD_ID = new Date().getTime() + ''; // TODO: use this for testing
 
-export class KnapsackProCore {
+export class KnapsackProAPI {
   private readonly apiBaseUrl: string;
 
   constructor() {
     this.apiBaseUrl = 'https://api-staging.knapsackpro.com/v1';
   }
 
-  queueRequest(testFiles: TestFile[], initializeQueue: boolean): AxiosPromise<any> {
+  fetchTestsFromQueue(testFiles: TestFile[], initializeQueue: boolean): AxiosPromise<any> {
     const url = `${this.apiBaseUrl}/queues/queue`;
     const data = {
       test_suite_token: process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN,
@@ -39,7 +39,7 @@ export class KnapsackProCore {
     return axios.post(url, data);
   }
 
-  buildSubsetRequest(testFiles: TestFile[]): AxiosPromise<any> {
+  createBuildSubset(testFiles: TestFile[]): AxiosPromise<any> {
     const url = `${this.apiBaseUrl}/build_subsets`;
     const data = {
       test_suite_token: process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN,
