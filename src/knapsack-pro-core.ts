@@ -18,7 +18,7 @@ class KnapsackProCore {
     this.knapsackProLogger = new KnapsackProLogger();
   }
 
-  initQueueMode(onSuccess: () => void, onFailure: () => void) {
+  runQueueMode(onSuccess: () => void, onFailure: () => void) {
     this.fetchTestsFromQueue(true);
   }
 
