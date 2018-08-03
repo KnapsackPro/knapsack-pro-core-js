@@ -22,7 +22,8 @@ export class KnapsackProAPI {
     this.apiBaseUrl = 'https://api-staging.knapsackpro.com/v1';
   }
 
-  fetchTestsFromQueue(testFiles: TestFile[], initializeQueue: boolean): AxiosPromise<any> {
+  // allTestFiles in whole user's test suite
+  fetchTestsFromQueue(allTestFiles: TestFile[], initializeQueue: boolean): AxiosPromise<any> {
     const url = `${this.apiBaseUrl}/queues/queue`;
     const data = {
       test_suite_token: process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN,
@@ -33,13 +34,13 @@ export class KnapsackProAPI {
       node_total: process.env.KNAPSACK_PRO_NODE_TOTAL,
       node_index: process.env.KNAPSACK_PRO_NODE_INDEX,
       node_build_id: process.env.KNAPSACK_PRO_NODE_BUILD_ID,
-      test_files: testFiles
+      test_files: allTestFiles
     };
 
     return axios.post(url, data);
   }
 
-  createBuildSubset(testFiles: TestFile[]): AxiosPromise<any> {
+  createBuildSubset(recordedTestFiles: TestFile[]): AxiosPromise<any> {
     const url = `${this.apiBaseUrl}/build_subsets`;
     const data = {
       test_suite_token: process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN,
@@ -47,7 +48,7 @@ export class KnapsackProAPI {
       branch: process.env.KNAPSACK_PRO_BRANCH,
       node_total: process.env.KNAPSACK_PRO_NODE_TOTAL,
       node_index: process.env.KNAPSACK_PRO_NODE_INDEX,
-      test_files: testFiles
+      test_files: recordedTestFiles
     };
 
     return axios.post(url, data);
