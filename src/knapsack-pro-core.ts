@@ -81,6 +81,3 @@ class KnapsackProCore {
       });
   }
 }
-
-const knapsackPro = new KnapsackProCore([]);
-knapsackPro.initQueueMode();
