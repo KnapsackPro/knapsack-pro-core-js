@@ -6,7 +6,8 @@ class KnapsackProCore {
   private knapsackProAPI: KnapsackProAPI;
   private knapsackProLogger: KnapsackProLogger;
 
-  private testFiles2: TestFile[]; // TODO: rename variable
+  // test files with recorded time execution
+  private recordedTestFiles: TestFile[];
   // list of tests files in whole user's test suite
   private allTestFiles: TestFile[];
 
@@ -30,7 +31,7 @@ class KnapsackProCore {
         const queueEmpty = queueTestFiles.length === 0;
 
         if (queueEmpty) {
-          this.sendTestSuiteSubsetSummary(this.testFiles2);
+          this.sendTestSuiteSubsetSummary(this.recordedTestFiles);
           return;
         }
 
@@ -55,7 +56,7 @@ class KnapsackProCore {
     );
 
     specProcess.on('message', testFile => {
-      this.testFiles2.push(testFile);
+      this.recordedTestFiles.push(testFile);
     });
 
     specProcess.on('error', error => {
