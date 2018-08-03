@@ -7,6 +7,7 @@ class KnapsackProCore {
   private knapsackProLogger: KnapsackProLogger;
 
   private testFiles2: TestFile[]; // TODO: rename variable
+  // list of tests files in whole user's test suite
   private allTestFiles: TestFile[];
 
   constructor(allTestFiles: TestFile[]) {
