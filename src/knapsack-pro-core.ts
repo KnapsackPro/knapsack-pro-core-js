@@ -19,11 +19,11 @@ class KnapsackProCore {
   }
 
   initQueueMode(onSuccess: () => void, onFailure: () => void) {
-    this.runQueueMode(this.allTestFiles, true);
+    this.fetchTestsFromQueue(true);
   }
 
-  private runQueueMode(testFiles: TestFile[], initializeQueue = false) {
-    this.knapsackProAPI.fetchTestsFromQueue(testFiles, initializeQueue)
+  private fetchTestsFromQueue(initializeQueue = false) {
+    this.knapsackProAPI.fetchTestsFromQueue(this.allTestFiles, initializeQueue)
       .then(response => {
         this.knapsackProLogger.logResponse(response);
 
@@ -45,7 +45,7 @@ class KnapsackProCore {
   private runSpecFiles(testFiles: TestFile[]) {
     const testFilesEmpty = testFiles.length === 0;
     if (testFilesEmpty) {
-      this.runQueueMode(this.allTestFiles);
+      this.fetchTestsFromQueue(this.allTestFiles);
       return;
     }
 
