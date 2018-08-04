@@ -18,11 +18,18 @@ class KnapsackProCore {
     this.knapsackProLogger = new KnapsackProLogger();
   }
 
-  runQueueMode(onSuccess: () => void, onFailure: () => void) {
+  runQueueMode(
+    onSuccess: (queueTestFiles: TestFile[]) => TestFile[],
+    onFailure: (error: any) => void
+  ) {
     this.fetchTestsFromQueue(true, onSuccess, onFailure);
   }
 
-  private fetchTestsFromQueue(initializeQueue = false, onSuccess: () => void, onFailure: () => void) {
+  private fetchTestsFromQueue(
+    initializeQueue = false,
+    onSuccess: (queueTestFiles: TestFile[]) => TestFile[],
+    onFailure: (error: any) => void
+  ) {
     this.knapsackProAPI.fetchTestsFromQueue(this.allTestFiles, initializeQueue)
       .then(response => {
         this.knapsackProLogger.logResponse(response);
@@ -35,40 +42,15 @@ class KnapsackProCore {
           return;
         }
 
-        this.runSpecFiles(queueTestFiles);
+        const recordedTestFiles: TestFile[] = onSuccess(queueTestFiles)
+        this.recordedTestFiles.concat(recordedTestFiles)
+
+        this.fetchTestsFromQueue(false, onSuccess, onFailure);
       })
       .catch(error => {
         this.knapsackProLogger.logError(error);
+        onFailure(error)
       });
-  }
-
-  private runSpecFiles(testFiles: TestFile[]) {
-    const testFilesEmpty = testFiles.length === 0;
-    if (testFilesEmpty) {
-      this.fetchTestsFromQueue(this.allTestFiles);
-      return;
-    }
-
-    const testFilesHead = testFiles[0].path;
-    const specProcess = childProcess.fork(
-      `${__dirname}${path.sep}run-spec-file.js`,
-      [testFilesHead]
-    );
-
-    specProcess.on('message', testFile => {
-      this.recordedTestFiles.push(testFile);
-    });
-
-    specProcess.on('error', error => {
-      if (error) throw error;
-    });
-
-    specProcess.on('exit', exitCode => {
-      const testFilesTail = testFiles.slice(1);
-      this.runSpecFiles(testFilesTail);
-
-      if (exitCode !== 0) process.exitCode = exitCode;
-    });
   }
 
   // saves recorded timing for tests executed on single CI node
