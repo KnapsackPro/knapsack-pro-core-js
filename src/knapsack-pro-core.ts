@@ -19,7 +19,7 @@ class KnapsackProCore {
   }
 
   runQueueMode(
-    onSuccess: (queueTestFiles: TestFile[]) => TestFile[],
+    onSuccess: (queueTestFiles: TestFile[]) => Promise<TestFile[]>,
     onFailure: (error: any) => void
   ) {
     this.fetchTestsFromQueue(true, onSuccess, onFailure);
@@ -27,7 +27,7 @@ class KnapsackProCore {
 
   private fetchTestsFromQueue(
     initializeQueue = false,
-    onSuccess: (queueTestFiles: TestFile[]) => TestFile[],
+    onSuccess: (queueTestFiles: TestFile[]) => Promise<TestFile[]>,
     onFailure: (error: any) => void
   ) {
     this.knapsackProAPI.fetchTestsFromQueue(this.allTestFiles, initializeQueue)
@@ -42,10 +42,11 @@ class KnapsackProCore {
           return;
         }
 
-        const recordedTestFiles: TestFile[] = onSuccess(queueTestFiles)
-        this.recordedTestFiles.concat(recordedTestFiles)
+        onSuccess(queueTestFiles).then((recordedTestFiles: TestFile[]) => {
+          this.recordedTestFiles.concat(recordedTestFiles);
 
-        this.fetchTestsFromQueue(false, onSuccess, onFailure);
+          this.fetchTestsFromQueue(false, onSuccess, onFailure);
+        });
       })
       .catch(error => {
         this.knapsackProLogger.logError(error);
