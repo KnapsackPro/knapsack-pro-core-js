@@ -35,9 +35,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.56",
+    "@babel/preset-env": "^7.0.0-beta.56",
     "@babel/register": "^7.0.0-beta.56",
     "@types/node": "^9.6.25",
-    "babel-preset-env": "^1.7.0",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-typescript": "^4.0.2",
