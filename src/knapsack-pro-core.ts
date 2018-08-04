@@ -19,10 +19,10 @@ class KnapsackProCore {
   }
 
   runQueueMode(onSuccess: () => void, onFailure: () => void) {
-    this.fetchTestsFromQueue(true);
+    this.fetchTestsFromQueue(true, onSuccess, onFailure);
   }
 
-  private fetchTestsFromQueue(initializeQueue = false) {
+  private fetchTestsFromQueue(initializeQueue = false, onSuccess: () => void, onFailure: () => void) {
     this.knapsackProAPI.fetchTestsFromQueue(this.allTestFiles, initializeQueue)
       .then(response => {
         this.knapsackProLogger.logResponse(response);
