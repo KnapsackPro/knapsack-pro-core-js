@@ -1,6 +1,6 @@
 # @knapsack-pro/core
 
-`knapsack-pro-core` is JS npm package with core features for Knapsack Pro API.
+`@knapsack-pro/core` is JS npm package with core features for [Knapsack Pro API](https://docs.knapsackpro.com/api/).
 
 ## Development
 
