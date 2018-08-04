@@ -1,4 +1,4 @@
-# knapsack-pro-core
+# @knapsack-pro/core
 
 `knapsack-pro-core` is JS npm package with core features for Knapsack Pro API.
 
