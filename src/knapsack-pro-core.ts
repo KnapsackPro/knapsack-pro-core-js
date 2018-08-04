@@ -31,7 +31,7 @@ class KnapsackProCore {
         const queueEmpty = queueTestFiles.length === 0;
 
         if (queueEmpty) {
-          this.sendTestSuiteSubsetSummary(this.recordedTestFiles);
+          this.createBuildSubset(this.recordedTestFiles);
           return;
         }
 
@@ -71,7 +71,8 @@ class KnapsackProCore {
     });
   }
 
-  private sendTestSuiteSubsetSummary(testFiles: TestFile[]) {
+  // saves recorded timing for tests executed on single CI node
+  private createBuildSubset(testFiles: TestFile[]) {
     this.knapsackProAPI.createBuildSubset(testFiles)
       .then(response => {
         this.knapsackProLogger.logResponse(response);
