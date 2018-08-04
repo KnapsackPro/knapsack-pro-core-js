@@ -1,9 +1,6 @@
-import
-  axios,
-  { AxiosPromise }
-from 'axios';
+import axios, { AxiosPromise } from "axios";
 
-import { TestFile } from './test-file.model';
+import { TestFile } from "./test-file.model";
 
 // TODO: use fake env data for testing
 process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN = '0437763d32539d6162672d646704941b';
