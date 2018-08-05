@@ -1,6 +1,6 @@
-import { KnapsackProAPI } from './knapsack-pro-api';
-import { KnapsackProLogger } from './knapsack-pro-logger';
-import { TestFile } from './test-file.model';
+import { KnapsackProAPI } from "./knapsack-pro-api";
+import { KnapsackProLogger } from "./knapsack-pro-logger";
+import { TestFile } from "./test-file.model";
 
 class KnapsackProCore {
   private knapsackProAPI: KnapsackProAPI;
@@ -18,9 +18,9 @@ class KnapsackProCore {
     this.knapsackProLogger = new KnapsackProLogger();
   }
 
-  runQueueMode(
+  public runQueueMode(
     onSuccess: (queueTestFiles: TestFile[]) => Promise<TestFile[]>,
-    onFailure: (error: any) => void
+    onFailure: (error: any) => void,
   ) {
     this.fetchTestsFromQueue(true, onSuccess, onFailure);
   }
@@ -28,10 +28,10 @@ class KnapsackProCore {
   private fetchTestsFromQueue(
     initializeQueue = false,
     onSuccess: (queueTestFiles: TestFile[]) => Promise<TestFile[]>,
-    onFailure: (error: any) => void
+    onFailure: (error: any) => void,
   ) {
     this.knapsackProAPI.fetchTestsFromQueue(this.allTestFiles, initializeQueue)
-      .then(response => {
+      .then((response) => {
         this.knapsackProLogger.logResponse(response);
 
         const queueTestFiles = response.data.test_files;
@@ -48,19 +48,19 @@ class KnapsackProCore {
           this.fetchTestsFromQueue(false, onSuccess, onFailure);
         });
       })
-      .catch(error => {
+      .catch((error) => {
         this.knapsackProLogger.logError(error);
-        onFailure(error)
+        onFailure(error);
       });
   }
 
   // saves recorded timing for tests executed on single CI node
   private createBuildSubset(testFiles: TestFile[]) {
     this.knapsackProAPI.createBuildSubset(testFiles)
-      .then(response => {
+      .then((response) => {
         this.knapsackProLogger.logResponse(response);
       })
-      .catch(error => {
+      .catch((error) => {
         this.knapsackProLogger.logError(error);
       });
   }
