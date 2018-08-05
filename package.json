@@ -19,7 +19,7 @@
     }
   ],
   "license": "MIT",
-  "main": "./src/knapsack-pro-core.ts",
+  "main": "index.ts",
   "engines": {
     "node": ">=8.11.1",
     "npm": ">=5.6.0"

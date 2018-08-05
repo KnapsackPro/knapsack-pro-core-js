@@ -2,7 +2,7 @@ import { KnapsackProAPI } from "./knapsack-pro-api";
 import { KnapsackProLogger } from "./knapsack-pro-logger";
 import { TestFile } from "./test-file.model";
 
-export default class KnapsackProCore {
+export class KnapsackProCore {
   private knapsackProAPI: KnapsackProAPI;
   private knapsackProLogger: KnapsackProLogger;
 
