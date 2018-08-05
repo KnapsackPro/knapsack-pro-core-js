@@ -1,4 +1,4 @@
 export class TestFile {
-  path: string;
-  time_execution?: number;
+  public path: string;
+  public time_execution?: number; // tslint:disable-line:variable-name
 }
