@@ -1,14 +1,12 @@
-import util = require('util');
-import {
-  AxiosError,
-  AxiosResponse
-} from 'axios';
+import { AxiosError, AxiosResponse } from "axios";
+import util = require("util");
 
 export class KnapsackProLogger {
   public logResponse(response: AxiosResponse<any>) {
+    // tslint:disable-next-line:no-console
     console.log(util.inspect(response.data, {
       showHidden: false,
-      depth: null
+      depth: null,
     }));
   }
 
