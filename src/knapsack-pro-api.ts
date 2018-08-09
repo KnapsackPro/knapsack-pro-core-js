@@ -3,6 +3,7 @@ import axios, { AxiosPromise } from "axios";
 import { TestFile } from "./test-file.model";
 
 // TODO: use fake env data for testing
+process.env.KNAPSACK_PRO_ENDPOINT = "https://api-staging.knapsackpro.com/v1";
 process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN = "0437763d32539d6162672d646704941b";
 process.env.KNAPSACK_PRO_FIXED_QUEUE_SPLIT = "false";
 process.env.KNAPSACK_PRO_COMMIT_HASH = "ae3396177d9f8ca87e2b93b4b0a25babd09d574d";
@@ -16,7 +17,7 @@ export class KnapsackProAPI {
   private readonly apiBaseUrl: string;
 
   constructor() {
-    this.apiBaseUrl = "https://api-staging.knapsackpro.com/v1";
+    this.apiBaseUrl = process.env.KNAPSACK_PRO_ENDPOINT;
   }
 
   // allTestFiles in whole user's test suite
