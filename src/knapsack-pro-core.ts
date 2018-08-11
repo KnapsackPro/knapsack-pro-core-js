@@ -1,3 +1,5 @@
+import * as Promise from "bluebird";
+
 import { KnapsackProAPI } from "./knapsack-pro-api";
 import { KnapsackProLogger } from "./knapsack-pro-logger";
 import { TestFile } from "./test-file.model";
