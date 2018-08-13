@@ -6,7 +6,7 @@
 
 ## Development
 
-1. Install dependencies
+1. Install dependencies.
 
 ```
 $ npm install
@@ -18,7 +18,7 @@ $ npm install
 $ npm start
 ```
 
-3. Register this package globally in your local system. This way we will be able to develop other npm packages dependent on `@knapsack-pro/core`:
+3. Register `@knapsack-pro/core` package globally in your local system. This way we will be able to develop other npm packages dependent on it.
 
 ```
 $ npm link
