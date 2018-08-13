@@ -6,17 +6,19 @@
 
 ## Development
 
+1. Install dependencies
+
 ```
 $ npm install
 ```
 
-Compile typescript code with `gulp`. The output will be in `bin` directory.
+2. Compile typescript code with `gulp`. The output will be in `bin` directory.
 
 ```
 $ npm start
 ```
 
-Register this package globally in your local system. This way we will be able to develop other npm packages dependent on `@knapsack-pro/core`:
+3. Register this package globally in your local system. This way we will be able to develop other npm packages dependent on `@knapsack-pro/core`:
 
 ```
 $ npm link
