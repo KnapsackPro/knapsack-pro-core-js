@@ -12,6 +12,7 @@ export class KnapsackProCore {
   private allTestFiles: TestFile[];
 
   constructor(allTestFiles: TestFile[]) {
+    this.recordedTestFiles = [];
     this.allTestFiles = allTestFiles;
 
     this.knapsackProAPI = new KnapsackProAPI();
