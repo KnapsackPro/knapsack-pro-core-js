@@ -7,6 +7,7 @@ export class KnapsackProLogger {
     console.log(util.inspect(response.data, {
       showHidden: false,
       depth: null,
+      colors: true,
     }));
   }
 
