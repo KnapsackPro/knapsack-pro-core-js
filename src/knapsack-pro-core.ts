@@ -2,6 +2,9 @@ import { KnapsackProAPI } from "./knapsack-pro-api";
 import { KnapsackProLogger } from "./knapsack-pro-logger";
 import { TestFile } from "./test-file.model";
 
+type onQueueSuccessType = (queueTestFiles: TestFile[]) => Promise<TestFile[]>;
+type onQueueFailureType = (error: any) => void;
+
 export class KnapsackProCore {
   private knapsackProAPI: KnapsackProAPI;
   private knapsackProLogger: KnapsackProLogger;
@@ -20,16 +23,16 @@ export class KnapsackProCore {
   }
 
   public runQueueMode(
-    onSuccess: (queueTestFiles: TestFile[]) => Promise<TestFile[]>,
-    onFailure: (error: any) => void,
+    onSuccess: onQueueSuccessType,
+    onFailure: onQueueFailureType,
   ) {
     this.fetchTestsFromQueue(true, onSuccess, onFailure);
   }
 
   private fetchTestsFromQueue(
     initializeQueue = false,
-    onSuccess: (queueTestFiles: TestFile[]) => Promise<TestFile[]>,
-    onFailure: (error: any) => void,
+    onSuccess: onQueueSuccessType,
+    onFailure: onQueueFailureType,
   ) {
     this.knapsackProAPI.fetchTestsFromQueue(this.allTestFiles, initializeQueue)
       .then((response) => {
