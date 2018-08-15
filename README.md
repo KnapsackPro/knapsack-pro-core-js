@@ -8,18 +8,18 @@
 
 1. Install dependencies.
 
-```
-$ npm install
-```
+    ```
+    $ npm install
+    ```
 
 2. Compile typescript code with `gulp`. The output will be in `bin` directory.
 
-```
-$ npm start
-```
+    ```
+    $ npm start
+    ```
 
 3. Register `@knapsack-pro/core` package globally in your local system. This way we will be able to develop other npm packages dependent on it.
 
-```
-$ npm link
-```
+    ```
+    $ npm link
+    ```
