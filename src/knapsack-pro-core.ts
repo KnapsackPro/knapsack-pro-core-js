@@ -39,9 +39,9 @@ export class KnapsackProCore {
         this.knapsackProLogger.logResponse(response);
 
         const queueTestFiles = response.data.test_files;
+        const isQueueEmpty = queueTestFiles.length === 0;
 
-        // when queue is empty
-        if (queueTestFiles.length === 0) {
+        if (isQueueEmpty) {
           this.createBuildSubset(this.recordedTestFiles);
           return;
         }
