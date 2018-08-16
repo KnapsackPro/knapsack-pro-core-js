@@ -47,7 +47,7 @@ export class KnapsackProCore {
         }
 
         onSuccess(queueTestFiles).then((recordedTestFiles: TestFile[]) => {
-          this.recordedTestFiles.concat(recordedTestFiles);
+          this.recordedTestFiles = this.recordedTestFiles.concat(recordedTestFiles);
 
           this.fetchTestsFromQueue(false, onSuccess, onFailure);
         });
