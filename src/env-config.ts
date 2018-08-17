@@ -17,4 +17,12 @@ export class EnvConfig {
       Please check README for the Knapsack Pro client library.`,
     );
   }
+
+  public static get fixedQueueSplit(): boolean {
+    if (process.env.KNAPSACK_PRO_FIXED_QUEUE_SPLIT) {
+      return process.env.KNAPSACK_PRO_FIXED_QUEUE_SPLIT.toLowerCase() === "true";
+    }
+
+    return false;
+  }
 }
