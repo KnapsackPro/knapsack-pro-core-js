@@ -1,15 +1,15 @@
 import axios, { AxiosPromise } from "axios";
 
+import { EnvConfig } from "./env-config";
 import { TestFile } from "./test-file.model";
 
 // TODO: use fake env data for testing
-process.env.KNAPSACK_PRO_ENDPOINT = "https://api-staging.knapsackpro.com/v1";
 process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN = "0437763d32539d6162672d646704941b";
 process.env.KNAPSACK_PRO_FIXED_QUEUE_SPLIT = "false";
 process.env.KNAPSACK_PRO_COMMIT_HASH = "ae3396177d9f8ca87e2b93b4b0a25babd09d574d";
 process.env.KNAPSACK_PRO_BRANCH = "master";
 process.env.KNAPSACK_PRO_NODE_TOTAL = "2";
-process.env.KNAPSACK_PRO_NODE_INDEX = "1";
+process.env.KNAPSACK_PRO_NODE_INDEX = "0";
 // process.env.KNAPSACK_PRO_NODE_BUILD_ID = "1234";
 process.env.KNAPSACK_PRO_NODE_BUILD_ID = new Date().getTime() + ""; // TODO: use this for testing
 
@@ -17,12 +17,12 @@ export class KnapsackProAPI {
   private readonly apiBaseUrl: string;
 
   constructor() {
-    this.apiBaseUrl = process.env.KNAPSACK_PRO_ENDPOINT;
+    this.apiBaseUrl = EnvConfig.endpoint;
   }
 
   // allTestFiles in whole user's test suite
   public fetchTestsFromQueue(allTestFiles: TestFile[], initializeQueue: boolean): AxiosPromise<any> {
-    const url = `${this.apiBaseUrl}/queues/queue`;
+    const url = `${this.apiBaseUrl}/v1/queues/queue`;
     const data = {
       test_suite_token: process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN,
       can_initialize_queue: initializeQueue,
@@ -39,7 +39,7 @@ export class KnapsackProAPI {
   }
 
   public createBuildSubset(recordedTestFiles: TestFile[]): AxiosPromise<any> {
-    const url = `${this.apiBaseUrl}/build_subsets`;
+    const url = `${this.apiBaseUrl}/v1/build_subsets`;
     const data = {
       test_suite_token: process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN,
       commit_hash: process.env.KNAPSACK_PRO_COMMIT_HASH,
