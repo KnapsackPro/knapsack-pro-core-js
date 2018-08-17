@@ -1,9 +1,7 @@
 import { KnapsackProAPI } from "./knapsack-pro-api";
 import { KnapsackProLogger } from "./knapsack-pro-logger";
 import { TestFile } from "./test-file.model";
-
-type onQueueSuccessType = (queueTestFiles: TestFile[]) => Promise<TestFile[]>;
-type onQueueFailureType = (error: any) => void;
+import { onQueueFailureType, onQueueSuccessType } from "./types";
 
 export class KnapsackProCore {
   private knapsackProAPI: KnapsackProAPI;
@@ -13,6 +11,7 @@ export class KnapsackProCore {
   private recordedTestFiles: TestFile[];
   // list of tests files in whole user's test suite
   private allTestFiles: TestFile[];
+  private isTestSuiteGreen: boolean;
 
   constructor(allTestFiles: TestFile[]) {
     this.recordedTestFiles = [];
@@ -20,6 +19,7 @@ export class KnapsackProCore {
 
     this.knapsackProAPI = new KnapsackProAPI();
     this.knapsackProLogger = new KnapsackProLogger();
+    this.isTestSuiteGreen = true;
   }
 
   public runQueueMode(
@@ -43,11 +43,13 @@ export class KnapsackProCore {
 
         if (isQueueEmpty) {
           this.createBuildSubset(this.recordedTestFiles);
+          process.exitCode = this.isTestSuiteGreen ? 0 : 1;
           return;
         }
 
-        onSuccess(queueTestFiles).then((recordedTestFiles: TestFile[]) => {
+        onSuccess(queueTestFiles).then(({ recordedTestFiles, isTestSuiteGreen }) => {
           this.recordedTestFiles = this.recordedTestFiles.concat(recordedTestFiles);
+          this.isTestSuiteGreen = this.isTestSuiteGreen && isTestSuiteGreen;
 
           this.fetchTestsFromQueue(false, onSuccess, onFailure);
         });
@@ -55,6 +57,7 @@ export class KnapsackProCore {
       .catch((error) => {
         this.knapsackProLogger.logError(error);
         onFailure(error);
+        process.exitCode = 1;
       });
   }
 
