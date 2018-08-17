@@ -7,7 +7,7 @@ export class EnvConfig {
     return "https://api-staging.knapsackpro.com";
   }
 
-  public static get testSuiteToken(): string {
+  public static get testSuiteToken(): string | void {
     if (process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN) {
       return process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN;
     }
