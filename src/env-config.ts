@@ -12,7 +12,7 @@ export class EnvConfig {
       return process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN;
     }
 
-    // TODO: throw error
-    // return "";
+    throw new Error(`Please set test suite API token in CI environment variables.
+      Please check README for the Knapsack Pro client library.`);
   }
 }
