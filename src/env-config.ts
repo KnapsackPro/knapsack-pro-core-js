@@ -85,4 +85,12 @@ export class EnvConfig {
 
     throw new Error("Undefined branch name! Please set KNAPSACK_PRO_BRANCH environment variable.");
   }
+
+  public static get ciNodeTotal(): string | never {
+    if (process.env.KNAPSACK_PRO_CI_NODE_TOTAL) {
+      return process.env.KNAPSACK_PRO_CI_NODE_TOTAL;
+    }
+
+    throw new Error("Undefined number of total CI nodes! Please set KNAPSACK_PRO_CI_NODE_TOTAL environment variable.");
+  }
 }
