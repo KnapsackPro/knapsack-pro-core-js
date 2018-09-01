@@ -101,4 +101,12 @@ export class EnvConfig {
 
     throw new Error("Undefined CI node index! Please set KNAPSACK_PRO_CI_NODE_INDEX environment variable.");
   }
+
+  public static get ciNodeBuildId(): string | never {
+    if (process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID) {
+      return process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID;
+    }
+
+    throw new Error("Undefined CI node build ID! Please set KNAPSACK_PRO_CI_NODE_BUILD_ID environment variable.");
+  }
 }

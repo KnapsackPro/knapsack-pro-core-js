@@ -3,10 +3,6 @@ import axios, { AxiosPromise } from "axios";
 import { EnvConfig } from "./env-config";
 import { TestFile } from "./test-file.model";
 
-// TODO: use fake env data for testing
-// process.env.KNAPSACK_PRO_NODE_BUILD_ID = "1234";
-process.env.KNAPSACK_PRO_NODE_BUILD_ID = new Date().getTime() + ""; // TODO: use this for testing
-
 export class KnapsackProAPI {
   private readonly apiBaseUrl: string;
 
@@ -25,7 +21,7 @@ export class KnapsackProAPI {
       branch: EnvConfig.branch,
       node_total: EnvConfig.ciNodeTotal,
       node_index: EnvConfig.ciNodeIndex,
-      node_build_id: process.env.KNAPSACK_PRO_NODE_BUILD_ID,
+      node_build_id: EnvConfig.ciNodeBuildId,
       test_files: allTestFiles,
     };
 
