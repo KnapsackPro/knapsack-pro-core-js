@@ -25,4 +25,12 @@ export class EnvConfig {
 
     return false;
   }
+
+  public static get branch(): string | void {
+    if (process.env.KNAPSACK_PRO_BRANCH) {
+      return process.env.KNAPSACK_PRO_BRANCH;
+    }
+
+    throw new Error("Undefined git branch name! Please set KNAPSACK_PRO_BRANCH.");
+  }
 }
