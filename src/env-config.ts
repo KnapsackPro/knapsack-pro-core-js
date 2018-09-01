@@ -93,4 +93,12 @@ export class EnvConfig {
 
     throw new Error("Undefined number of total CI nodes! Please set KNAPSACK_PRO_CI_NODE_TOTAL environment variable.");
   }
+
+  public static get ciNodeIndex(): string | never {
+    if (process.env.KNAPSACK_PRO_CI_NODE_INDEX) {
+      return process.env.KNAPSACK_PRO_CI_NODE_INDEX;
+    }
+
+    throw new Error("Undefined CI node index! Please set KNAPSACK_PRO_CI_NODE_INDEX environment variable.");
+  }
 }

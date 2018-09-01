@@ -4,7 +4,6 @@ import { EnvConfig } from "./env-config";
 import { TestFile } from "./test-file.model";
 
 // TODO: use fake env data for testing
-process.env.KNAPSACK_PRO_NODE_INDEX = "0";
 // process.env.KNAPSACK_PRO_NODE_BUILD_ID = "1234";
 process.env.KNAPSACK_PRO_NODE_BUILD_ID = new Date().getTime() + ""; // TODO: use this for testing
 
@@ -25,7 +24,7 @@ export class KnapsackProAPI {
       commit_hash: EnvConfig.commitHash,
       branch: EnvConfig.branch,
       node_total: EnvConfig.ciNodeTotal,
-      node_index: process.env.KNAPSACK_PRO_NODE_INDEX,
+      node_index: EnvConfig.ciNodeIndex,
       node_build_id: process.env.KNAPSACK_PRO_NODE_BUILD_ID,
       test_files: allTestFiles,
     };
@@ -40,7 +39,7 @@ export class KnapsackProAPI {
       commit_hash: EnvConfig.commitHash,
       branch: EnvConfig.branch,
       node_total: EnvConfig.ciNodeTotal,
-      node_index: process.env.KNAPSACK_PRO_NODE_INDEX,
+      node_index: EnvConfig.ciNodeIndex,
       test_files: recordedTestFiles,
     };
 
