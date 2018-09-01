@@ -1,5 +1,5 @@
 import childProcess = require("child_process");
-import { CircleCI } from "./ci-providers";
+import { CIProviders } from "./ci-providers";
 
 const { spawnSync } = childProcess;
 
@@ -36,7 +36,7 @@ export class EnvConfig {
       return process.env.KNAPSACK_PRO_COMMIT_HASH;
     }
 
-    const commitHash = this.ciEnvFor("commitHash");
+    const commitHash = CIProviders.commitHash;
     if (commitHash) { return commitHash; }
 
     const gitProcess = spawnSync("git", ["rev-parse", "HEAD"]);
@@ -112,17 +112,5 @@ export class EnvConfig {
     }
 
     throw new Error("Undefined CI node build ID! Please set KNAPSACK_PRO_CI_NODE_BUILD_ID environment variable.");
-  }
-
-  private static ciEnvFor(functionName: string): string | void {
-    // TODO move somewhere else
-    const supportedCIProviders: any[] = [
-      CircleCI,
-    ];
-
-    for (const ciProvider of supportedCIProviders) {
-      const value = ciProvider[functionName];
-      if (value) { return value; }
-    }
   }
 }
