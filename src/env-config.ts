@@ -35,6 +35,26 @@ export class EnvConfig {
       return process.env.KNAPSACK_PRO_COMMIT_HASH;
     }
 
+    const gitProcess = spawnSync("git", ["rev-parse", "HEAD"]);
+    if (gitProcess.status === 0) {
+      const gitCommitHash = gitProcess.stdout.toString().trim();
+
+      // set env variable so next function call won't spawn git process again
+      process.env.KNAPSACK_PRO_COMMIT_HASH = gitCommitHash;
+
+      return gitCommitHash;
+    } else if (gitProcess.stderr === null) {
+      // gitProcess may fail with stderr null, for instance when git command does not exist on the machine
+      console.error(
+        "We tried to detect commit hash using git but it failed.",
+        "Please ensure you have have git installed or set KNAPSACK_PRO_COMMIT_HASH environment variable.",
+      );
+    } else {
+      const gitErrorMessage = gitProcess.stderr.toString();
+      console.error("There was error in detecting commit hash using git installed on the machine:");
+      console.error(gitErrorMessage);
+    }
+
     throw new Error("Undefined commit hash! Please set KNAPSACK_PRO_COMMIT_HASH environment variable.");
   }
 
@@ -43,23 +63,22 @@ export class EnvConfig {
       return process.env.KNAPSACK_PRO_BRANCH;
     }
 
-    const gitProccess = spawnSync("git", ["rev-parse", "--abbrev-ref", "HEAD"]);
-
-    if (gitProccess.status === 0) {
-      const gitBranch = gitProccess.stdout.toString().trim();
+    const gitProcess = spawnSync("git", ["rev-parse", "--abbrev-ref", "HEAD"]);
+    if (gitProcess.status === 0) {
+      const gitBranch = gitProcess.stdout.toString().trim();
 
       // set env variable so next function call won't spawn git process again
       process.env.KNAPSACK_PRO_BRANCH = gitBranch;
 
       return gitBranch;
-    } else if (gitProccess.stderr === null) {
+    } else if (gitProcess.stderr === null) {
       // gitProcess may fail with stderr null, for instance when git command does not exist on the machine
       console.error(
         "We tried to detect branch name using git but it failed.",
         "Please ensure you have have git installed or set KNAPSACK_PRO_BRANCH environment variable.",
       );
     } else {
-      const gitErrorMessage = gitProccess.stderr.toString();
+      const gitErrorMessage = gitProcess.stderr.toString();
       console.error("There was error in detecting branch name using git installed on the machine:");
       console.error(gitErrorMessage);
     }
