@@ -11,7 +11,7 @@ export class EnvConfig {
     return "https://api-staging.knapsackpro.com";
   }
 
-  public static get testSuiteToken(): string | void {
+  public static get testSuiteToken(): string | never {
     if (process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN) {
       return process.env.KNAPSACK_PRO_TEST_SUITE_TOKEN;
     }
@@ -30,7 +30,15 @@ export class EnvConfig {
     return false;
   }
 
-  public static get branch(): string | void {
+  public static get commitHash(): string | never {
+    if (process.env.KNAPSACK_PRO_COMMIT_HASH) {
+      return process.env.KNAPSACK_PRO_COMMIT_HASH;
+    }
+
+    throw new Error("Undefined commit hash! Please set KNAPSACK_PRO_COMMIT_HASH environment variable.");
+  }
+
+  public static get branch(): string | never {
     if (process.env.KNAPSACK_PRO_BRANCH) {
       return process.env.KNAPSACK_PRO_BRANCH;
     }
@@ -56,6 +64,6 @@ export class EnvConfig {
       console.error(gitErrorMessage);
     }
 
-    throw new Error("Undefined git branch name! Please set KNAPSACK_PRO_BRANCH environment variable.");
+    throw new Error("Undefined branch name! Please set KNAPSACK_PRO_BRANCH environment variable.");
   }
 }

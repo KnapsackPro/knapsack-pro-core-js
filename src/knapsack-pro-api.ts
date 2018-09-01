@@ -24,7 +24,7 @@ export class KnapsackProAPI {
       test_suite_token: EnvConfig.testSuiteToken,
       can_initialize_queue: initializeQueue,
       fixed_queue_split: EnvConfig.fixedQueueSplit,
-      commit_hash: process.env.KNAPSACK_PRO_COMMIT_HASH,
+      commit_hash: EnvConfig.commitHash,
       branch: EnvConfig.branch,
       node_total: process.env.KNAPSACK_PRO_NODE_TOTAL,
       node_index: process.env.KNAPSACK_PRO_NODE_INDEX,
@@ -39,7 +39,7 @@ export class KnapsackProAPI {
     const url = `${this.apiBaseUrl}/v1/build_subsets`;
     const data = {
       test_suite_token: EnvConfig.testSuiteToken,
-      commit_hash: process.env.KNAPSACK_PRO_COMMIT_HASH,
+      commit_hash: EnvConfig.commitHash,
       branch: EnvConfig.branch,
       node_total: process.env.KNAPSACK_PRO_NODE_TOTAL,
       node_index: process.env.KNAPSACK_PRO_NODE_INDEX,
