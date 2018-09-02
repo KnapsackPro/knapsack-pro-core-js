@@ -1,6 +1,6 @@
-import { CircleCI } from ".";
+import { CircleCI } from "../ci-providers";
 
-export class CIProviders {
+export class CIEnvConfig {
   public static get commitHash(): string | void {
     return this.ciEnvFor("commitHash");
   }

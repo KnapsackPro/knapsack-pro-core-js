@@ -1,9 +1,9 @@
 import childProcess = require("child_process");
-import { CIProviders } from "./ci-providers";
+import { CIEnvConfig } from ".";
 
 const { spawnSync } = childProcess;
 
-export class EnvConfig {
+export class KnapsackProEnvConfig {
   public static get endpoint(): string {
     if (process.env.KNAPSACK_PRO_ENDPOINT) {
       return process.env.KNAPSACK_PRO_ENDPOINT;
@@ -36,7 +36,7 @@ export class EnvConfig {
       return process.env.KNAPSACK_PRO_COMMIT_HASH;
     }
 
-    const commitHash = CIProviders.commitHash;
+    const commitHash = CIEnvConfig.commitHash;
     if (commitHash) { return commitHash; }
 
     const gitProcess = spawnSync("git", ["rev-parse", "HEAD"]);
