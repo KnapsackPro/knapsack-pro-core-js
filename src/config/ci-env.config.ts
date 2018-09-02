@@ -42,9 +42,7 @@ export class CIEnvConfig {
 
     for (const ciProvider of supportedCIProviders) {
       const value = ciProvider[functionName];
-      if (value) {
-        return value;
-      }
+      if (value) { return value; }
     }
   }
 }
