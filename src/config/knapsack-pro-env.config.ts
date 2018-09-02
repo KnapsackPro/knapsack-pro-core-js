@@ -31,6 +31,39 @@ export class KnapsackProEnvConfig {
     return false;
   }
 
+  public static get ciNodeTotal(): string | never {
+    if (process.env.KNAPSACK_PRO_CI_NODE_TOTAL) {
+      return process.env.KNAPSACK_PRO_CI_NODE_TOTAL;
+    }
+
+    const ciNodeTotal = CIEnvConfig.ciNodeTotal;
+    if (ciNodeTotal) { return ciNodeTotal; }
+
+    throw new Error("Undefined number of total CI nodes! Please set KNAPSACK_PRO_CI_NODE_TOTAL environment variable.");
+  }
+
+  public static get ciNodeIndex(): string | never {
+    if (process.env.KNAPSACK_PRO_CI_NODE_INDEX) {
+      return process.env.KNAPSACK_PRO_CI_NODE_INDEX;
+    }
+
+    const ciNodeIndex = CIEnvConfig.ciNodeIndex;
+    if (ciNodeIndex) { return ciNodeIndex; }
+
+    throw new Error("Undefined CI node index! Please set KNAPSACK_PRO_CI_NODE_INDEX environment variable.");
+  }
+
+  public static get ciNodeBuildId(): string | never {
+    if (process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID) {
+      return process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID;
+    }
+
+    const ciNodeBuildId = CIEnvConfig.ciNodeBuildId;
+    if (ciNodeBuildId) { return ciNodeBuildId; }
+
+    throw new Error("Undefined CI node build ID! Please set KNAPSACK_PRO_CI_NODE_BUILD_ID environment variable.");
+  }
+
   public static get commitHash(): string | never {
     if (process.env.KNAPSACK_PRO_COMMIT_HASH) {
       return process.env.KNAPSACK_PRO_COMMIT_HASH;
@@ -67,6 +100,9 @@ export class KnapsackProEnvConfig {
       return process.env.KNAPSACK_PRO_BRANCH;
     }
 
+    const branch = CIEnvConfig.branch;
+    if (branch) { return branch; }
+
     const gitProcess = spawnSync("git", ["rev-parse", "--abbrev-ref", "HEAD"]);
     if (gitProcess.status === 0) {
       const gitBranch = gitProcess.stdout.toString().trim();
@@ -88,29 +124,5 @@ export class KnapsackProEnvConfig {
     }
 
     throw new Error("Undefined branch name! Please set KNAPSACK_PRO_BRANCH environment variable.");
-  }
-
-  public static get ciNodeTotal(): string | never {
-    if (process.env.KNAPSACK_PRO_CI_NODE_TOTAL) {
-      return process.env.KNAPSACK_PRO_CI_NODE_TOTAL;
-    }
-
-    throw new Error("Undefined number of total CI nodes! Please set KNAPSACK_PRO_CI_NODE_TOTAL environment variable.");
-  }
-
-  public static get ciNodeIndex(): string | never {
-    if (process.env.KNAPSACK_PRO_CI_NODE_INDEX) {
-      return process.env.KNAPSACK_PRO_CI_NODE_INDEX;
-    }
-
-    throw new Error("Undefined CI node index! Please set KNAPSACK_PRO_CI_NODE_INDEX environment variable.");
-  }
-
-  public static get ciNodeBuildId(): string | never {
-    if (process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID) {
-      return process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID;
-    }
-
-    throw new Error("Undefined CI node build ID! Please set KNAPSACK_PRO_CI_NODE_BUILD_ID environment variable.");
   }
 }
