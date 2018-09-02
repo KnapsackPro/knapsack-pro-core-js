@@ -1,4 +1,4 @@
-import { CircleCI } from "../ci-providers";
+import { Buildkite, CircleCI } from "../ci-providers";
 
 export class CIEnvConfig {
   public static get ciNodeTotal(): string | void {
@@ -23,6 +23,7 @@ export class CIEnvConfig {
 
   private static ciEnvFor(functionName: string): string | void {
     const supportedCIProviders: any[] = [
+      Buildkite,
       CircleCI,
     ];
 
