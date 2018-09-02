@@ -3,6 +3,7 @@ import {
   CircleCI,
   CirrusCI,
   Codeship,
+  GitlabCI,
 } from "../ci-providers";
 
 export class CIEnvConfig {
@@ -32,6 +33,7 @@ export class CIEnvConfig {
       CircleCI,
       CirrusCI,
       Codeship,
+      GitlabCI,
     ];
 
     for (const ciProvider of supportedCIProviders) {
