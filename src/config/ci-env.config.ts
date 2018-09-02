@@ -5,6 +5,7 @@ import {
   Codeship,
   GitlabCI,
   HerokuCI,
+  SemaphoreCI,
 } from "../ci-providers";
 
 export class CIEnvConfig {
@@ -36,11 +37,14 @@ export class CIEnvConfig {
       Codeship,
       GitlabCI,
       HerokuCI,
+      SemaphoreCI,
     ];
 
     for (const ciProvider of supportedCIProviders) {
       const value = ciProvider[functionName];
-      if (value) { return value; }
+      if (value) {
+        return value;
+      }
     }
   }
 }
