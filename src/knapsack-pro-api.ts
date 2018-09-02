@@ -1,7 +1,7 @@
 import axios, { AxiosPromise } from "axios";
 
 import { EnvConfig } from "./env-config";
-import { TestFile } from "./test-file.model";
+import { TestFile } from "./models";
 
 export class KnapsackProAPI {
   private readonly apiBaseUrl: string;

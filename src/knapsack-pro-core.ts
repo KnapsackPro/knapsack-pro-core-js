@@ -1,6 +1,6 @@
 import { KnapsackProAPI } from "./knapsack-pro-api";
 import { KnapsackProLogger } from "./knapsack-pro-logger";
-import { TestFile } from "./test-file.model";
+import { TestFile } from "./models";
 import { onQueueFailureType, onQueueSuccessType } from "./types";
 
 export class KnapsackProCore {
