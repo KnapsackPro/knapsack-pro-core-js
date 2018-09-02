@@ -6,3 +6,4 @@ export * from "./codeship";
 export * from "./gitlab-ci";
 export * from "./heroku-ci";
 export * from "./semaphore-ci";
+export * from "./travis-ci";
