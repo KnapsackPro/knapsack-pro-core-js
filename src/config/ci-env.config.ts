@@ -4,6 +4,7 @@ import {
   CirrusCI,
   Codeship,
   GitlabCI,
+  HerokuCI,
 } from "../ci-providers";
 
 export class CIEnvConfig {
@@ -34,6 +35,7 @@ export class CIEnvConfig {
       CirrusCI,
       Codeship,
       GitlabCI,
+      HerokuCI,
     ];
 
     for (const ciProvider of supportedCIProviders) {
