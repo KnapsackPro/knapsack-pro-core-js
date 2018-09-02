@@ -2,6 +2,7 @@ import {
   Buildkite,
   CircleCI,
   CirrusCI,
+  Codeship,
 } from "../ci-providers";
 
 export class CIEnvConfig {
@@ -30,6 +31,7 @@ export class CIEnvConfig {
       Buildkite,
       CircleCI,
       CirrusCI,
+      Codeship,
     ];
 
     for (const ciProvider of supportedCIProviders) {
