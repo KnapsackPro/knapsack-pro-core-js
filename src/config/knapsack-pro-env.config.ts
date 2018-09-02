@@ -61,18 +61,24 @@ export class KnapsackProEnvConfig {
     const ciNodeBuildId = CIEnvConfig.ciNodeBuildId;
     if (ciNodeBuildId) { return ciNodeBuildId; }
 
-    console.log(`We could not detect CI node build ID but we are still able to run your tests :)
+    // this is key known to Knapsack Pro API, do not change it!
+    const knapsackProMissingBuildIdKey = "missing-build-id";
 
-      If you want to be able to run more than one CI build for exactly the same commit hash and branch name
-      and amount of parallel CI nodes at the same time then you must set unique KNAPSACK_PRO_CI_NODE_BUILD_ID
-      environment variable for each CI build.
+    // set env variable so next function call won't show information about missing build ID
+    process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID = knapsackProMissingBuildIdKey;
+    console.log(
+      "CI node build ID not detected! Your tests will run anyway."
+      + "\n\n"
+      + "If you want to be able to run more than one CI build at the same time for exactly the same commit hash,"
+      + " branch name and number of parallel CI nodes then you have to set unique KNAPSACK_PRO_CI_NODE_BUILD_ID"
+      + " environment variable for each CI build."
+      + "\n\n"
+      + "For instance you can generate KNAPSACK_PRO_CI_NODE_BUILD_ID=$(openssl rand - base64 32)"
+      + "\n\n"
+      + "Note the CI build ID must be the same for parallel CI nodes being part of the single CI build.",
+    );
 
-      For instance you can generate KNAPSACK_PRO_CI_NODE_BUILD_ID=$(openssl rand -base64 32)
-
-      Note the CI build ID must be the same for parallel CI nodes being part of the single CI build.
-      `);
-
-    return "missing-build-id";
+    return process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID;
   }
 
   public static get commitHash(): string | never {
