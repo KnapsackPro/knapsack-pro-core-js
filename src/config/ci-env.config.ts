@@ -1,4 +1,5 @@
 import {
+  AppVeyor,
   Buildkite,
   CircleCI,
   CirrusCI,
@@ -33,6 +34,7 @@ export class CIEnvConfig {
 
   private static ciEnvFor(functionName: string): string | void {
     const supportedCIProviders: any[] = [
+      AppVeyor,
       Buildkite,
       CircleCI,
       CirrusCI,

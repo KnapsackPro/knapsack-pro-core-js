@@ -1,4 +1,5 @@
 export * from "./ci-provider.base";
+export * from "./appveyor";
 export * from "./buildkite";
 export * from "./circle-ci";
 export * from "./cirrus-ci";
