@@ -1,18 +1,25 @@
-import axios, { AxiosPromise } from "axios";
+import axios, { AxiosInstance, AxiosPromise } from "axios";
 
 import { KnapsackProEnvConfig } from "./config";
 import { TestFile } from "./models";
 
 export class KnapsackProAPI {
-  private readonly apiBaseUrl: string;
+  private readonly api: AxiosInstance;
 
-  constructor() {
-    this.apiBaseUrl = KnapsackProEnvConfig.endpoint;
+  constructor(clientName: string, clientVersion: string) {
+    this.api = axios.create({
+      baseURL: KnapsackProEnvConfig.endpoint,
+      timeout: 15000,
+      headers: {
+        "KNAPSACK-PRO-CLIENT-NAME": clientName,
+        "KNAPSACK-PRO-CLIENT-VERSION": clientVersion,
+      },
+    });
   }
 
   // allTestFiles in whole user's test suite
   public fetchTestsFromQueue(allTestFiles: TestFile[], initializeQueue: boolean): AxiosPromise<any> {
-    const url = `${this.apiBaseUrl}/v1/queues/queue`;
+    const url = "/v1/queues/queue";
     const data = {
       test_suite_token: KnapsackProEnvConfig.testSuiteToken,
       can_initialize_queue: initializeQueue,
@@ -25,11 +32,11 @@ export class KnapsackProAPI {
       test_files: allTestFiles,
     };
 
-    return axios.post(url, data);
+    return this.api.post(url, data);
   }
 
   public createBuildSubset(recordedTestFiles: TestFile[]): AxiosPromise<any> {
-    const url = `${this.apiBaseUrl}/v1/build_subsets`;
+    const url = "/v1/build_subsets";
     const data = {
       test_suite_token: KnapsackProEnvConfig.testSuiteToken,
       commit_hash: KnapsackProEnvConfig.commitHash,
@@ -39,6 +46,6 @@ export class KnapsackProAPI {
       test_files: recordedTestFiles,
     };
 
-    return axios.post(url, data);
+    return this.api.post(url, data);
   }
 }

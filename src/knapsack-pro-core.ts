@@ -13,11 +13,11 @@ export class KnapsackProCore {
   private allTestFiles: TestFile[];
   private isTestSuiteGreen: boolean;
 
-  constructor(allTestFiles: TestFile[]) {
+  constructor(clientName: string, clientVersion: string, allTestFiles: TestFile[]) {
     this.recordedTestFiles = [];
     this.allTestFiles = allTestFiles;
 
-    this.knapsackProAPI = new KnapsackProAPI();
+    this.knapsackProAPI = new KnapsackProAPI(clientName, clientVersion);
     this.knapsackProLogger = new KnapsackProLogger();
     this.isTestSuiteGreen = true;
   }
