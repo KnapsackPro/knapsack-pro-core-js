@@ -39,35 +39,41 @@ Learn how to run your tests faster with optimal test suite parallelisation using
 
 ### Publishing
 
-Ensure you are signed in with:
+* Ensure you are signed in with:
 
-```
-$ npm adduser
-```
+    ```
+    $ npm adduser
+    ```
 
-Before releasing a new version of package please ensure you updated `CHANGELOG.md` and added there link to releated pull requests.
+* Before releasing a new version of package please ensure you updated `CHANGELOG.md` and added there link to releated pull requests.
 
-If you added a new files to the repository please ensure unneeded files are listed in `.npmignore`.
+* If you added a new files to the repository please ensure unneeded files are listed in `.npmignore`.
 
-In order to bump version of the package run (below command will also create git tag for the release):
+* Ensure you compiled project with:
 
-```
-# bump patch version 0.0.x
-$ npm version patch
+    ```
+    $ npm start
+    ```
 
-# bump minor version 0.x.0
-$ npm version minor
-```
+* In order to bump version of the package run (below command will also create git tag for the release):
 
-Ensure you pushed to git repository created git tag:
+    ```
+    # bump patch version 0.0.x
+    $ npm version patch
 
-```
-$ git push --tags
-```
+    # bump minor version 0.x.0
+    $ npm version minor
+    ```
 
-Now you can publish package to npm registry:
+* Ensure you pushed to git repository created git tag:
 
-```
-# --access=public flag is needed only for the very first publish to npm registry
-$ npm publish --access=public
-```
+    ```
+    $ git push --tags
+    ```
+
+* Now you can publish package to npm registry:
+
+    ```
+    # --access=public flag is needed only for the very first publish to npm registry
+    $ npm publish --access=public
+    ```
