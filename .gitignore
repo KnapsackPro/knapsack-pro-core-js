@@ -1,5 +1,5 @@
-.idea
 node_modules
+.idea
 
-# remove below line when lib becomes stable
-/bin
+# compiled ts files to js
+/lib
