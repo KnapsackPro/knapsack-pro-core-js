@@ -29,7 +29,7 @@
     "tsc": "tsc",
     "lint": "tslint --project . --format stylish"
   },
-  "homepage": "https://github.com/KnapsackPro/knapsack-pro-core-js",
+  "homepage": "https://knapsackpro.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/KnapsackPro/knapsack-pro-core-js.git"
