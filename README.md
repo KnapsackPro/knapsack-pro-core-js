@@ -8,10 +8,9 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [@knapsack-pro/core](#knapsack-procore)
-  - [Development](#development)
-    - [Setup project in development](#setup-project-in-development)
-    - [Publishing](#publishing)
+- [Development](#development)
+  - [Setup project in development](#setup-project-in-development)
+  - [Publishing](#publishing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
