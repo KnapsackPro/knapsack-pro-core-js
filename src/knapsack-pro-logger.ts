@@ -12,6 +12,10 @@ export class KnapsackProLogger {
   }
 
   public logError(error: AxiosError) {
-    this.logResponse(error.response);
+    if (error.response) {
+      this.logResponse(error.response);
+    } else {
+      console.error(error);
+    }
   }
 }
