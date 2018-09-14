@@ -4,7 +4,20 @@
 
 `@knapsack-pro/core` is JS npm package with core features for [Knapsack Pro API](https://docs.knapsackpro.com/api/).
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [@knapsack-pro/core](#knapsack-procore)
+  - [Development](#development)
+    - [Setup project in development](#setup-project-in-development)
+    - [Publishing](#publishing)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Development
+
+### Setup project in development
 
 1. Install dependencies.
 
@@ -23,3 +36,38 @@
     ```
     $ npm link
     ```
+
+### Publishing
+
+Ensure you are signed in with:
+
+```
+$ npm adduser
+```
+
+Before releasing a new version of package please ensure you updated `CHANGELOG.md` and added there link to releated pull requests.
+
+If you added a new files to the repository please ensure unneeded files are listed in `.npmignore`.
+
+In order to bump version of the package run (below command will also create git tag for the release):
+
+```
+# bump patch version 0.0.x
+$ npm version patch
+
+# bump minor version 0.x.0
+$ npm version minor
+```
+
+Ensure you pushed to git repository created git tag:
+
+```
+$ git push --tags
+```
+
+Now you can publish package to npm registry:
+
+```
+# --access=public flag is needed only for the very first publish to npm registry
+$ npm publish --access=public
+```
