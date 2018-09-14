@@ -55,7 +55,7 @@ Learn how to run your tests faster with optimal test suite parallelisation using
     $ npm start
     ```
 
-* In order to bump version of the package run (below command will also create git tag for the release):
+* In order to bump version of the package run below command. It will also create git commit and tag for the release:
 
     ```
     # bump patch version 0.0.x
@@ -65,9 +65,10 @@ Learn how to run your tests faster with optimal test suite parallelisation using
     $ npm version minor
     ```
 
-* Ensure you pushed to git repository created git tag:
+* Ensure you pushed to git repository created git commit and tag:
 
     ```
+    $ git push origin master
     $ git push --tags
     ```
 
