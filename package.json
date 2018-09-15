@@ -31,7 +31,7 @@
     "doctoc": "doctoc --title \"## Table of Contents\" README.md"
   },
   "files": [
-    "lib"
+    "/lib"
   ],
   "homepage": "https://knapsackpro.com",
   "repository": {
