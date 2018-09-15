@@ -45,7 +45,15 @@ Learn how to run your tests faster with optimal test suite parallelisation using
     $ npm adduser
     ```
 
-2. Before releasing a new version of package please ensure you have updated `CHANGELOG.md` and added links to related pull requests.
+2. Before releasing a new version of package please update `CHANGELOG.md` with [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator):
+
+    ```
+    # install github_changelog_generator only once
+    $ gem install github_changelog_generator
+
+    # generate CHANGELOG.md
+    $ github_changelog_generator KnapsackPro/knapsack-pro-core-js
+    ```
 
 3. If you have added new files to the repository and they should be part of the released npm package then please ensure they are included in `files` array in `package.json`.
 
