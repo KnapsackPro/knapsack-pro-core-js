@@ -84,7 +84,15 @@ Learn how to run your tests faster with optimal test suite parallelisation using
     $ git push origin master --tags
     ```
 
-8. Now you can publish package to npm registry:
+8. Now when git tag is on Github you can update `CHANGELOG.md` again.
+
+    ```
+    $ github_changelog_generator KnapsackPro/knapsack-pro-core-js
+    $ git commit -am "Update CHANGELOG.md"
+    $ git push origin master
+    ```
+
+9. Now you can publish package to npm registry:
 
     ```
     $ npm publish
