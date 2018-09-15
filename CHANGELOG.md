@@ -1,5 +1,8 @@
 # Change Log
 
+## [v0.2.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v0.2.0) (2018-09-15)
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v0.1.1...v0.2.0)
+
 ## [v0.1.1](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v0.1.1) (2018-09-14)
 
 
