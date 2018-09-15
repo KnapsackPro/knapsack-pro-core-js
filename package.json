@@ -30,6 +30,9 @@
     "lint": "tslint --project . --format stylish",
     "doctoc": "doctoc --title \"## Table of Contents\" README.md"
   },
+  "files": [
+    "lib"
+  ],
   "homepage": "https://knapsackpro.com",
   "repository": {
     "type": "git",
