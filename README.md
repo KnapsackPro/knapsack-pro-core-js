@@ -48,7 +48,6 @@ Learn how to run your tests faster with optimal test suite parallelisation using
 2. Before releasing a new version of package please update `CHANGELOG.md` with [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator):
 
     ```
-    # install github_changelog_generator only once
     $ gem install github_changelog_generator
 
     # generate CHANGELOG.md
