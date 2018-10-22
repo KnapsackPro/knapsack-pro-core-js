@@ -9,7 +9,7 @@ export class KnapsackProEnvConfig {
       return process.env.KNAPSACK_PRO_ENDPOINT;
     }
 
-    return "https://api-staging.knapsackpro.com";
+    return "https://api.knapsackpro.com";
   }
 
   public static get testSuiteToken(): string | never {
