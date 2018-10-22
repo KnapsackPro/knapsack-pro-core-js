@@ -52,6 +52,8 @@ Learn how to run your tests faster with optimal test suite parallelisation using
 
     # generate CHANGELOG.md
     $ github_changelog_generator KnapsackPro/knapsack-pro-core-js
+    $ git commit -am "Update CHANGELOG.md"
+    $ git push origin master
     ```
 
 3. If you have added new files to the repository and they should be part of the released npm package then please ensure they are included in `files` array in `package.json`.
