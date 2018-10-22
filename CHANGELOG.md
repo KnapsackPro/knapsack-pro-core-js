@@ -1,5 +1,14 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v0.2.0...HEAD)
+
+**Fixed bugs:**
+
+- Fix security vulnerability with npm audit fix [\#2](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/2) ([ArturT](https://github.com/ArturT))
+- Fix default Knapsack Pro API endpoint url to production [\#1](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/1) ([ArturT](https://github.com/ArturT))
+
 ## [v0.2.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v0.2.0) (2018-09-15)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v0.1.1...v0.2.0)
 
