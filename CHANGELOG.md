@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v0.2.1...HEAD)
+
+**Implemented enhancements:**
+
+- Add support for GitLab \>= 11.5 env variables [\#4](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/4) ([ArturT](https://github.com/ArturT))
+
 ## [v0.2.1](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v0.2.1) (2018-10-22)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v0.2.0...v0.2.1)
 
