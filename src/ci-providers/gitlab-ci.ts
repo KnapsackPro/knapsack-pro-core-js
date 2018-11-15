@@ -1,12 +1,18 @@
 import { CIProviderBase } from ".";
 
 export class GitlabCI extends CIProviderBase {
-  public static get ciNodeTotal(): void {
-    return undefined;
+  public static get ciNodeTotal(): string | void {
+    return process.env.CI_NODE_TOTAL;
   }
 
-  public static get ciNodeIndex(): void {
-    return undefined;
+  public static get ciNodeIndex(): string | void {
+    if (process.env.GITLAB_CI) {
+      const index = process.env.CI_NODE_INDEX; // GitLab >= 11.5
+
+      if (index) {
+        return (parseInt(index, 10) - 1).toString();
+      }
+    }
   }
 
   public static get ciNodeBuildId(): string | void {
