@@ -79,6 +79,7 @@ export class KnapsackProAPI {
     const randomSum = delay * 0.2 * Math.random(); // 0-20% of the delay
     const finalDelay = delay + randomSum;
 
+    // TODO: add winston logger
     console.log(`[@knapsack-pro/core] Wait ${finalDelay} ms and retry request to Knapsack Pro API.`);
 
     return finalDelay;
