@@ -58,14 +58,12 @@ export class KnapsackProAPI {
     return this.api.post(url, data);
   }
 
-  // baased on https://github.com/softonic/axios-retry/blob/master/es/index.js
+  // based on https://github.com/softonic/axios-retry/blob/master/es/index.js
   private retryCondition(error: AxiosError) {
     return axiosRetry.isNetworkError(error) || this.isRetriableRequestError(error);
   }
 
-  // baased on https://github.com/softonic/axios-retry/blob/master/es/index.js
-  // Knapsack Pro API v1 Queue accepts POST request but axios-retry do not support POST method by default.
-  // Thanks to this function we allow retrying requests for all HTTP methods.
+  // based on https://github.com/softonic/axios-retry/blob/master/es/index.js
   private isRetriableRequestError(error: AxiosError) {
     if (!error.config) {
       // Cannot determine if the request can be retried
