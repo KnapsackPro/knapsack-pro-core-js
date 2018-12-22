@@ -1,4 +1,5 @@
-import axios, { AxiosInstance, AxiosPromise } from "axios";
+import axios, { AxiosError, AxiosInstance, AxiosPromise } from "axios";
+const axiosRetry = require("axios-retry");  // tslint:disable-line:no-var-requires
 
 import { KnapsackProEnvConfig } from "./config";
 import { TestFile } from "./models";
@@ -7,6 +8,8 @@ export class KnapsackProAPI {
   private readonly api: AxiosInstance;
 
   constructor(clientName: string, clientVersion: string) {
+    this.retryCondition = this.retryCondition.bind(this);
+
     this.api = axios.create({
       baseURL: KnapsackProEnvConfig.endpoint,
       timeout: 15000,
@@ -14,6 +17,12 @@ export class KnapsackProAPI {
         "KNAPSACK-PRO-CLIENT-NAME": clientName,
         "KNAPSACK-PRO-CLIENT-VERSION": clientVersion,
       },
+    });
+    axiosRetry(this.api, {
+      retries: 2,
+      shouldResetTimeout: true,
+      retryDelay: this.retryDelay,
+      retryCondition: this.retryCondition,
     });
   }
 
@@ -47,5 +56,32 @@ export class KnapsackProAPI {
     };
 
     return this.api.post(url, data);
+  }
+
+  // based on https://github.com/softonic/axios-retry/blob/master/es/index.js
+  private retryCondition(error: AxiosError) {
+    return axiosRetry.isNetworkError(error) || this.isRetriableRequestError(error);
+  }
+
+  // based on https://github.com/softonic/axios-retry/blob/master/es/index.js
+  private isRetriableRequestError(error: AxiosError) {
+    if (!error.config) {
+      // Cannot determine if the request can be retried
+      return false;
+    }
+
+    return axiosRetry.isRetryableError(error);
+  }
+
+  private retryDelay(retryNumber: number) {
+    const requestRetryTimebox = 2000; // miliseconds
+    const delay = retryNumber * requestRetryTimebox;
+    const randomSum = delay * 0.2 * Math.random(); // 0-20% of the delay
+    const finalDelay = delay + randomSum;
+
+    // TODO: add winston logger
+    console.log(`[@knapsack-pro/core] Wait ${finalDelay} ms and retry request to Knapsack Pro API.`);
+
+    return finalDelay;
   }
 }
