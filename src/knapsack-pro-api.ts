@@ -58,13 +58,15 @@ export class KnapsackProAPI {
     return this.api.post(url, data);
   }
 
-  // based on https://github.com/softonic/axios-retry/blob/master/es/index.js
-  private retryCondition(error: AxiosError) {
+  // based on isNetworkOrIdempotentRequestError function
+  // https://github.com/softonic/axios-retry/blob/master/es/index.js
+  private retryCondition(error: AxiosError): boolean {
     return axiosRetry.isNetworkError(error) || this.isRetriableRequestError(error);
   }
 
-  // based on https://github.com/softonic/axios-retry/blob/master/es/index.js
-  private isRetriableRequestError(error: AxiosError) {
+  // based on isIdempotentRequestError function
+  // https://github.com/softonic/axios-retry/blob/master/es/index.js
+  private isRetriableRequestError(error: AxiosError): boolean {
     if (!error.config) {
       // Cannot determine if the request can be retried
       return false;
@@ -73,7 +75,7 @@ export class KnapsackProAPI {
     return axiosRetry.isRetryableError(error);
   }
 
-  private retryDelay(retryNumber: number) {
+  private retryDelay(retryNumber: number): number {
     const requestRetryTimebox = 2000; // miliseconds
     const delay = retryNumber * requestRetryTimebox;
     const randomSum = delay * 0.2 * Math.random(); // 0-20% of the delay
