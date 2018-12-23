@@ -142,4 +142,12 @@ export class KnapsackProEnvConfig {
 
     throw new Error("Undefined branch name! Please set KNAPSACK_PRO_BRANCH environment variable.");
   }
+
+  public static get logLevel(): string {
+    if (process.env.KNAPSACK_PRO_LOG_LEVEL) {
+      return process.env.KNAPSACK_PRO_LOG_LEVEL;
+    }
+
+    return "info";
+  }
 }

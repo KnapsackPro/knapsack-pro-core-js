@@ -7,6 +7,8 @@ import {
   transports,
 } from "winston";
 
+import { KnapsackProEnvConfig } from "./config";
+
 // tslint:disable-next-line:no-var-requires
 const { name: clientName } = require("../../package.json");
 
@@ -15,7 +17,7 @@ export class KnapsackProLogger {
 
   constructor() {
     this.logger = createLogger({
-      level: "silly", // TODO: based on env || 'info'
+      level: KnapsackProEnvConfig.logLevel,
       format: format.combine(
         format.label({ label: clientName }),
         format.timestamp(),
