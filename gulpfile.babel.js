@@ -18,7 +18,8 @@ export function clean() {
 export function compile() {
   return tsProject.src()
     .pipe(tsProject())
-    .js.pipe(gulp.dest(paths.dest));
+    .js
+    .pipe(gulp.dest(paths.dest));
 }
 
 export function watch() {
