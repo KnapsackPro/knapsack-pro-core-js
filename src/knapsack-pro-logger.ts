@@ -30,29 +30,43 @@ export class KnapsackProLogger {
     });
   }
 
-  public logResponse(response: AxiosResponse<any>) {
-    // tslint:disable-next-line:no-console
-    console.log(util.inspect(response.data, {
+  public error(message: string) {
+    this.logger.error(message);
+  }
+
+  public warn(message: string) {
+    this.logger.warn(message);
+  }
+
+  public info(message: string) {
+    this.logger.info(message);
+  }
+
+  public verbose(message: string) {
+    this.logger.info(message);
+  }
+
+  public debug(message: string) {
+    this.logger.info(message);
+  }
+
+  public silly(message: string) {
+    this.logger.info(message);
+  }
+
+  public responseInfo(response: AxiosResponse<any>) {
+    this.logger.info(`API response:\n${util.inspect(response.data, {
       showHidden: false,
       depth: null,
       colors: true,
-    }));
+    })}`);
   }
 
-  public logError(error: AxiosError) {
+  public handleError(error: AxiosError) {
     if (error.response) {
-      this.logger.error("error message");
-      this.logger.warn("warn message");
-      this.logger.info("info message");
-      this.logger.verbose("verbose message");
-      this.logger.debug("debug message");
-      this.logger.silly("silly message");
-
-      console.log("AAAAAAAAAAAA");
-      // this.logResponse(error.response);
+      this.responseInfo(error.response);
     } else {
-      console.log("BBBBBBBBBBBB");
-      // console.error(error);
+      this.logger.error(error);
     }
   }
 }

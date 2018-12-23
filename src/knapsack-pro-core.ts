@@ -36,7 +36,7 @@ export class KnapsackProCore {
   ) {
     this.knapsackProAPI.fetchTestsFromQueue(this.allTestFiles, initializeQueue)
       .then((response) => {
-        this.knapsackProLogger.logResponse(response);
+        this.knapsackProLogger.responseInfo(response);
 
         const queueTestFiles = response.data.test_files;
         const isQueueEmpty = queueTestFiles.length === 0;
@@ -55,7 +55,7 @@ export class KnapsackProCore {
         });
       })
       .catch((error) => {
-        this.knapsackProLogger.logError(error);
+        this.knapsackProLogger.handleError(error);
         onFailure(error);
         process.exitCode = 1;
       });
@@ -65,10 +65,10 @@ export class KnapsackProCore {
   private createBuildSubset(testFiles: TestFile[]) {
     this.knapsackProAPI.createBuildSubset(testFiles)
       .then((response) => {
-        this.knapsackProLogger.logResponse(response);
+        this.knapsackProLogger.responseInfo(response);
       })
       .catch((error) => {
-        this.knapsackProLogger.logError(error);
+        this.knapsackProLogger.handleError(error);
       });
   }
 }
