@@ -112,8 +112,9 @@ export class KnapsackProEnvConfig {
     } else if (gitProcess.stderr === null) {
       // gitProcess may fail with stderr null, for instance when git command does not exist on the machine
       knapsackProLogger.error(
-        "We tried to detect commit hash using git but it failed." + " " +
-        "Please ensure you have have git installed or set KNAPSACK_PRO_COMMIT_HASH environment variable.",
+        "We tried to detect commit hash using git but it failed."
+        + " "
+        + "Please ensure you have have git installed or set KNAPSACK_PRO_COMMIT_HASH environment variable.",
       );
     } else {
       const gitErrorMessage = gitProcess.stderr.toString();
@@ -143,8 +144,9 @@ export class KnapsackProEnvConfig {
     } else if (gitProcess.stderr === null) {
       // gitProcess may fail with stderr null, for instance when git command does not exist on the machine
       knapsackProLogger.error(
-        "We tried to detect branch name using git but it failed." + " " +
-        "Please ensure you have have git installed or set KNAPSACK_PRO_BRANCH environment variable.",
+        "We tried to detect branch name using git but it failed."
+        + " "
+        + "Please ensure you have have git installed or set KNAPSACK_PRO_BRANCH environment variable.",
       );
     } else {
       const gitErrorMessage = gitProcess.stderr.toString();
