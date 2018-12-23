@@ -15,9 +15,9 @@ const { name: clientName } = require("../../package.json");
 export class KnapsackProLogger {
   private logger: Logger;
 
-  constructor() {
+  constructor(logLevel: string = KnapsackProEnvConfig.logLevel) {
     this.logger = createLogger({
-      level: KnapsackProEnvConfig.logLevel,
+      level: logLevel,
       format: format.combine(
         format.label({ label: clientName }),
         format.timestamp(),

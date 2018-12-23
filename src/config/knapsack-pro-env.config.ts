@@ -1,7 +1,18 @@
 import childProcess = require("child_process");
 import { CIEnvConfig } from ".";
+import { KnapsackProLogger } from "../knapsack-pro-logger";
 
 const { spawnSync } = childProcess;
+
+function logLevel(): string {
+  if (process.env.KNAPSACK_PRO_LOG_LEVEL) {
+    return process.env.KNAPSACK_PRO_LOG_LEVEL;
+  }
+
+  return "info";
+}
+
+const knapsackProLogger = new KnapsackProLogger(logLevel());
 
 export class KnapsackProEnvConfig {
   public static get endpoint(): string {
@@ -144,10 +155,6 @@ export class KnapsackProEnvConfig {
   }
 
   public static get logLevel(): string {
-    if (process.env.KNAPSACK_PRO_LOG_LEVEL) {
-      return process.env.KNAPSACK_PRO_LOG_LEVEL;
-    }
-
-    return "info";
+    return logLevel();
   }
 }
