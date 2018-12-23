@@ -2,13 +2,17 @@ import axios, { AxiosError, AxiosInstance, AxiosPromise } from "axios";
 const axiosRetry = require("axios-retry");  // tslint:disable-line:no-var-requires
 
 import { KnapsackProEnvConfig } from "./config";
+import { KnapsackProLogger } from "./knapsack-pro-logger";
 import { TestFile } from "./models";
 
 export class KnapsackProAPI {
   private readonly api: AxiosInstance;
+  private knapsackProLogger: KnapsackProLogger;
 
   constructor(clientName: string, clientVersion: string) {
     this.retryCondition = this.retryCondition.bind(this);
+
+    this.knapsackProLogger = new KnapsackProLogger();
 
     this.api = axios.create({
       baseURL: KnapsackProEnvConfig.endpoint,
@@ -81,8 +85,7 @@ export class KnapsackProAPI {
     const randomSum = delay * 0.2 * Math.random(); // 0-20% of the delay
     const finalDelay = delay + randomSum;
 
-    // TODO: add winston logger
-    console.log(`[@knapsack-pro/core] Wait ${finalDelay} ms and retry request to Knapsack Pro API.`);
+    this.knapsackProLogger.info(`Wait ${finalDelay} ms and retry request to Knapsack Pro API.`);
 
     return finalDelay;
   }
