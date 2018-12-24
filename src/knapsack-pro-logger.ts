@@ -1,4 +1,3 @@
-import { AxiosError, AxiosResponse } from "axios";
 import util = require("util");
 import {
   createLogger,
@@ -9,10 +8,17 @@ import {
 
 import { KnapsackProEnvConfig } from "./config";
 
-// tslint:disable-next-line:no-var-requires
-const { name: clientName } = require("../../package.json");
+const { name: clientName } = require("../../package.json"); // tslint:disable-line:no-var-requires
 
 export class KnapsackProLogger {
+  public static objectInspect(object: object): string {
+    return util.inspect(object, {
+      showHidden: false,
+      depth: null,
+      colors: true,
+    });
+  }
+
   private logger: Logger;
 
   constructor(logLevel: string = KnapsackProEnvConfig.logLevel) {
@@ -22,7 +28,7 @@ export class KnapsackProLogger {
         format.label({ label: clientName }),
         format.timestamp(),
         format.colorize(),
-        format.printf(({ timestamp, label, level, message }) => `${timestamp} [${label}] ${level}: ${message}`),
+        format.printf(({ timestamp, label, level, message }) => `\n${timestamp} [${label}] ${level}: ${message}`),
       ),
       transports: [
         new transports.Console(),
@@ -30,43 +36,27 @@ export class KnapsackProLogger {
     });
   }
 
-  public error(message: string) {
+  public error(message: string): void {
     this.logger.error(message);
   }
 
-  public warn(message: string) {
+  public warn(message: string): void {
     this.logger.warn(message);
   }
 
-  public info(message: string) {
+  public info(message: string): void {
     this.logger.info(message);
   }
 
-  public verbose(message: string) {
+  public verbose(message: string): void {
     this.logger.info(message);
   }
 
-  public debug(message: string) {
+  public debug(message: string): void {
     this.logger.info(message);
   }
 
-  public silly(message: string) {
+  public silly(message: string): void {
     this.logger.info(message);
-  }
-
-  public responseInfo(response: AxiosResponse<any>) {
-    this.logger.info(`API response:\n${util.inspect(response.data, {
-      showHidden: false,
-      depth: null,
-      colors: true,
-    })}`);
-  }
-
-  public handleError(error: AxiosError) {
-    if (error.response) {
-      this.responseInfo(error.response);
-    } else {
-      this.logger.error(error);
-    }
   }
 }
