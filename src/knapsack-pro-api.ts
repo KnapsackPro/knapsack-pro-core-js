@@ -73,6 +73,9 @@ export class KnapsackProAPI {
       const requestBody = KnapsackProLogger.objectInspect(data);
 
       this.knapsackProLogger.info(
+        `${method.toUpperCase()} ${baseURL}${url}`,
+      );
+      this.knapsackProLogger.debug(
         `${method.toUpperCase()} ${baseURL}${url}\n\n`
         + "Request headers:\n"
         + `${requestHeaders}\n\n`
