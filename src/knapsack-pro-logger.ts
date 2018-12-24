@@ -1,21 +1,62 @@
-import { AxiosError, AxiosResponse } from "axios";
 import util = require("util");
+import {
+  createLogger,
+  format,
+  Logger,
+  transports,
+} from "winston";
+
+import { KnapsackProEnvConfig } from "./config";
+
+const { name: clientName } = require("../../package.json"); // tslint:disable-line:no-var-requires
 
 export class KnapsackProLogger {
-  public logResponse(response: AxiosResponse<any>) {
-    // tslint:disable-next-line:no-console
-    console.log(util.inspect(response.data, {
+  public static objectInspect(object: object): string {
+    return util.inspect(object, {
       showHidden: false,
       depth: null,
       colors: true,
-    }));
+    });
   }
 
-  public logError(error: AxiosError) {
-    if (error.response) {
-      this.logResponse(error.response);
-    } else {
-      console.error(error);
-    }
+  private logger: Logger;
+
+  constructor(logLevel: string = KnapsackProEnvConfig.logLevel) {
+    this.logger = createLogger({
+      level: logLevel,
+      format: format.combine(
+        format.label({ label: clientName }),
+        format.timestamp(),
+        format.colorize(),
+        format.printf(({ timestamp, label, level, message }) => `\n${timestamp} [${label}] ${level}: ${message}`),
+      ),
+      transports: [
+        new transports.Console(),
+      ],
+    });
+  }
+
+  public error(message: string): void {
+    this.logger.error(message);
+  }
+
+  public warn(message: string): void {
+    this.logger.warn(message);
+  }
+
+  public info(message: string): void {
+    this.logger.info(message);
+  }
+
+  public verbose(message: string): void {
+    this.logger.verbose(message);
+  }
+
+  public debug(message: string): void {
+    this.logger.debug(message);
+  }
+
+  public silly(message: string): void {
+    this.logger.silly(message);
   }
 }

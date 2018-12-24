@@ -1,7 +1,18 @@
 import childProcess = require("child_process");
 import { CIEnvConfig } from ".";
+import { KnapsackProLogger } from "../knapsack-pro-logger";
 
 const { spawnSync } = childProcess;
+
+function logLevel(): string {
+  if (process.env.KNAPSACK_PRO_LOG_LEVEL) {
+    return process.env.KNAPSACK_PRO_LOG_LEVEL;
+  }
+
+  return "info";
+}
+
+const knapsackProLogger = new KnapsackProLogger(logLevel());
 
 export class KnapsackProEnvConfig {
   public static get endpoint(): string {
@@ -66,7 +77,8 @@ export class KnapsackProEnvConfig {
 
     // set env variable so next function call won't show information about missing build ID
     process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID = knapsackProMissingBuildIdKey;
-    console.log(
+
+    knapsackProLogger.warn(
       "CI node build ID not detected! Your tests will run anyway."
       + "\n\n"
       + "If you want to be able to run more than one CI build at the same time for exactly the same commit hash,"
@@ -99,14 +111,15 @@ export class KnapsackProEnvConfig {
       return gitCommitHash;
     } else if (gitProcess.stderr === null) {
       // gitProcess may fail with stderr null, for instance when git command does not exist on the machine
-      console.error(
-        "We tried to detect commit hash using git but it failed.",
-        "Please ensure you have have git installed or set KNAPSACK_PRO_COMMIT_HASH environment variable.",
+      knapsackProLogger.error(
+        "We tried to detect commit hash using git but it failed."
+        + " "
+        + "Please ensure you have have git installed or set KNAPSACK_PRO_COMMIT_HASH environment variable.",
       );
     } else {
       const gitErrorMessage = gitProcess.stderr.toString();
-      console.error("There was error in detecting commit hash using git installed on the machine:");
-      console.error(gitErrorMessage);
+      knapsackProLogger.error("There was error in detecting commit hash using git installed on the machine:");
+      knapsackProLogger.error(gitErrorMessage);
     }
 
     throw new Error("Undefined commit hash! Please set KNAPSACK_PRO_COMMIT_HASH environment variable.");
@@ -130,16 +143,21 @@ export class KnapsackProEnvConfig {
       return gitBranch;
     } else if (gitProcess.stderr === null) {
       // gitProcess may fail with stderr null, for instance when git command does not exist on the machine
-      console.error(
-        "We tried to detect branch name using git but it failed.",
-        "Please ensure you have have git installed or set KNAPSACK_PRO_BRANCH environment variable.",
+      knapsackProLogger.error(
+        "We tried to detect branch name using git but it failed."
+        + " "
+        + "Please ensure you have have git installed or set KNAPSACK_PRO_BRANCH environment variable.",
       );
     } else {
       const gitErrorMessage = gitProcess.stderr.toString();
-      console.error("There was error in detecting branch name using git installed on the machine:");
-      console.error(gitErrorMessage);
+      knapsackProLogger.error("There was error in detecting branch name using git installed on the machine:");
+      knapsackProLogger.error(gitErrorMessage);
     }
 
     throw new Error("Undefined branch name! Please set KNAPSACK_PRO_BRANCH environment variable.");
+  }
+
+  public static get logLevel(): string {
+    return logLevel();
   }
 }

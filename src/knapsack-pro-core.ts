@@ -36,8 +36,6 @@ export class KnapsackProCore {
   ) {
     this.knapsackProAPI.fetchTestsFromQueue(this.allTestFiles, initializeQueue)
       .then((response) => {
-        this.knapsackProLogger.logResponse(response);
-
         const queueTestFiles = response.data.test_files;
         const isQueueEmpty = queueTestFiles.length === 0;
 
@@ -55,7 +53,6 @@ export class KnapsackProCore {
         });
       })
       .catch((error) => {
-        this.knapsackProLogger.logError(error);
         onFailure(error);
         process.exitCode = 1;
       });
@@ -64,11 +61,10 @@ export class KnapsackProCore {
   // saves recorded timing for tests executed on single CI node
   private createBuildSubset(testFiles: TestFile[]) {
     this.knapsackProAPI.createBuildSubset(testFiles)
-      .then((response) => {
-        this.knapsackProLogger.logResponse(response);
-      })
       .catch((error) => {
-        this.knapsackProLogger.logError(error);
+        this.knapsackProLogger.error(
+          "Could not save recorded timing of tests due to failed request to Knapsack Pro API.",
+        );
       });
   }
 }

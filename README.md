@@ -9,11 +9,29 @@ Learn how to run your tests faster with optimal test suite parallelisation using
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Table of Contents
 
+- [FAQ](#faq)
+  - [How to change log level?](#how-to-change-log-level)
 - [Development](#development)
   - [Setup](#setup)
   - [Publishing](#publishing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## FAQ
+
+### How to change log level?
+
+You can set log level with environment variable `KNAPSACK_PRO_LOG_LEVEL`.
+The default level is `info`.
+
+Available [log levels](https://github.com/winstonjs/winston#logging) (from most important to least important):
+
+* `error`
+* `warn`
+* `info`
+* `verbose`
+* `debug`
+* `silly`
 
 ## Development
 

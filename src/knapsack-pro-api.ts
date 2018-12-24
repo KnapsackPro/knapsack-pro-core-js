@@ -1,29 +1,20 @@
 import axios, { AxiosError, AxiosInstance, AxiosPromise } from "axios";
-const axiosRetry = require("axios-retry");  // tslint:disable-line:no-var-requires
+const axiosRetry = require("axios-retry"); // tslint:disable-line:no-var-requires
 
 import { KnapsackProEnvConfig } from "./config";
+import { KnapsackProLogger } from "./knapsack-pro-logger";
 import { TestFile } from "./models";
 
 export class KnapsackProAPI {
   private readonly api: AxiosInstance;
+  private knapsackProLogger: KnapsackProLogger;
 
   constructor(clientName: string, clientVersion: string) {
     this.retryCondition = this.retryCondition.bind(this);
+    this.retryDelay = this.retryDelay.bind(this);
 
-    this.api = axios.create({
-      baseURL: KnapsackProEnvConfig.endpoint,
-      timeout: 15000,
-      headers: {
-        "KNAPSACK-PRO-CLIENT-NAME": clientName,
-        "KNAPSACK-PRO-CLIENT-VERSION": clientVersion,
-      },
-    });
-    axiosRetry(this.api, {
-      retries: 2,
-      shouldResetTimeout: true,
-      retryDelay: this.retryDelay,
-      retryCondition: this.retryCondition,
-    });
+    this.knapsackProLogger = new KnapsackProLogger();
+    this.api = this.setUpApiClient(clientName, clientVersion);
   }
 
   // allTestFiles in whole user's test suite
@@ -58,6 +49,80 @@ export class KnapsackProAPI {
     return this.api.post(url, data);
   }
 
+  private setUpApiClient(clientName: string, clientVersion: string): AxiosInstance {
+    const apiClient = axios.create({
+      baseURL: KnapsackProEnvConfig.endpoint,
+      timeout: 15000,
+      headers: {
+        "KNAPSACK-PRO-CLIENT-NAME": clientName,
+        "KNAPSACK-PRO-CLIENT-VERSION": clientVersion,
+      },
+    });
+
+    axiosRetry(apiClient, {
+      retries: 2,
+      shouldResetTimeout: true,
+      retryDelay: this.retryDelay,
+      retryCondition: this.retryCondition,
+    });
+
+    apiClient.interceptors.request.use((config) => {
+      const { method, baseURL, url, headers, data } = config;
+
+      const requestHeaders = KnapsackProLogger.objectInspect(headers);
+      const requestBody = KnapsackProLogger.objectInspect(data);
+
+      this.knapsackProLogger.info(
+        `${method.toUpperCase()} ${baseURL}${url}`,
+      );
+      this.knapsackProLogger.debug(
+        `${method.toUpperCase()} ${baseURL}${url}\n\n`
+        + "Request headers:\n"
+        + `${requestHeaders}\n\n`
+        + "Request body:\n"
+        + `${requestBody}`,
+      );
+
+      return config;
+    });
+
+    apiClient.interceptors.response.use((response) => {
+      const { status, statusText, data, headers: { ["x-request-id"]: requestId } } = response;
+      const responeseBody = KnapsackProLogger.objectInspect(data);
+
+      this.knapsackProLogger.info(
+        `${status} ${statusText}\n\n`
+        + "Request ID:\n"
+        + `${requestId}\n\n`
+        + "Response body:\n"
+        + `${responeseBody}`,
+      );
+
+      return response;
+    }, (error) => {
+      const { response } = error;
+
+      if (response) {
+        const { status, statusText, data, headers: { ["x-request-id"]: requestId }} = response;
+        const responeseBody = KnapsackProLogger.objectInspect(data);
+
+        this.knapsackProLogger.error(
+          `${status} ${statusText}\n\n`
+          + "Request ID:\n"
+          + `${requestId}\n\n`
+          + "Response body:\n"
+          + `${responeseBody}`,
+        );
+      } else {
+        this.knapsackProLogger.error(error);
+      }
+
+      return Promise.reject(error);
+    });
+
+    return apiClient;
+  }
+
   // based on isNetworkOrIdempotentRequestError function
   // https://github.com/softonic/axios-retry/blob/master/es/index.js
   private retryCondition(error: AxiosError): boolean {
@@ -81,8 +146,7 @@ export class KnapsackProAPI {
     const randomSum = delay * 0.2 * Math.random(); // 0-20% of the delay
     const finalDelay = delay + randomSum;
 
-    // TODO: add winston logger
-    console.log(`[@knapsack-pro/core] Wait ${finalDelay} ms and retry request to Knapsack Pro API.`);
+    this.knapsackProLogger.info(`Wait ${finalDelay} ms and retry request to Knapsack Pro API.`);
 
     return finalDelay;
   }
