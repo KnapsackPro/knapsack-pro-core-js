@@ -49,14 +49,14 @@ export class KnapsackProLogger {
   }
 
   public verbose(message: string): void {
-    this.logger.info(message);
+    this.logger.verbose(message);
   }
 
   public debug(message: string): void {
-    this.logger.info(message);
+    this.logger.debug(message);
   }
 
   public silly(message: string): void {
-    this.logger.info(message);
+    this.logger.silly(message);
   }
 }
