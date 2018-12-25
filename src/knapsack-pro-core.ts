@@ -1,7 +1,7 @@
-import { KnapsackProAPI } from "./knapsack-pro-api";
-import { KnapsackProLogger } from "./knapsack-pro-logger";
-import { TestFile } from "./models";
-import { onQueueFailureType, onQueueSuccessType } from "./types";
+import { KnapsackProAPI } from './knapsack-pro-api';
+import { KnapsackProLogger } from './knapsack-pro-logger';
+import { TestFile } from './models';
+import { onQueueFailureType, onQueueSuccessType } from './types';
 
 export class KnapsackProCore {
   private knapsackProAPI: KnapsackProAPI;
@@ -13,7 +13,11 @@ export class KnapsackProCore {
   private allTestFiles: TestFile[];
   private isTestSuiteGreen: boolean;
 
-  constructor(clientName: string, clientVersion: string, allTestFiles: TestFile[]) {
+  constructor(
+    clientName: string,
+    clientVersion: string,
+    allTestFiles: TestFile[],
+  ) {
     this.recordedTestFiles = [];
     this.allTestFiles = allTestFiles;
 
@@ -34,8 +38,9 @@ export class KnapsackProCore {
     onSuccess: onQueueSuccessType,
     onFailure: onQueueFailureType,
   ) {
-    this.knapsackProAPI.fetchTestsFromQueue(this.allTestFiles, initializeQueue)
-      .then((response) => {
+    this.knapsackProAPI
+      .fetchTestsFromQueue(this.allTestFiles, initializeQueue)
+      .then(response => {
         const queueTestFiles = response.data.test_files;
         const isQueueEmpty = queueTestFiles.length === 0;
 
@@ -45,14 +50,18 @@ export class KnapsackProCore {
           return;
         }
 
-        onSuccess(queueTestFiles).then(({ recordedTestFiles, isTestSuiteGreen }) => {
-          this.recordedTestFiles = this.recordedTestFiles.concat(recordedTestFiles);
-          this.isTestSuiteGreen = this.isTestSuiteGreen && isTestSuiteGreen;
+        onSuccess(queueTestFiles).then(
+          ({ recordedTestFiles, isTestSuiteGreen }) => {
+            this.recordedTestFiles = this.recordedTestFiles.concat(
+              recordedTestFiles,
+            );
+            this.isTestSuiteGreen = this.isTestSuiteGreen && isTestSuiteGreen;
 
-          this.fetchTestsFromQueue(false, onSuccess, onFailure);
-        });
+            this.fetchTestsFromQueue(false, onSuccess, onFailure);
+          },
+        );
       })
-      .catch((error) => {
+      .catch(error => {
         onFailure(error);
         process.exitCode = 1;
       });
@@ -60,11 +69,10 @@ export class KnapsackProCore {
 
   // saves recorded timing for tests executed on single CI node
   private createBuildSubset(testFiles: TestFile[]) {
-    this.knapsackProAPI.createBuildSubset(testFiles)
-      .catch((error) => {
-        this.knapsackProLogger.error(
-          "Could not save recorded timing of tests due to failed request to Knapsack Pro API.",
-        );
-      });
+    this.knapsackProAPI.createBuildSubset(testFiles).catch(error => {
+      this.knapsackProLogger.error(
+        'Could not save recorded timing of tests due to failed request to Knapsack Pro API.',
+      );
+    });
   }
 }

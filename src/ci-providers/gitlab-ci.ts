@@ -1,4 +1,4 @@
-import { CIProviderBase } from ".";
+import { CIProviderBase } from '.';
 
 export class GitlabCI extends CIProviderBase {
   public static get ciNodeTotal(): string | void {
