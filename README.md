@@ -56,6 +56,32 @@ Available [log levels](https://github.com/winstonjs/winston#logging) (from most 
    $ npm link
    ```
 
+4. Set up your IDE:
+
+   - WebStorm / PhpStorm
+
+     - Install the following plugins:
+
+       - [Prettier](https://plugins.jetbrains.com/plugin/10456-prettier)
+       - [EditorConfig](https://plugins.jetbrains.com/plugin/7294-editorconfig)
+       - [.ignore](https://plugins.jetbrains.com/plugin/7495--ignore)
+
+     - Go to `File > Settings > Languages & Frameworks > TypeScript > TSLint`
+
+       Turn on `Enable` checkbox.
+
+     - Go to `File > Settings > Tools > File Watchers`
+
+       Click `Import` button and select `watchers.xml` file from the repository.
+
+   - Visual Studio Code
+
+     - TODO
+
+   From now on every change in code base will be automatically formatted by [Prettier](https://prettier.io/). [TSLint](https://palantir.github.io/tslint/) errors will be also automatically fixed on every file save.
+
+5. Write some code.
+
 ### Publishing
 
 1. Sign in to npm registry with command:
