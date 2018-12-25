@@ -69,7 +69,7 @@ export class KnapsackProAPI {
     apiClient.interceptors.request.use((config) => {
       const { method, baseURL, url, headers, data } = config;
 
-      // when axios retry then url includes baseURL so we remove it
+      // when axios retries request then url includes baseURL so we remove it
       const apiUrl = baseURL + url.replace(baseURL, "");
       const requestHeaders = KnapsackProLogger.objectInspect(headers);
       const requestBody = KnapsackProLogger.objectInspect(data);
