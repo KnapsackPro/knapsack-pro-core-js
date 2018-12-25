@@ -9,7 +9,7 @@ export class KnapsackProCore {
 
   // test files with recorded time execution
   private recordedTestFiles: TestFile[];
-  // list of tests files in whole user's test suite
+  // list of test files in whole user's test suite
   private allTestFiles: TestFile[];
   private isTestSuiteGreen: boolean;
 
