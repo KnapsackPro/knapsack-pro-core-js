@@ -1,5 +1,6 @@
 import { KnapsackProAPI } from './knapsack-pro-api';
 import { KnapsackProLogger } from './knapsack-pro-logger';
+import { FallbackTestDistributor } from './fallback-test-distributor';
 import { TestFile } from './models';
 import { onQueueFailureType, onQueueSuccessType } from './types';
 
@@ -63,6 +64,13 @@ export class KnapsackProCore {
       })
       .catch(error => {
         onFailure(error);
+
+        const fallbackTestDistributor = new FallbackTestDistributor(
+          this.allTestFiles,
+          this.recordedTestFiles,
+        );
+        const testFiles = fallbackTestDistributor.testFilesForCiNode();
+
         process.exitCode = 1;
       });
   }
