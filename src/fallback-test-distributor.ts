@@ -42,11 +42,10 @@ export class FallbackTestDistributor {
     allTestFiles: TestFile[],
     ciNodeTotal: number,
   ): TestFile[][] {
-    const testFilesPerCiNode: TestFile[][] = [];
-
-    for (let i = 0; i < ciNodeTotal; i += 1) {
-      testFilesPerCiNode.push([]);
-    }
+    const testFilesPerCiNode: TestFile[][] = Array.from(
+      { length: ciNodeTotal },
+      () => [],
+    );
 
     let nodeIndex = 0;
     allTestFiles.forEach((testFile: TestFile) => {
