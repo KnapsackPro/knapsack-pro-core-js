@@ -1,7 +1,7 @@
-const _ = require("lodash"); // tslint:disable-line:no-var-requires
+const _ = require('lodash'); // tslint:disable-line:no-var-requires
 
-import { KnapsackProEnvConfig } from "./config";
-import { TestFile } from "./models";
+import { KnapsackProEnvConfig } from './config';
+import { TestFile } from './models';
 
 export class TestFallbackDistributor {
   private allTestFiles: TestFile[];
@@ -17,7 +17,10 @@ export class TestFallbackDistributor {
     this.allTestFiles = this.orderByTestPath(allTestFiles);
     this.executedTestFiles = executedTestFiles;
     this.ciNodeTotal = ciNodeTotal;
-    this.testFilesPerCiNode = this.assignTestFilesPerCiNode(allTestFiles, ciNodeTotal);
+    this.testFilesPerCiNode = this.assignTestFilesPerCiNode(
+      allTestFiles,
+      ciNodeTotal,
+    );
   }
 
   public testFilesForCiNode(ciNodeIndex: number): TestFile[] {
@@ -26,10 +29,13 @@ export class TestFallbackDistributor {
   }
 
   private orderByTestPath(testFiles: TestFile[]): TestFile[] {
-    return _.orderBy(testFiles, ["path"]);
+    return _.orderBy(testFiles, ['path']);
   }
 
-  private assignTestFilesPerCiNode(allTestFiles: TestFile[], ciNodeTotal: number): TestFile[][] {
+  private assignTestFilesPerCiNode(
+    allTestFiles: TestFile[],
+    ciNodeTotal: number,
+  ): TestFile[][] {
     const testFilesPerCiNode: TestFile[][] = [];
 
     for (let i = 0; i < ciNodeTotal; i++) {
