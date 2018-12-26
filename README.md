@@ -76,7 +76,19 @@ Available [log levels](https://github.com/winstonjs/winston#logging) (from most 
 
    - Visual Studio Code
 
-     - TODO
+     - Install the following plugins:
+
+       - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+       - [TypeScript TSLint Plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
+       - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+
+     - Go to `File > Preferences > Settings > Extensions > Prettier - Code formatter`
+
+       Turn on `Prettier: Tslint Integration` checkbox.
+
+     - Go to `File > Preferences > Settings > Text Editor > Formatting`
+
+       Turn on `Format On Save` checkbox.
 
    From now on every change in code base will be automatically formatted by [Prettier](https://prettier.io/). [TSLint](https://palantir.github.io/tslint/) errors will be also automatically fixed on every file save.
 
