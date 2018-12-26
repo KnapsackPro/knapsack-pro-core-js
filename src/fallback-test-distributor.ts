@@ -47,13 +47,9 @@ export class FallbackTestDistributor {
       () => [],
     );
 
-    let nodeIndex = 0;
-    allTestFiles.forEach((testFile: TestFile) => {
-      testFilesPerCiNode[nodeIndex].push(testFile);
-
-      nodeIndex += 1;
-      nodeIndex = nodeIndex % ciNodeTotal;
-    });
+    allTestFiles.forEach((testFile: TestFile, index: number) =>
+      testFilesPerCiNode[index % ciNodeTotal].push(testFile),
+    );
 
     return testFilesPerCiNode;
   }
