@@ -1,14 +1,9 @@
-import util = require("util");
-import {
-  createLogger,
-  format,
-  Logger,
-  transports,
-} from "winston";
+import util = require('util');
+import { createLogger, format, Logger, transports } from 'winston';
 
-import { KnapsackProEnvConfig } from "./config";
+import { KnapsackProEnvConfig } from './config';
 
-const { name: clientName } = require("../../package.json"); // tslint:disable-line:no-var-requires
+const { name: clientName } = require('../../package.json');
 
 export class KnapsackProLogger {
   public static objectInspect(object: object): string {
@@ -28,11 +23,12 @@ export class KnapsackProLogger {
         format.label({ label: clientName }),
         format.timestamp(),
         format.colorize(),
-        format.printf(({ timestamp, label, level, message }) => `\n${timestamp} [${label}] ${level}: ${message}`),
+        format.printf(
+          ({ timestamp, label, level, message }) =>
+            `\n${timestamp} [${label}] ${level}: ${message}`,
+        ),
       ),
-      transports: [
-        new transports.Console(),
-      ],
+      transports: [new transports.Console()],
     });
   }
 

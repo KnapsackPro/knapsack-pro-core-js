@@ -1,4 +1,4 @@
-import { CIProviderBase } from ".";
+import { CIProviderBase } from '.';
 
 export class Buildkite extends CIProviderBase {
   public static get ciNodeTotal(): string | void {

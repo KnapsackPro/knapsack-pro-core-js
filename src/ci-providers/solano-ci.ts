@@ -1,4 +1,4 @@
-import { CIProviderBase } from ".";
+import { CIProviderBase } from '.';
 
 // http://docs.solanolabs.com/Setup/tddium-set-environment-variables/
 export class SolanoCI extends CIProviderBase {

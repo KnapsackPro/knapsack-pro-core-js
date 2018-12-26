@@ -1,9 +1,9 @@
-import axios, { AxiosError, AxiosInstance, AxiosPromise } from "axios";
-const axiosRetry = require("axios-retry"); // tslint:disable-line:no-var-requires
+import axios, { AxiosError, AxiosInstance, AxiosPromise } from 'axios';
+const axiosRetry = require('axios-retry');
 
-import { KnapsackProEnvConfig } from "./config";
-import { KnapsackProLogger } from "./knapsack-pro-logger";
-import { TestFile } from "./models";
+import { KnapsackProEnvConfig } from './config';
+import { KnapsackProLogger } from './knapsack-pro-logger';
+import { TestFile } from './models';
 
 export class KnapsackProAPI {
   private readonly api: AxiosInstance;
@@ -18,8 +18,11 @@ export class KnapsackProAPI {
   }
 
   // allTestFiles in whole user's test suite
-  public fetchTestsFromQueue(allTestFiles: TestFile[], initializeQueue: boolean): AxiosPromise<any> {
-    const url = "/v1/queues/queue";
+  public fetchTestsFromQueue(
+    allTestFiles: TestFile[],
+    initializeQueue: boolean,
+  ): AxiosPromise<any> {
+    const url = '/v1/queues/queue';
     const data = {
       test_suite_token: KnapsackProEnvConfig.testSuiteToken,
       can_initialize_queue: initializeQueue,
@@ -36,7 +39,7 @@ export class KnapsackProAPI {
   }
 
   public createBuildSubset(recordedTestFiles: TestFile[]): AxiosPromise<any> {
-    const url = "/v1/build_subsets";
+    const url = '/v1/build_subsets';
     const data = {
       test_suite_token: KnapsackProEnvConfig.testSuiteToken,
       commit_hash: KnapsackProEnvConfig.commitHash,
@@ -49,13 +52,16 @@ export class KnapsackProAPI {
     return this.api.post(url, data);
   }
 
-  private setUpApiClient(clientName: string, clientVersion: string): AxiosInstance {
+  private setUpApiClient(
+    clientName: string,
+    clientVersion: string,
+  ): AxiosInstance {
     const apiClient = axios.create({
       baseURL: KnapsackProEnvConfig.endpoint,
       timeout: 15000,
       headers: {
-        "KNAPSACK-PRO-CLIENT-NAME": clientName,
-        "KNAPSACK-PRO-CLIENT-VERSION": clientVersion,
+        'KNAPSACK-PRO-CLIENT-NAME': clientName,
+        'KNAPSACK-PRO-CLIENT-VERSION': clientVersion,
       },
     });
 
@@ -66,61 +72,75 @@ export class KnapsackProAPI {
       retryCondition: this.retryCondition,
     });
 
-    apiClient.interceptors.request.use((config) => {
+    apiClient.interceptors.request.use(config => {
       const { method, baseURL, url, headers, data } = config;
 
       // when axios retries request then url includes baseURL so we remove it
-      const apiUrl = baseURL + url.replace(baseURL, "");
+      const apiUrl = baseURL + url.replace(baseURL, '');
       const requestHeaders = KnapsackProLogger.objectInspect(headers);
       const requestBody = KnapsackProLogger.objectInspect(data);
 
-      this.knapsackProLogger.info(
-        `${method.toUpperCase()} ${apiUrl}`,
-      );
+      this.knapsackProLogger.info(`${method.toUpperCase()} ${apiUrl}`);
       this.knapsackProLogger.debug(
-        `${method.toUpperCase()} ${apiUrl}\n\n`
-        + "Request headers:\n"
-        + `${requestHeaders}\n\n`
-        + "Request body:\n"
-        + `${requestBody}`,
+        // tslint:disable-next-line:prefer-template
+        `${method.toUpperCase()} ${apiUrl}\n\n` +
+          'Request headers:\n' +
+          `${requestHeaders}\n\n` +
+          'Request body:\n' +
+          `${requestBody}`,
       );
 
       return config;
     });
 
-    apiClient.interceptors.response.use((response) => {
-      const { status, statusText, data, headers: { ["x-request-id"]: requestId } } = response;
-      const responeseBody = KnapsackProLogger.objectInspect(data);
-
-      this.knapsackProLogger.info(
-        `${status} ${statusText}\n\n`
-        + "Request ID:\n"
-        + `${requestId}\n\n`
-        + "Response body:\n"
-        + `${responeseBody}`,
-      );
-
-      return response;
-    }, (error) => {
-      const { response } = error;
-
-      if (response) {
-        const { status, statusText, data, headers: { ["x-request-id"]: requestId }} = response;
+    apiClient.interceptors.response.use(
+      response => {
+        const {
+          status,
+          statusText,
+          data,
+          headers: { ['x-request-id']: requestId },
+        } = response;
         const responeseBody = KnapsackProLogger.objectInspect(data);
 
-        this.knapsackProLogger.error(
-          `${status} ${statusText}\n\n`
-          + "Request ID:\n"
-          + `${requestId}\n\n`
-          + "Response body:\n"
-          + `${responeseBody}`,
+        this.knapsackProLogger.info(
+          // tslint:disable-next-line:prefer-template
+          `${status} ${statusText}\n\n` +
+            'Request ID:\n' +
+            `${requestId}\n\n` +
+            'Response body:\n' +
+            `${responeseBody}`,
         );
-      } else {
-        this.knapsackProLogger.error(error);
-      }
 
-      return Promise.reject(error);
-    });
+        return response;
+      },
+      error => {
+        const { response } = error;
+
+        if (response) {
+          const {
+            status,
+            statusText,
+            data,
+            headers: { ['x-request-id']: requestId },
+          } = response;
+          const responeseBody = KnapsackProLogger.objectInspect(data);
+
+          this.knapsackProLogger.error(
+            // tslint:disable-next-line:prefer-template
+            `${status} ${statusText}\n\n` +
+              'Request ID:\n' +
+              `${requestId}\n\n` +
+              'Response body:\n' +
+              `${responeseBody}`,
+          );
+        } else {
+          this.knapsackProLogger.error(error);
+        }
+
+        return Promise.reject(error);
+      },
+    );
 
     return apiClient;
   }
@@ -128,7 +148,9 @@ export class KnapsackProAPI {
   // based on isNetworkOrIdempotentRequestError function
   // https://github.com/softonic/axios-retry/blob/master/es/index.js
   private retryCondition(error: AxiosError): boolean {
-    return axiosRetry.isNetworkError(error) || this.isRetriableRequestError(error);
+    return (
+      axiosRetry.isNetworkError(error) || this.isRetriableRequestError(error)
+    );
   }
 
   // based on isIdempotentRequestError function
@@ -148,7 +170,9 @@ export class KnapsackProAPI {
     const randomSum = delay * 0.2 * Math.random(); // 0-20% of the delay
     const finalDelay = delay + randomSum;
 
-    this.knapsackProLogger.info(`Wait ${finalDelay} ms and retry request to Knapsack Pro API.`);
+    this.knapsackProLogger.info(
+      `Wait ${finalDelay} ms and retry request to Knapsack Pro API.`,
+    );
 
     return finalDelay;
   }
