@@ -3,7 +3,7 @@ import { TestFile } from './models';
 
 export class FallbackTestDistributor {
   private allTestFiles: TestFile[];
-  private executedTestFiles: TestFile[];
+  private executedTestFilePaths: string[];
   private testFilesPerCiNode: TestFile[][];
   private ciNodeTotal: number;
 
@@ -13,7 +13,9 @@ export class FallbackTestDistributor {
     ciNodeTotal: number = parseInt(KnapsackProEnvConfig.ciNodeTotal, 10),
   ) {
     this.allTestFiles = this.orderByTestPath(allTestFiles);
-    this.executedTestFiles = executedTestFiles;
+    this.executedTestFilePaths = executedTestFiles.map(
+      testFile => testFile.path,
+    );
     this.ciNodeTotal = ciNodeTotal;
     this.testFilesPerCiNode = this.assignTestFilesPerCiNode(
       allTestFiles,
@@ -24,9 +26,9 @@ export class FallbackTestDistributor {
   public testFilesForCiNode(
     ciNodeIndex: number = parseInt(KnapsackProEnvConfig.ciNodeIndex, 10),
   ): TestFile[] {
-    // TODO fix below
-    // return this.testFilesPerCiNode[ciNodeIndex] - this.executedTestFiles;
-    return this.testFilesPerCiNode[ciNodeIndex];
+    return this.testFilesPerCiNode[ciNodeIndex].filter(testFile => {
+      return this.executedTestFilePaths.indexOf(testFile.path) === -1;
+    });
   }
 
   private orderByTestPath(testFiles: TestFile[]): TestFile[] {
