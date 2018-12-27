@@ -27,7 +27,7 @@ export class FallbackTestDistributor {
     ciNodeIndex: number = parseInt(KnapsackProEnvConfig.ciNodeIndex, 10),
   ): TestFile[] {
     return this.testFilesPerCiNode[ciNodeIndex].filter(testFile => {
-      return this.executedTestFilePaths.indexOf(testFile.path) === -1;
+      return !this.executedTestFilePaths.includes(testFile.path);
     });
   }
 
