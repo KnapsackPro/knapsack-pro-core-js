@@ -34,6 +34,7 @@
     "tsc": "tsc",
     "lint": "tslint --project . --format stylish",
     "test": "jest",
+    "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "doctoc": "doctoc --title \"## Table of Contents\" README.md"
   },
