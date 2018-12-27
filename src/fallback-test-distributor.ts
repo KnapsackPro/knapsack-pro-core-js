@@ -26,7 +26,7 @@ export class FallbackTestDistributor {
   ): TestFile[] {
     // TODO fix below
     // return this.testFilesPerCiNode[ciNodeIndex] - this.executedTestFiles;
-    return [];
+    return this.testFilesPerCiNode[ciNodeIndex];
   }
 
   private orderByTestPath(testFiles: TestFile[]): TestFile[] {
