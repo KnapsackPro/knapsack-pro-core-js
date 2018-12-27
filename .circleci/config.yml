@@ -34,4 +34,8 @@ jobs:
       # run TSLint
       - run: npm run lint
 
-      - run: npm test
+      # run tests and generate code coverage
+      - run: npm run test:coverage
+
+      - store_artifacts:
+          path: coverage
