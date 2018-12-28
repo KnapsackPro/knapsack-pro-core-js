@@ -22,7 +22,8 @@ export function compile() {
   return tsProject
     .src()
     .pipe(tsProject())
-    .js.pipe(gulp.dest(paths.dest));
+    .js // compile TypeScript to JavaScript
+    .pipe(gulp.dest(paths.dest));
 }
 
 export function watch() {
