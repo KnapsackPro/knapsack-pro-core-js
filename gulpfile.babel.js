@@ -1,13 +1,13 @@
-import gulp from "gulp";
-import del from "del";
-import ts from "gulp-typescript";
+import gulp from 'gulp';
+import del from 'del';
+import ts from 'gulp-typescript';
 
-const filesToCopy = ["./package.json"];
-const tsProject = ts.createProject("tsconfig.json");
+const filesToCopy = ['./package.json'];
+const tsProject = ts.createProject('tsconfig.json');
 
 const paths = {
   src: [...tsProject.config.include, ...filesToCopy],
-  dest: tsProject.config.compilerOptions.outDir
+  dest: tsProject.config.compilerOptions.outDir,
 };
 
 export function clean() {
