@@ -44,14 +44,14 @@ export class KnapsackProEnvConfig {
     return false;
   }
 
-  public static get ciNodeTotal(): string | never {
+  public static get ciNodeTotal(): number | never {
     if (process.env.KNAPSACK_PRO_CI_NODE_TOTAL) {
-      return process.env.KNAPSACK_PRO_CI_NODE_TOTAL;
+      return parseInt(process.env.KNAPSACK_PRO_CI_NODE_TOTAL, 10);
     }
 
     const ciNodeTotal = CIEnvConfig.ciNodeTotal;
     if (ciNodeTotal) {
-      return ciNodeTotal;
+      return parseInt(ciNodeTotal, 10);
     }
 
     throw new Error(
@@ -60,14 +60,14 @@ export class KnapsackProEnvConfig {
     );
   }
 
-  public static get ciNodeIndex(): string | never {
+  public static get ciNodeIndex(): number | never {
     if (process.env.KNAPSACK_PRO_CI_NODE_INDEX) {
-      return process.env.KNAPSACK_PRO_CI_NODE_INDEX;
+      return parseInt(process.env.KNAPSACK_PRO_CI_NODE_INDEX, 10);
     }
 
     const ciNodeIndex = CIEnvConfig.ciNodeIndex;
     if (ciNodeIndex) {
-      return ciNodeIndex;
+      return parseInt(ciNodeIndex, 10);
     }
 
     throw new Error(

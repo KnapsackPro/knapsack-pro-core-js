@@ -8,7 +8,7 @@ export class FallbackTestDistributor {
   constructor(
     allTestFiles: TestFile[],
     executedTestFiles: TestFile[],
-    ciNodeTotal: number = parseInt(KnapsackProEnvConfig.ciNodeTotal, 10),
+    ciNodeTotal: number = KnapsackProEnvConfig.ciNodeTotal,
   ) {
     this.executedTestFilePaths = executedTestFiles.map(
       testFile => testFile.path,
@@ -21,7 +21,7 @@ export class FallbackTestDistributor {
   }
 
   public testFilesForCiNode(
-    ciNodeIndex: number = parseInt(KnapsackProEnvConfig.ciNodeIndex, 10),
+    ciNodeIndex: number = KnapsackProEnvConfig.ciNodeIndex,
   ): TestFile[] {
     return this.testFilesPerCiNode[ciNodeIndex].filter(
       testFile => !this.executedTestFilePaths.includes(testFile.path),
