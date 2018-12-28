@@ -10,15 +10,11 @@ const paths = {
   dest: tsProject.config.compilerOptions.outDir,
 };
 
-export function clean() {
-  return del([`${paths.dest}/**`, `!${paths.dest}`]);
-}
-
-export function copy() {
+function copy() {
   return gulp.src(filesToCopy).pipe(gulp.dest(paths.dest));
 }
 
-export function compile() {
+function compile() {
   return tsProject
     .src()
     .pipe(tsProject())
@@ -26,10 +22,12 @@ export function compile() {
     .pipe(gulp.dest(paths.dest));
 }
 
-export function watch() {
+function watch() {
   gulp.watch(paths.src, gulp.parallel(copy, compile));
 }
 
-export const build = gulp.series(clean, gulp.parallel(copy, compile), watch);
+export const clean = () => del([`${paths.dest}/**`, `!${paths.dest}`]);
+export const build = gulp.series(clean, gulp.parallel(copy, compile));
+export const dev = gulp.series(build, watch);
 
-export default build;
+export default dev;

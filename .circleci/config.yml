@@ -1,12 +1,10 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
+# JavaScript Node.js CircleCI 2.0 configuration file
+# https://circleci.com/docs/2.0/language-javascript/
+
 version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/node:8.11
 
     working_directory: ~/repo
@@ -28,8 +26,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run TypeScript Compiler
-      - run: npm run tsc
+      # build project
+      - run: npm run build
 
       # run TSLint
       - run: npm run lint
