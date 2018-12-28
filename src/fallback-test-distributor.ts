@@ -17,9 +17,10 @@ export class FallbackTestDistributor {
       testFile => testFile.path,
     );
     this.ciNodeTotal = ciNodeTotal;
+
     this.testFilesPerCiNode = this.assignTestFilesPerCiNode(
-      allTestFiles,
-      ciNodeTotal,
+      this.allTestFiles,
+      this.ciNodeTotal,
     );
   }
 
