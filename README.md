@@ -66,6 +66,10 @@ Available [log levels](https://github.com/winstonjs/winston#logging) (from most 
        - [EditorConfig](https://plugins.jetbrains.com/plugin/7294-editorconfig)
        - [.ignore](https://plugins.jetbrains.com/plugin/7495--ignore)
 
+     - Go to `File > Settings > Languages & Frameworks > JavaScript > Code Quality Tools > ESLint`
+
+       Turn on `Enable` checkbox.
+
      - Go to `File > Settings > Languages & Frameworks > TypeScript > TSLint`
 
        Turn on `Enable` checkbox.
@@ -79,11 +83,13 @@ Available [log levels](https://github.com/winstonjs/winston#logging) (from most 
      - Install the following plugins:
 
        - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+       - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
        - [TypeScript TSLint Plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
        - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 
      - Go to `File > Preferences > Settings > Extensions > Prettier - Code formatter`
 
+       Turn on `Prettier: Eslint Integration` checkbox.
        Turn on `Prettier: Tslint Integration` checkbox.
 
      - Go to `File > Preferences > Settings > Text Editor > Formatting`
