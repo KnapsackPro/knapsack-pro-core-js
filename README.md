@@ -96,7 +96,7 @@ Available [log levels](https://github.com/winstonjs/winston#logging) (from most 
 
        Turn on `Format On Save` checkbox.
 
-   From now on every change in code base will be automatically formatted by [Prettier](https://prettier.io/). [TSLint](https://palantir.github.io/tslint/) errors will be also automatically fixed on every file save.
+   From now on every change in code base will be automatically formatted by [Prettier](https://prettier.io/). [ESLint](https://eslint.org/) and [TSLint](https://palantir.github.io/tslint/) errors will be also automatically fixed on every file save.
 
 5. Write some code.
 
