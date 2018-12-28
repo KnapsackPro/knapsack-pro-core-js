@@ -46,17 +46,13 @@ export class KnapsackProCore {
         const isQueueEmpty = queueTestFiles.length === 0;
 
         if (isQueueEmpty) {
-          this.createBuildSubset(this.recordedTestFiles);
-          process.exitCode = this.isTestSuiteGreen ? 0 : 1;
+          this.finishQueueMode();
           return;
         }
 
         onSuccess(queueTestFiles).then(
           ({ recordedTestFiles, isTestSuiteGreen }) => {
-            this.recordedTestFiles = this.recordedTestFiles.concat(
-              recordedTestFiles,
-            );
-            this.isTestSuiteGreen = this.isTestSuiteGreen && isTestSuiteGreen;
+            this.updateRecordedTestFiles(recordedTestFiles, isTestSuiteGreen);
 
             this.fetchTestsFromQueue(false, onSuccess, onFailure);
           },
@@ -71,8 +67,25 @@ export class KnapsackProCore {
         );
         const testFiles = fallbackTestDistributor.testFilesForCiNode();
 
-        process.exitCode = 1;
+        onSuccess(testFiles).then(({ recordedTestFiles, isTestSuiteGreen }) => {
+          this.updateRecordedTestFiles(recordedTestFiles, isTestSuiteGreen);
+
+          this.finishQueueMode();
+        });
       });
+  }
+
+  private updateRecordedTestFiles(
+    recordedTestFiles: TestFile[],
+    isTestSuiteGreen: boolean,
+  ) {
+    this.recordedTestFiles = this.recordedTestFiles.concat(recordedTestFiles);
+    this.isTestSuiteGreen = this.isTestSuiteGreen && isTestSuiteGreen;
+  }
+
+  private finishQueueMode() {
+    this.createBuildSubset(this.recordedTestFiles);
+    process.exitCode = this.isTestSuiteGreen ? 0 : 1;
   }
 
   // saves recorded timing for tests executed on single CI node
