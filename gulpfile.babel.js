@@ -29,6 +29,6 @@ export function watch() {
   gulp.watch(paths.src, gulp.parallel(copy, compile));
 }
 
-export const build = gulp.series(clean, copy, compile, watch);
+export const build = gulp.series(clean, gulp.parallel(copy, compile), watch);
 
 export default build;
