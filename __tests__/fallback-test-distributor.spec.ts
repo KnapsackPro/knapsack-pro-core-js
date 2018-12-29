@@ -39,7 +39,7 @@ describe('FallbackTestDistributor', () => {
         );
       });
 
-      describe('when all test files are not sorted', () => {
+      describe('when test files in test suite are not sorted', () => {
         it('returns tests for particular CI node index', () => {
           const allTestFiles: TestFile[] = [
             { path: 'b.spec.js' },
