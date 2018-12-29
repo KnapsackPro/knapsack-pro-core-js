@@ -12,6 +12,7 @@ Learn how to run your tests faster with optimal test suite parallelisation using
 
 - [FAQ](#faq)
   - [How to change log level?](#how-to-change-log-level)
+  - [What happens when Knapsack Pro API is not available? How Fallback Mode works?](#what-happens-when-knapsack-pro-api-is-not-available-how-fallback-mode-works)
 - [Development](#development)
   - [Setup](#setup)
   - [Publishing](#publishing)
@@ -33,6 +34,14 @@ Available [log levels](https://github.com/winstonjs/winston#logging) (from most 
 - `verbose`
 - `debug`
 - `silly`
+
+### What happens when Knapsack Pro API is not available? How Fallback Mode works?
+
+When Knapsack Pro API is not available or temporarily not reachable due network problem then the Fallback Mode will be started and you will see a log warning in the output.
+
+In Fallback Mode your tests will be executed and split based on test file names across CI nodes. If in the meantime other CI nodes were able to connect to Knapsack Pro API then you may notice that some of the test files will be executed twice across CI nodes. Fallback Mode guarantees each of test files is run at least once as a part of CI build.
+
+If during CI build runtime the connection to Knapsack Pro API will be lost then Fallback Mode will run tests except those executed so far.
 
 ## Development
 
