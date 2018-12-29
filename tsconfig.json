@@ -6,5 +6,5 @@
     "target": "es5",
     "lib": ["es2015", "es2016.array.include"]
   },
-  "include": ["src/**/*.ts", "*.ts"]
+  "include": ["src/**/*.ts"]
 }
