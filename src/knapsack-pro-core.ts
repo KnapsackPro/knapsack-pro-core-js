@@ -71,6 +71,17 @@ export class KnapsackProCore {
         );
         const testFiles = fallbackTestDistributor.testFilesForCiNode();
 
+        const executedTestFiles = KnapsackProLogger.objectInspect(
+          this.recordedTestFiles,
+        );
+        this.knapsackProLogger.debug(
+          `Test files already executed:\n${executedTestFiles}`,
+        );
+        const inspectedTestFiles = KnapsackProLogger.objectInspect(testFiles);
+        this.knapsackProLogger.debug(
+          `Test files to be run in Fallback Mode:\n${inspectedTestFiles}`,
+        );
+
         onSuccess(testFiles).then(({ recordedTestFiles, isTestSuiteGreen }) => {
           this.updateRecordedTestFiles(recordedTestFiles, isTestSuiteGreen);
           this.finishQueueMode();
