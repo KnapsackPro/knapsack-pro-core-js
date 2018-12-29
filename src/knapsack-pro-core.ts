@@ -53,7 +53,6 @@ export class KnapsackProCore {
         onSuccess(queueTestFiles).then(
           ({ recordedTestFiles, isTestSuiteGreen }) => {
             this.updateRecordedTestFiles(recordedTestFiles, isTestSuiteGreen);
-
             this.fetchTestsFromQueue(false, onSuccess, onFailure);
           },
         );
@@ -74,7 +73,6 @@ export class KnapsackProCore {
 
         onSuccess(testFiles).then(({ recordedTestFiles, isTestSuiteGreen }) => {
           this.updateRecordedTestFiles(recordedTestFiles, isTestSuiteGreen);
-
           this.finishQueueMode();
         });
       });
