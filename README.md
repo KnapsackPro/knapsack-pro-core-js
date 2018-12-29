@@ -28,11 +28,11 @@ The default level is `info`.
 
 Available [log levels](https://github.com/winstonjs/winston#logging) (from most important to least important):
 
-- `error`
-- `warn`
-- `info`
+- `error` - shows only critical errors
+- `warn` - shows warnings (e.g. Fallback Mode has started)
+- `info` - shows Knapsack Pro API request response body
 - `verbose`
-- `debug`
+- `debug` - shows Knapsack Pro API request headers and body
 - `silly`
 
 ### What happens when Knapsack Pro API is not available? How Fallback Mode works?
