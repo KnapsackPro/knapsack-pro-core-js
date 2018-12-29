@@ -139,7 +139,7 @@ If during CI build runtime connection to Knapsack Pro API is lost, Fallback Mode
 5. Compile project:
 
    ```
-   $ npm start
+   $ npm run build
    ```
 
 6. In order to [bump version of the package](https://docs.npmjs.com/cli/version) run below command. It will also create a version commit and tag for the release:
