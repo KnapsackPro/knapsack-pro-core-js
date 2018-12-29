@@ -12,6 +12,7 @@ Learn how to run your tests faster with optimal test suite parallelisation using
 
 - [FAQ](#faq)
   - [How to change log level?](#how-to-change-log-level)
+  - [What happens when Knapsack Pro API is not available? How Fallback Mode works?](#what-happens-when-knapsack-pro-api-is-not-available-how-fallback-mode-works)
 - [Development](#development)
   - [Setup](#setup)
   - [Publishing](#publishing)
@@ -27,12 +28,20 @@ The default level is `info`.
 
 Available [log levels](https://github.com/winstonjs/winston#logging) (from most important to least important):
 
-- `error`
-- `warn`
-- `info`
+- `error` - shows only critical errors
+- `warn` - shows warnings (e.g. Fallback Mode has started)
+- `info` - shows Knapsack Pro API request response body
 - `verbose`
-- `debug`
+- `debug` - shows Knapsack Pro API request headers and body
 - `silly`
+
+### What happens when Knapsack Pro API is not available? How Fallback Mode works?
+
+When Knapsack Pro API is not available or temporarily unreachable due to network problems then Fallback Mode will be started and you will see a log warning in the output.
+
+In Fallback Mode your tests will be executed and split based on test file names across CI nodes. If in the meantime other CI nodes were able to connect to Knapsack Pro API then you may notice that some of the test files were executed twice across CI nodes. Fallback Mode guarantees each of test files is run at least once as a part of CI build.
+
+If during CI build runtime connection to Knapsack Pro API is lost, Fallback Mode would run tests except those executed so far.
 
 ## Development
 
@@ -66,6 +75,10 @@ Available [log levels](https://github.com/winstonjs/winston#logging) (from most 
        - [EditorConfig](https://plugins.jetbrains.com/plugin/7294-editorconfig)
        - [.ignore](https://plugins.jetbrains.com/plugin/7495--ignore)
 
+     - Go to `File > Settings > Languages & Frameworks > JavaScript > Code Quality Tools > ESLint`
+
+       Turn on `Enable` checkbox.
+
      - Go to `File > Settings > Languages & Frameworks > TypeScript > TSLint`
 
        Turn on `Enable` checkbox.
@@ -79,18 +92,20 @@ Available [log levels](https://github.com/winstonjs/winston#logging) (from most 
      - Install the following plugins:
 
        - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+       - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
        - [TypeScript TSLint Plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
        - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 
      - Go to `File > Preferences > Settings > Extensions > Prettier - Code formatter`
 
+       Turn on `Prettier: Eslint Integration` checkbox.
        Turn on `Prettier: Tslint Integration` checkbox.
 
      - Go to `File > Preferences > Settings > Text Editor > Formatting`
 
        Turn on `Format On Save` checkbox.
 
-   From now on every change in code base will be automatically formatted by [Prettier](https://prettier.io/). [TSLint](https://palantir.github.io/tslint/) errors will be also automatically fixed on every file save.
+   From now on every change in code base will be automatically formatted by [Prettier](https://prettier.io/). [ESLint](https://eslint.org/) and [TSLint](https://palantir.github.io/tslint/) errors will be also automatically fixed on every file save.
 
 5. Write some code.
 

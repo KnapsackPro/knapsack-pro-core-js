@@ -1,5 +1,6 @@
 import { KnapsackProAPI } from './knapsack-pro-api';
 import { KnapsackProLogger } from './knapsack-pro-logger';
+import { FallbackTestDistributor } from './fallback-test-distributor';
 import { TestFile } from './models';
 import { onQueueFailureType, onQueueSuccessType } from './types';
 
@@ -45,26 +46,60 @@ export class KnapsackProCore {
         const isQueueEmpty = queueTestFiles.length === 0;
 
         if (isQueueEmpty) {
-          this.createBuildSubset(this.recordedTestFiles);
-          process.exitCode = this.isTestSuiteGreen ? 0 : 1;
+          this.finishQueueMode();
           return;
         }
 
         onSuccess(queueTestFiles).then(
           ({ recordedTestFiles, isTestSuiteGreen }) => {
-            this.recordedTestFiles = this.recordedTestFiles.concat(
-              recordedTestFiles,
-            );
-            this.isTestSuiteGreen = this.isTestSuiteGreen && isTestSuiteGreen;
-
+            this.updateRecordedTestFiles(recordedTestFiles, isTestSuiteGreen);
             this.fetchTestsFromQueue(false, onSuccess, onFailure);
           },
         );
       })
       .catch(error => {
         onFailure(error);
-        process.exitCode = 1;
+
+        this.knapsackProLogger.warn(
+          // tslint:disable-next-line:max-line-length
+          'Fallback Mode has started. We could not connect to Knapsack Pro API. Your tests will be executed based on test file names.\n\nIf other CI nodes were able to connect to Knapsack Pro API then you may notice that some of the test files were executed twice across CI nodes. Fallback Mode guarantees each of test files is run at least once as a part of CI build.',
+        );
+
+        const fallbackTestDistributor = new FallbackTestDistributor(
+          this.allTestFiles,
+          this.recordedTestFiles,
+        );
+        const testFiles = fallbackTestDistributor.testFilesForCiNode();
+
+        const executedTestFiles = KnapsackProLogger.objectInspect(
+          this.recordedTestFiles,
+        );
+        this.knapsackProLogger.debug(
+          `Test files already executed:\n${executedTestFiles}`,
+        );
+        const inspectedTestFiles = KnapsackProLogger.objectInspect(testFiles);
+        this.knapsackProLogger.debug(
+          `Test files to be run in Fallback Mode:\n${inspectedTestFiles}`,
+        );
+
+        onSuccess(testFiles).then(({ recordedTestFiles, isTestSuiteGreen }) => {
+          this.updateRecordedTestFiles(recordedTestFiles, isTestSuiteGreen);
+          this.finishQueueMode();
+        });
       });
+  }
+
+  private updateRecordedTestFiles(
+    recordedTestFiles: TestFile[],
+    isTestSuiteGreen: boolean,
+  ) {
+    this.recordedTestFiles = this.recordedTestFiles.concat(recordedTestFiles);
+    this.isTestSuiteGreen = this.isTestSuiteGreen && isTestSuiteGreen;
+  }
+
+  private finishQueueMode() {
+    this.createBuildSubset(this.recordedTestFiles);
+    process.exitCode = this.isTestSuiteGreen ? 0 : 1;
   }
 
   // saves recorded timing for tests executed on single CI node

@@ -3,7 +3,7 @@ import { createLogger, format, Logger, transports } from 'winston';
 
 import { KnapsackProEnvConfig } from './config';
 
-const { name: clientName } = require('../../package.json');
+const { name: clientName } = require('../package.json');
 
 export class KnapsackProLogger {
   public static objectInspect(object: object): string {
