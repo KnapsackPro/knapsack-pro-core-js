@@ -5,6 +5,8 @@
 `@knapsack-pro/core` is JS npm package with core features for [Knapsack Pro API](https://docs.knapsackpro.com/api/).
 Learn how to run your tests faster with optimal test suite parallelisation using [Knapsack Pro](https://knapsackpro.com).
 
+This package is the dependency for Knapsack Pro clients in JavaScript. [Knapsack Pro clients list](https://docs.knapsackpro.com/integration/) can be found here.
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
