@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.0.1...HEAD)
 
+**Implemented enhancements:**
+
+- Export Knapsack Pro Logger [\#10](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/10) ([ArturT](https://github.com/ArturT))
+
 **Merged pull requests:**
 
 - Update package dev dependencies [\#9](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/9) ([rafaltrzop](https://github.com/rafaltrzop))
