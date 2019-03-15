@@ -1,11 +1,11 @@
 import { CIProviderBase } from '.';
 
 export class SemaphoreCI2 extends CIProviderBase {
-  public static get ciNodeTotal(): string | void {
+  public static get ciNodeTotal(): void {
     return undefined;
   }
 
-  public static get ciNodeIndex(): string | void {
+  public static get ciNodeIndex(): void {
     return undefined;
   }
 
