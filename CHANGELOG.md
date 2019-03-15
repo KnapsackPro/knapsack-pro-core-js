@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.1.0...HEAD)
+
+**Implemented enhancements:**
+
+- Add support for Semaphore CI 2.0 [\#11](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/11) ([ArturT](https://github.com/ArturT))
+
 ## [v1.1.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.1.0) (2019-03-07)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.0.1...v1.1.0)
 
