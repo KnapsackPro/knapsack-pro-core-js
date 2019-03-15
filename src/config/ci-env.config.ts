@@ -7,6 +7,7 @@ import {
   GitlabCI,
   HerokuCI,
   SemaphoreCI,
+  SemaphoreCI2,
   SolanoCI,
   TravisCI,
 } from '../ci-providers';
@@ -42,6 +43,7 @@ export class CIEnvConfig {
       GitlabCI,
       HerokuCI,
       SemaphoreCI,
+      SemaphoreCI2,
       SolanoCI,
       TravisCI,
     ];
