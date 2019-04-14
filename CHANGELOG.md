@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.2.0...HEAD)
+
+**Implemented enhancements:**
+
+- Reduce data transfer and speed up usage of Knapsack Pro API for Queue Mode [\#12](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/12) ([ArturT](https://github.com/ArturT))
+
 ## [v1.2.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.2.0) (2019-03-15)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.1.0...v1.2.0)
 
