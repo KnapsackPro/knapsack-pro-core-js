@@ -32,7 +32,7 @@ export class KnapsackProAPI {
       node_total: KnapsackProEnvConfig.ciNodeTotal,
       node_index: KnapsackProEnvConfig.ciNodeIndex,
       node_build_id: KnapsackProEnvConfig.ciNodeBuildId,
-      test_files: allTestFiles,
+      ...(initializeQueue && { test_files: allTestFiles }),
     };
 
     return this.api.post(url, data);
