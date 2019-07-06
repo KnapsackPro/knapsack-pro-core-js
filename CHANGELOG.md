@@ -1,11 +1,15 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.3.0...HEAD)
+
+**Fixed bugs:**
+
+- Fix GitLab CI environment variables integration [\#13](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/13) ([ArturT](https://github.com/ArturT))
+
 ## [v1.3.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.3.0) (2019-04-14)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.2.0...v1.3.0)
-
-**Implemented enhancements:**
-
-- Reduce data transfer and speed up usage of Knapsack Pro API for Queue Mode [\#12](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/12) ([ArturT](https://github.com/ArturT))
 
 ## [v1.2.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.2.0) (2019-03-15)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.1.0...v1.2.0)
@@ -19,6 +23,7 @@
 
 **Implemented enhancements:**
 
+- Reduce data transfer and speed up usage of Knapsack Pro API for Queue Mode [\#12](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/12) ([ArturT](https://github.com/ArturT))
 - Export Knapsack Pro Logger [\#10](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/10) ([ArturT](https://github.com/ArturT))
 
 **Merged pull requests:**
