@@ -17,7 +17,7 @@ export class GitlabCI extends CIProviderBase {
 
   public static get ciNodeBuildId(): string | void {
     // GitLab Release 9.0+ || GitLab Release 8.x
-    return process.env.CI_JOB_ID || process.env.CI_BUILD_ID;
+    return process.env.CI_PIPELINE_ID || process.env.CI_BUILD_ID;
   }
 
   public static get commitHash(): string | void {
