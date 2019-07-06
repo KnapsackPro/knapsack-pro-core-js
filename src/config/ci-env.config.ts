@@ -35,12 +35,13 @@ export class CIEnvConfig {
 
   private static ciEnvFor(functionName: string): string | void {
     const supportedCIProviders: any[] = [
+      // load GitLab CI first to avoid edge case with order of loading envs for CI_NODE_INDEX
+      GitlabCI,
       AppVeyor,
       Buildkite,
       CircleCI,
       CirrusCI,
       Codeship,
-      GitlabCI,
       HerokuCI,
       SemaphoreCI,
       SemaphoreCI2,
