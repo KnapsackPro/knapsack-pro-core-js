@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.3.1...HEAD)
+
+**Implemented enhancements:**
+
+- Add support for job index and job count for parallelism in Semaphore 2.0 [\#14](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/14) ([ArturT](https://github.com/ArturT))
+
 ## [v1.3.1](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.3.1) (2019-07-06)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.3.0...v1.3.1)
 
