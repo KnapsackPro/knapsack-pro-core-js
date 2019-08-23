@@ -1,12 +1,16 @@
 import { CIProviderBase } from '.';
 
 export class SemaphoreCI2 extends CIProviderBase {
-  public static get ciNodeTotal(): void {
-    return undefined;
+  public static get ciNodeTotal(): string | void {
+    return process.env.SEMAPHORE_JOB_COUNT;
   }
 
-  public static get ciNodeIndex(): void {
-    return undefined;
+  public static get ciNodeIndex(): string | void {
+    const jobIndex = process.env.SEMAPHORE_JOB_INDEX;
+
+    if (jobIndex) {
+      return (parseInt(jobIndex, 10) - 1).toString();
+    }
   }
 
   public static get ciNodeBuildId(): string | void {
