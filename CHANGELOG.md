@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.4.0...HEAD)
+
+**Fixed bugs:**
+
+- Fix not working Fallback Mode when using axios 0.19.0 [\#15](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/15) ([ArturT](https://github.com/ArturT))
+
 ## [v1.4.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.4.0) (2019-08-23)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.3.1...v1.4.0)
 
