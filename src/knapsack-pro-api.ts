@@ -171,7 +171,7 @@ export class KnapsackProAPI {
     const finalDelay = delay + randomSum;
 
     this.knapsackProLogger.info(
-      `Wait ${finalDelay} ms and retry request to Knapsack Pro API.`,
+      `(${retryCount}) Wait ${finalDelay} ms and retry request to Knapsack Pro API.`,
     );
 
     return finalDelay;
