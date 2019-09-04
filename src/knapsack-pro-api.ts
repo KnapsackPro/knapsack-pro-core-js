@@ -164,14 +164,14 @@ export class KnapsackProAPI {
     return axiosRetry.isRetryableError(error);
   }
 
-  private retryDelay(retryNumber: number): number {
+  private retryDelay(retryCount: number): number {
     const requestRetryTimebox = 2000; // miliseconds
-    const delay = retryNumber * requestRetryTimebox;
+    const delay = retryCount * requestRetryTimebox;
     const randomSum = delay * 0.2 * Math.random(); // 0-20% of the delay
     const finalDelay = delay + randomSum;
 
     this.knapsackProLogger.info(
-      `Wait ${finalDelay} ms and retry request to Knapsack Pro API.`,
+      `(${retryCount}) Wait ${finalDelay} ms and retry request to Knapsack Pro API.`,
     );
 
     return finalDelay;
