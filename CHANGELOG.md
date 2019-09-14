@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
-
-[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.4.1...HEAD)
+## [v1.5.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.5.0) (2019-09-14)
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.4.1...v1.5.0)
 
 **Implemented enhancements:**
 
