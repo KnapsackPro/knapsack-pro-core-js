@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.4.1...HEAD)
+
+**Implemented enhancements:**
+
+- Add support for GitHub Actions [\#16](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/16) ([ArturT](https://github.com/ArturT))
+
 ## [v1.4.1](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.4.1) (2019-09-04)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.4.0...v1.4.1)
 
@@ -17,10 +25,6 @@
 ## [v1.3.1](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.3.1) (2019-07-06)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.3.0...v1.3.1)
 
-**Implemented enhancements:**
-
-- Add support for Semaphore CI 2.0 [\#11](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/11) ([ArturT](https://github.com/ArturT))
-
 **Fixed bugs:**
 
 - Fix GitLab CI environment variables integration [\#13](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/13) ([ArturT](https://github.com/ArturT))
@@ -34,6 +38,10 @@
 
 ## [v1.2.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.2.0) (2019-03-15)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.1.0...v1.2.0)
+
+**Implemented enhancements:**
+
+- Add support for Semaphore CI 2.0 [\#11](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/11) ([ArturT](https://github.com/ArturT))
 
 ## [v1.1.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.1.0) (2019-03-07)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.0.1...v1.1.0)
