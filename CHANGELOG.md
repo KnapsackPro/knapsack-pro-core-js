@@ -1,5 +1,13 @@
 # Change Log
 
+## [v1.6.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.6.0) (2019-10-11)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.5.0...v1.6.0)
+
+**Implemented enhancements:**
+
+- Add support for Codefresh.io CI provider [\#17](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/17) ([ArturT](https://github.com/ArturT))
+
 ## [v1.5.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.5.0) (2019-09-14)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.4.1...v1.5.0)
 
