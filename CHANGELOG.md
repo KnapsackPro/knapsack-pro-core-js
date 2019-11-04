@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.6.0...HEAD)
+
+**Merged pull requests:**
+
+- Bump axios from 0.18.0 to 0.18.1 [\#18](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v1.6.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.6.0) (2019-10-11)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.5.0...v1.6.0)
 
