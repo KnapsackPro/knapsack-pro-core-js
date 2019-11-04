@@ -14,10 +14,6 @@
 
 - Add support for Codefresh.io CI provider [\#17](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/17) ([ArturT](https://github.com/ArturT))
 
-**Merged pull requests:**
-
-- Add Prettier and configure TSLint [\#7](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/7) ([rafaltrzop](https://github.com/rafaltrzop))
-
 ## [v1.5.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.5.0) (2019-09-14)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.4.1...v1.5.0)
 
@@ -82,6 +78,10 @@
 - Add fallback mode to run tests when API is not available [\#8](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/8) ([ArturT](https://github.com/ArturT))
 - Add logger [\#6](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/6) ([ArturT](https://github.com/ArturT))
 - Retry failed request to Knapsack Pro API [\#5](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/5) ([ArturT](https://github.com/ArturT))
+
+**Merged pull requests:**
+
+- Add Prettier and configure TSLint [\#7](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/7) ([rafaltrzop](https://github.com/rafaltrzop))
 
 ## [v0.3.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v0.3.0) (2018-11-15)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v0.2.1...v0.3.0)
