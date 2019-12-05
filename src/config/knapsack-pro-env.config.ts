@@ -95,11 +95,11 @@ export class KnapsackProEnvConfig {
       // tslint:disable-next-line:prefer-template
       'CI node build ID not detected! Your tests will run anyway.\n\n' +
         // tslint:disable-next-line:max-line-length
-        'If you want to be able to run more than one CI build at the same time for exactly the same commit hash, branch name and number of parallel CI nodes then you have to set unique KNAPSACK_PRO_CI_NODE_BUILD_ID environment variable for each CI build.\n\n' +
+        'If you want to be able to run more than one CI build at the same time for exactly the same commit hash, branch name and number of parallel CI nodes then you have to set unique KNAPSACK_PRO_CI_NODE_BUILD_ID environment variable.\n\n' +
         // tslint:disable-next-line:max-line-length
         'For instance you can generate KNAPSACK_PRO_CI_NODE_BUILD_ID=$(openssl rand - base64 32)\n\n' +
         // tslint:disable-next-line:max-line-length
-        'Note the CI build ID must be the same for parallel CI nodes being part of the single CI build.',
+        'Please ensure KNAPSACK_PRO_CI_NODE_BUILD_ID has the same value for all parallel CI nodes being part of the single CI build. Thanks to that the parallel nodes will consume tests from the same Queue.',
     );
 
     return process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID;
