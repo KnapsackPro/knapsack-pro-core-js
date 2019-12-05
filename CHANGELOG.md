@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.6.1...HEAD)
+
+**Fixed bugs:**
+
+- More explicit message about KNAPSACK\_PRO\_CI\_NODE\_BUILD\_ID must be the same on all parallel nodes [\#25](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/25) ([ArturT](https://github.com/ArturT))
+
 ## [v1.6.1](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.6.1) (2019-11-04)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.6.0...v1.6.1)
 
