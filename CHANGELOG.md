@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
-
-[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.6.1...HEAD)
+## [v1.6.2](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.6.2) (2019-12-05)
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.6.1...v1.6.2)
 
 **Fixed bugs:**
 
@@ -24,10 +23,6 @@
 
 ## [v1.5.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.5.0) (2019-09-14)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.4.1...v1.5.0)
-
-**Implemented enhancements:**
-
-- Add support for GitHub Actions [\#16](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/16) ([ArturT](https://github.com/ArturT))
 
 ## [v1.4.1](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.4.1) (2019-09-04)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.4.0...v1.4.1)
@@ -55,6 +50,7 @@
 
 **Implemented enhancements:**
 
+- Add support for GitHub Actions [\#16](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/16) ([ArturT](https://github.com/ArturT))
 - Reduce data transfer and speed up usage of Knapsack Pro API for Queue Mode [\#12](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/12) ([ArturT](https://github.com/ArturT))
 
 ## [v1.2.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.2.0) (2019-03-15)
