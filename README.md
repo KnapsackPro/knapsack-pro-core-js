@@ -23,6 +23,12 @@ This package is the dependency of [Knapsack Pro clients in JavaScript](https://d
 
 ## FAQ
 
+__NEW:__ Up to date [FAQ for Knapsack Pro JavaScript clients can be found here](https://knapsackpro.com/faq).
+
+__OLD:__ This README also contains FAQ questions but we keep adding new info only to our new FAQ page mentioned above.
+
+We keep this old FAQ in README to not break old links spread across the web.
+
 ### How to change log level?
 
 You can set log level with environment variable `KNAPSACK_PRO_LOG_LEVEL`.
