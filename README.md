@@ -23,7 +23,7 @@ This package is the dependency of [Knapsack Pro clients in JavaScript](https://d
 
 ## FAQ
 
-__NEW:__ Up to date [FAQ for Knapsack Pro JavaScript clients can be found here](https://knapsackpro.com/faq).
+:heavy_exclamation_mark: __NEW:__ Up to date [FAQ for Knapsack Pro JavaScript clients can be found here](https://knapsackpro.com/faq).
 
 __OLD:__ This README also contains FAQ questions but we keep adding new info only to our new FAQ page mentioned above.
 
