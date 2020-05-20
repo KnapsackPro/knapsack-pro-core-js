@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.6.2...HEAD)
+
+**Implemented enhancements:**
+
+- Increase retry delay between requests from 2s to 8s [\#27](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/27) ([ArturT](https://github.com/ArturT))
+
 ## [v1.6.2](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.6.2) (2019-12-05)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.6.1...v1.6.2)
 
