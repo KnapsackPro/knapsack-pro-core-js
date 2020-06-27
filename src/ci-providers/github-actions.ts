@@ -1,5 +1,6 @@
 import { CIProviderBase } from '.';
 
+// tslint:disable-next-line: max-line-length
 // https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables#default-environment-variables
 export class GithubActions extends CIProviderBase {
   public static get ciNodeTotal(): void {
