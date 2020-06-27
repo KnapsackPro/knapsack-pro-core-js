@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.7.0...HEAD)
 
+**Implemented enhancements:**
+
+- \[breaking change\] Add support for CI build ID for Github Actions - read PR description how to migrate for Github Actions [\#28](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/28) ([ArturT](https://github.com/ArturT))
+
 **Merged pull requests:**
 
 - Bump handlebars from 4.1.2 to 4.5.3 [\#26](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/26) ([dependabot[bot]](https://github.com/apps/dependabot))
