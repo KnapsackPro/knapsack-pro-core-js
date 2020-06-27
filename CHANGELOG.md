@@ -1,5 +1,18 @@
 # Change Log
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.7.0...HEAD)
+
+**Merged pull requests:**
+
+- Bump handlebars from 4.1.2 to 4.5.3 [\#26](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/26) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump lodash.merge from 4.6.1 to 4.6.2 [\#23](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/23) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump mixin-deep from 1.3.1 to 1.3.2 [\#22](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/22) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump extend from 3.0.1 to 3.0.2 [\#21](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/21) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump eslint-utils from 1.3.1 to 1.4.3 [\#20](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/20) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump lodash from 4.17.11 to 4.17.15 [\#19](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/19) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v1.7.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v1.7.0) (2020-05-20)
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v1.6.2...v1.7.0)
 
