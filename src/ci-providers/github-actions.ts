@@ -1,6 +1,7 @@
 import { CIProviderBase } from '.';
 
-// https://help.github.com/en/articles/virtual-environments-for-github-actions#environment-variables
+// tslint:disable-next-line: max-line-length
+// https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables#default-environment-variables
 export class GithubActions extends CIProviderBase {
   public static get ciNodeTotal(): void {
     return undefined;
@@ -10,8 +11,10 @@ export class GithubActions extends CIProviderBase {
     return undefined;
   }
 
-  public static get ciNodeBuildId(): void {
-    return undefined;
+  public static get ciNodeBuildId(): string | void {
+    // A unique number for each run within a repository.
+    // This number does not change if you re-run the workflow run.
+    return process.env.GITHUB_RUN_ID;
   }
 
   public static get commitHash(): string | void {
