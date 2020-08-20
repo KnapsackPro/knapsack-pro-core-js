@@ -1,7 +1,7 @@
 import { TestFile } from '../models';
 
 export type onQueueSuccessType = (
-  queueTestFiles: TestFile[],
+  queueTestFiles: TestFile[]
 ) => Promise<{
   recordedTestFiles: TestFile[];
   isTestSuiteGreen: boolean;
