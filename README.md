@@ -91,17 +91,6 @@ You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in devel
        - [TypeScript TSLint Plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
        - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 
-     - Go to `File > Preferences > Settings > Extensions > Prettier - Code formatter`
-
-       - Turn on `Prettier: Eslint Integration` checkbox.
-       - Turn on `Prettier: Tslint Integration` checkbox. If you can't find this checkbox, use `Ctrl + Shift + P` shortcut to find `Preferences: Open Settings (JSON)` option. Add below line to your settings file:
-
-       ```
-       {
-           "prettier.tslintIntegration": true
-       }
-       ```
-
      - Go to `File > Preferences > Settings > Text Editor > Formatting`
 
        Turn on `Format On Save` checkbox.
