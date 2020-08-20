@@ -9,6 +9,7 @@ This package is the dependency of [Knapsack Pro clients in JavaScript](https://d
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [FAQ](#faq)
@@ -23,9 +24,9 @@ This package is the dependency of [Knapsack Pro clients in JavaScript](https://d
 
 ## FAQ
 
-:heavy_exclamation_mark: __NEW:__ Up to date [FAQ for Knapsack Pro JavaScript clients can be found here](https://knapsackpro.com/faq).
+:heavy_exclamation_mark: **NEW:** Up to date [FAQ for Knapsack Pro JavaScript clients can be found here](https://knapsackpro.com/faq).
 
-__OLD:__ This README also contains FAQ questions but we keep adding new info only to our new FAQ page mentioned above.
+**OLD:** This README also contains FAQ questions but we keep adding new info only to our new FAQ page mentioned above.
 
 We keep this old FAQ in README to not break old links spread across the web.
 
@@ -57,7 +58,7 @@ If during CI build runtime connection to Knapsack Pro API is lost, Fallback Mode
 
 You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in development.
 
-* `>= Node 12.18.3 LTS`
+- `>= Node 12.18.3 LTS`
 
 ### Setup
 
@@ -81,26 +82,6 @@ You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in devel
 
 4. Set up your IDE:
 
-   - WebStorm / PhpStorm
-
-     - Install the following plugins:
-
-       - [Prettier](https://plugins.jetbrains.com/plugin/10456-prettier)
-       - [EditorConfig](https://plugins.jetbrains.com/plugin/7294-editorconfig)
-       - [.ignore](https://plugins.jetbrains.com/plugin/7495--ignore)
-
-     - Go to `File > Settings > Languages & Frameworks > JavaScript > Code Quality Tools > ESLint`
-
-       Turn on `Enable` checkbox.
-
-     - Go to `File > Settings > Languages & Frameworks > TypeScript > TSLint`
-
-       Turn on `Enable` checkbox.
-
-     - Go to `File > Settings > Tools > File Watchers`
-
-       Click `Import` button and select `watchers.xml` file from the repository.
-
    - Visual Studio Code
 
      - Install the following plugins:
@@ -109,17 +90,6 @@ You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in devel
        - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
        - [TypeScript TSLint Plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
        - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-
-     - Go to `File > Preferences > Settings > Extensions > Prettier - Code formatter`
-
-       - Turn on `Prettier: Eslint Integration` checkbox.
-       - Turn on `Prettier: Tslint Integration` checkbox. If you can't find this checkbox, use `Ctrl + Shift + P` shortcut to find `Preferences: Open Settings (JSON)` option. Add below line to your settings file:
-
-       ```
-       {
-           "prettier.tslintIntegration": true
-       }
-       ```
 
      - Go to `File > Preferences > Settings > Text Editor > Formatting`
 

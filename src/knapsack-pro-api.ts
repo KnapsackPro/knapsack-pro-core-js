@@ -20,7 +20,7 @@ export class KnapsackProAPI {
   // allTestFiles in whole user's test suite
   public fetchTestsFromQueue(
     allTestFiles: TestFile[],
-    initializeQueue: boolean,
+    initializeQueue: boolean
   ): AxiosPromise<any> {
     const url = '/v1/queues/queue';
     const data = {
@@ -54,7 +54,7 @@ export class KnapsackProAPI {
 
   private setUpApiClient(
     clientName: string,
-    clientVersion: string,
+    clientVersion: string
   ): AxiosInstance {
     const apiClient = axios.create({
       baseURL: KnapsackProEnvConfig.endpoint,
@@ -72,7 +72,7 @@ export class KnapsackProAPI {
       retryCondition: this.retryCondition,
     });
 
-    apiClient.interceptors.request.use(config => {
+    apiClient.interceptors.request.use((config) => {
       const { method, baseURL, url, headers, data } = config;
 
       // when axios retries request then url includes baseURL so we remove it
@@ -87,14 +87,14 @@ export class KnapsackProAPI {
           'Request headers:\n' +
           `${requestHeaders}\n\n` +
           'Request body:\n' +
-          `${requestBody}`,
+          `${requestBody}`
       );
 
       return config;
     });
 
     apiClient.interceptors.response.use(
-      response => {
+      (response) => {
         const {
           status,
           statusText,
@@ -109,12 +109,12 @@ export class KnapsackProAPI {
             'Request ID:\n' +
             `${requestId}\n\n` +
             'Response body:\n' +
-            `${responeseBody}`,
+            `${responeseBody}`
         );
 
         return response;
       },
-      error => {
+      (error) => {
         const { response } = error;
 
         if (response) {
@@ -132,14 +132,14 @@ export class KnapsackProAPI {
               'Request ID:\n' +
               `${requestId}\n\n` +
               'Response body:\n' +
-              `${responeseBody}`,
+              `${responeseBody}`
           );
         } else {
           this.knapsackProLogger.error(error);
         }
 
         return Promise.reject(error);
-      },
+      }
     );
 
     return apiClient;
@@ -171,7 +171,7 @@ export class KnapsackProAPI {
     const finalDelay = delay + randomSum;
 
     this.knapsackProLogger.info(
-      `(${retryCount}) Wait ${finalDelay} ms and retry request to Knapsack Pro API.`,
+      `(${retryCount}) Wait ${finalDelay} ms and retry request to Knapsack Pro API.`
     );
 
     return finalDelay;

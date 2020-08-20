@@ -8,23 +8,23 @@ export class FallbackTestDistributor {
   constructor(
     allTestFiles: TestFile[],
     executedTestFiles: TestFile[],
-    ciNodeTotal: number = KnapsackProEnvConfig.ciNodeTotal,
+    ciNodeTotal: number = KnapsackProEnvConfig.ciNodeTotal
   ) {
     this.executedTestFilePaths = executedTestFiles.map(
-      testFile => testFile.path,
+      (testFile) => testFile.path
     );
 
     this.testFilesPerCiNode = this.assignTestFilesPerCiNode(
       this.orderByTestPath(allTestFiles),
-      ciNodeTotal,
+      ciNodeTotal
     );
   }
 
   public testFilesForCiNode(
-    ciNodeIndex: number = KnapsackProEnvConfig.ciNodeIndex,
+    ciNodeIndex: number = KnapsackProEnvConfig.ciNodeIndex
   ): TestFile[] {
     return this.testFilesPerCiNode[ciNodeIndex].filter(
-      testFile => !this.executedTestFilePaths.includes(testFile.path),
+      (testFile) => !this.executedTestFilePaths.includes(testFile.path)
     );
   }
 
@@ -39,15 +39,15 @@ export class FallbackTestDistributor {
 
   private assignTestFilesPerCiNode(
     allTestFiles: TestFile[],
-    ciNodeTotal: number,
+    ciNodeTotal: number
   ): TestFile[][] {
     const testFilesPerCiNode: TestFile[][] = Array.from(
       { length: ciNodeTotal },
-      () => [],
+      () => []
     );
 
     allTestFiles.forEach((testFile: TestFile, index: number) =>
-      testFilesPerCiNode[index % ciNodeTotal].push(testFile),
+      testFilesPerCiNode[index % ciNodeTotal].push(testFile)
     );
 
     return testFilesPerCiNode;
