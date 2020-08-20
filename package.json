@@ -28,9 +28,9 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
-    "lint": "npm run lint:js && npm run lint:ts",
-    "lint:js": "eslint .",
-    "lint:ts": "tslint --project . --format stylish",
+    "lint": "npm run lint:script && npm run lint:format",
+    "lint:script": "eslint bin/** .",
+    "lint:format": "prettier --check .",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
