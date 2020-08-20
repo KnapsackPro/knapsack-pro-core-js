@@ -9,13 +9,13 @@ This package is the dependency of [Knapsack Pro clients in JavaScript](https://d
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## Table of Contents
 
 - [FAQ](#faq)
   - [How to change log level?](#how-to-change-log-level)
   - [What happens when Knapsack Pro API is not available? How Fallback Mode works?](#what-happens-when-knapsack-pro-api-is-not-available-how-fallback-mode-works)
 - [Development](#development)
+  - [Requirements](#requirements)
   - [Setup](#setup)
   - [Publishing](#publishing)
 
@@ -52,6 +52,12 @@ In Fallback Mode your tests will be executed and split based on test file names 
 If during CI build runtime connection to Knapsack Pro API is lost, Fallback Mode would run tests except those executed so far.
 
 ## Development
+
+### Requirements
+
+You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in development.
+
+* >= Node 12.18.3 LTS
 
 ### Setup
 
