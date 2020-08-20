@@ -82,26 +82,6 @@ You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in devel
 
 4. Set up your IDE:
 
-   - WebStorm / PhpStorm
-
-     - Install the following plugins:
-
-       - [Prettier](https://plugins.jetbrains.com/plugin/10456-prettier)
-       - [EditorConfig](https://plugins.jetbrains.com/plugin/7294-editorconfig)
-       - [.ignore](https://plugins.jetbrains.com/plugin/7495--ignore)
-
-     - Go to `File > Settings > Languages & Frameworks > JavaScript > Code Quality Tools > ESLint`
-
-       Turn on `Enable` checkbox.
-
-     - Go to `File > Settings > Languages & Frameworks > TypeScript > TSLint`
-
-       Turn on `Enable` checkbox.
-
-     - Go to `File > Settings > Tools > File Watchers`
-
-       Click `Import` button and select `watchers.xml` file from the repository.
-
    - Visual Studio Code
 
      - Install the following plugins:
