@@ -113,7 +113,7 @@ You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in devel
    $ gem install github_changelog_generator
 
    # generate CHANGELOG.md
-   $ github_changelog_generator KnapsackPro/knapsack-pro-core-js
+   $ github_changelog_generator --user KnapsackPro --project knapsack-pro-core-js
    $ git commit -am "Update CHANGELOG.md"
    $ git push origin master
    ```
@@ -151,7 +151,7 @@ You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in devel
 8. Now when git tag is on Github you can update `CHANGELOG.md` again.
 
    ```
-   $ github_changelog_generator KnapsackPro/knapsack-pro-core-js
+   $ github_changelog_generator --user KnapsackPro --project knapsack-pro-core-js
    $ git commit -am "Update CHANGELOG.md"
    $ git push origin master
    ```
