@@ -9,6 +9,7 @@ This package is the dependency of [Knapsack Pro clients in JavaScript](https://d
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [FAQ](#faq)
@@ -23,9 +24,9 @@ This package is the dependency of [Knapsack Pro clients in JavaScript](https://d
 
 ## FAQ
 
-:heavy_exclamation_mark: __NEW:__ Up to date [FAQ for Knapsack Pro JavaScript clients can be found here](https://knapsackpro.com/faq).
+:heavy_exclamation_mark: **NEW:** Up to date [FAQ for Knapsack Pro JavaScript clients can be found here](https://knapsackpro.com/faq).
 
-__OLD:__ This README also contains FAQ questions but we keep adding new info only to our new FAQ page mentioned above.
+**OLD:** This README also contains FAQ questions but we keep adding new info only to our new FAQ page mentioned above.
 
 We keep this old FAQ in README to not break old links spread across the web.
 
@@ -57,7 +58,7 @@ If during CI build runtime connection to Knapsack Pro API is lost, Fallback Mode
 
 You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in development.
 
-* `>= Node 12.18.3 LTS`
+- `>= Node 12.18.3 LTS`
 
 ### Setup
 
