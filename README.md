@@ -57,7 +57,7 @@ If during CI build runtime connection to Knapsack Pro API is lost, Fallback Mode
 
 You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in development.
 
-* >= Node 12.18.3 LTS
+* `>= Node 12.18.3 LTS`
 
 ### Setup
 
