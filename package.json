@@ -59,7 +59,7 @@
     "@babel/register": "^7.10.5",
     "@types/jest": "^26.0.10",
     "@types/node": "^14.6.0",
-    "del": "^3.0.0",
+    "del": "^5.1.0",
     "doctoc": "^1.4.0",
     "gulp": "^4.0.0",
     "gulp-typescript": "^5.0.0",
