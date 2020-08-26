@@ -62,6 +62,8 @@ You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in devel
 
 ### Setup
 
+**Follow below steps or use `bin/setup_development` script to take care of steps 1-3.**
+
 1. Install dependencies:
 
    ```
