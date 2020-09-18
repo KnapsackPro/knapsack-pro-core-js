@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.0.0...HEAD)
+
+**Implemented enhancements:**
+
+- When Knapsack Pro API returns expected errors then the CI node should fail and show an error from API response. Fix the problem with retrying failed request 3 times [\#34](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/34) ([ArturT](https://github.com/ArturT))
+
 ## [v3.0.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v3.0.0) (2020-08-20)
 
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v2.0.0...v3.0.0)
