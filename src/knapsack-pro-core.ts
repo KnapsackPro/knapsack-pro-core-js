@@ -58,16 +58,11 @@ export class KnapsackProCore {
         );
       })
       .catch((error) => {
-        const { response } = error;
-
-        if (response) {
-          const { status } = response;
-
-          if (status === 422 || status === 403) {
-            // CI build should fail
-            process.exitCode = 1;
-            throw new Error('Knapsack Pro API returned error. See above logs.');
-          }
+        if (this.knapsackProAPI.isExpectedErrorResponse(error)) {
+          // when API returned expected error then CI node should fail
+          // this should prevent from running tests in Fallback Mode
+          process.exitCode = 1;
+          throw new Error('Knapsack Pro API returned error. See above logs.');
         }
 
         onFailure(error);
