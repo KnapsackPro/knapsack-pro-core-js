@@ -52,7 +52,7 @@ export class KnapsackProAPI {
     return this.api.post(url, data);
   }
 
-  public isExpectedErrorResponse(error: AxiosError) {
+  public isExpectedErrorStatus(error: AxiosError) {
     const { response } = error;
     if (!response) {
       return false;
@@ -166,7 +166,7 @@ export class KnapsackProAPI {
     return (
       axiosRetry.isNetworkError(error) ||
       this.isRetriableRequestError(error) ||
-      !this.isExpectedErrorResponse(error)
+      !this.isExpectedErrorStatus(error)
     );
   }
 

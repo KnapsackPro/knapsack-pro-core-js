@@ -58,7 +58,7 @@ export class KnapsackProCore {
         );
       })
       .catch((error) => {
-        if (this.knapsackProAPI.isExpectedErrorResponse(error)) {
+        if (this.knapsackProAPI.isExpectedErrorStatus(error)) {
           // when API returned expected error then CI node should fail
           // this should prevent from running tests in Fallback Mode
           process.exitCode = 1;
