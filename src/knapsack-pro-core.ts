@@ -62,7 +62,9 @@ export class KnapsackProCore {
           // when API returned expected error then CI node should fail
           // this should prevent from running tests in Fallback Mode
           process.exitCode = 1;
-          throw new Error('Knapsack Pro API returned error. See above logs.');
+          throw new Error(
+            'Knapsack Pro API returned an error. See the above logs.'
+          );
         }
 
         onFailure(error);
