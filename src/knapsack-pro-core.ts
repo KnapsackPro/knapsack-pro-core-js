@@ -58,6 +58,18 @@ export class KnapsackProCore {
         );
       })
       .catch((error) => {
+        const { response } = error;
+
+        if (response) {
+          const { status } = response;
+
+          if (status === 422 || status === 403) {
+            // CI build should fail
+            process.exitCode = 1;
+            throw new Error('Knapsack Pro API returned error. See above logs.');
+          }
+        }
+
         onFailure(error);
 
         this.knapsackProLogger.warn(
