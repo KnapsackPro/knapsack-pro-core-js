@@ -52,6 +52,21 @@ export class KnapsackProAPI {
     return this.api.post(url, data);
   }
 
+  public isExpectedErrorStatus(error: AxiosError) {
+    const { response } = error;
+    if (!response) {
+      return false;
+    }
+
+    const { status } = response;
+
+    return (
+      status === 400 || // params error
+      status === 422 || // validation error
+      status === 403 // trial ended
+    );
+  }
+
   private setUpApiClient(
     clientName: string,
     clientVersion: string
@@ -149,7 +164,9 @@ export class KnapsackProAPI {
   // https://github.com/softonic/axios-retry/blob/master/es/index.js
   private retryCondition(error: AxiosError): boolean {
     return (
-      axiosRetry.isNetworkError(error) || this.isRetriableRequestError(error)
+      axiosRetry.isNetworkError(error) ||
+      this.isRetriableRequestError(error) ||
+      !this.isExpectedErrorStatus(error)
     );
   }
 
