@@ -163,3 +163,5 @@ You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in devel
    ```
    $ npm publish
    ```
+
+10. Update the latest available library version in `TestSuiteClientVersionChecker` for the Knapsack Pro API repository.
