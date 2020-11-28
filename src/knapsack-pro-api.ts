@@ -20,19 +20,23 @@ export class KnapsackProAPI {
   // allTestFiles in whole user's test suite
   public fetchTestsFromQueue(
     allTestFiles: TestFile[],
-    initializeQueue: boolean
+    initializeQueue: boolean,
+    attemptConnectToQueue: boolean
   ): AxiosPromise<any> {
     const url = '/v1/queues/queue';
+    const shouldSendTestFilesInPayload =
+      initializeQueue && !attemptConnectToQueue;
     const data = {
       test_suite_token: KnapsackProEnvConfig.testSuiteToken,
       can_initialize_queue: initializeQueue,
+      attempt_connect_to_queue: attemptConnectToQueue,
       fixed_queue_split: KnapsackProEnvConfig.fixedQueueSplit,
       commit_hash: KnapsackProEnvConfig.commitHash,
       branch: KnapsackProEnvConfig.branch,
       node_total: KnapsackProEnvConfig.ciNodeTotal,
       node_index: KnapsackProEnvConfig.ciNodeIndex,
       node_build_id: KnapsackProEnvConfig.ciNodeBuildId,
-      ...(initializeQueue && { test_files: allTestFiles }),
+      ...(shouldSendTestFilesInPayload && { test_files: allTestFiles }),
     };
 
     return this.api.post(url, data);
@@ -146,7 +150,7 @@ export class KnapsackProAPI {
             `${status} ${statusText}\n\n` +
               'Request ID:\n' +
               `${requestId}\n\n` +
-              'Response body:\n' +
+              'Response error body:\n' +
               `${responeseBody}`
           );
         } else {
