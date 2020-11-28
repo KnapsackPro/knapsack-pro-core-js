@@ -150,7 +150,7 @@ export class KnapsackProAPI {
             `${status} ${statusText}\n\n` +
               'Request ID:\n' +
               `${requestId}\n\n` +
-              'Response body:\n' +
+              'Response error body:\n' +
               `${responeseBody}`
           );
         } else {
