@@ -1,3 +1,3 @@
-export const QUEUE_API_RESPONSE_CODES = {
-  ATTEMPT_CONNECT_TO_QUEUE_FAILED: 'ATTEMPT_CONNECT_TO_QUEUE_FAILED',
-};
+export enum QueueApiResponseCodes {
+  AttemptConnectToQueueFailed = 'ATTEMPT_CONNECT_TO_QUEUE_FAILED',
+}

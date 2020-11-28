@@ -1,5 +1,5 @@
 import { KnapsackProAPI } from './knapsack-pro-api';
-import { QUEUE_API_RESPONSE_CODES } from './api-response-codes';
+import { QueueApiResponseCodes } from './api-response-codes';
 import { KnapsackProLogger } from './knapsack-pro-logger';
 import { FallbackTestDistributor } from './fallback-test-distributor';
 import { TestFile } from './models';
@@ -48,11 +48,9 @@ export class KnapsackProCore {
         attemptConnectToQueue
       )
       .then((response) => {
-        const apiCode = response.data.code;
+        const apiCode: QueueApiResponseCodes = response.data.code;
 
-        if (
-          apiCode === QUEUE_API_RESPONSE_CODES.ATTEMPT_CONNECT_TO_QUEUE_FAILED
-        ) {
+        if (apiCode === QueueApiResponseCodes.AttemptConnectToQueueFailed) {
           this.fetchTestsFromQueue(true, false, onSuccess, onFailure);
           return;
         }
