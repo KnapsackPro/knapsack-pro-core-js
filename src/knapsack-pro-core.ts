@@ -1,4 +1,5 @@
 import { KnapsackProAPI } from './knapsack-pro-api';
+import { QUEUE_API_RESPONSE_CODES } from './api-response-codes';
 import { KnapsackProLogger } from './knapsack-pro-logger';
 import { FallbackTestDistributor } from './fallback-test-distributor';
 import { TestFile } from './models';
@@ -31,17 +32,31 @@ export class KnapsackProCore {
     onSuccess: onQueueSuccessType,
     onFailure: onQueueFailureType
   ) {
-    this.fetchTestsFromQueue(true, onSuccess, onFailure);
+    this.fetchTestsFromQueue(true, true, onSuccess, onFailure);
   }
 
   private fetchTestsFromQueue(
     initializeQueue = false,
+    attemptConnectToQueue = false,
     onSuccess: onQueueSuccessType,
     onFailure: onQueueFailureType
   ) {
     this.knapsackProAPI
-      .fetchTestsFromQueue(this.allTestFiles, initializeQueue)
+      .fetchTestsFromQueue(
+        this.allTestFiles,
+        initializeQueue,
+        attemptConnectToQueue
+      )
       .then((response) => {
+        const apiCode = response.data.code;
+
+        if (
+          apiCode === QUEUE_API_RESPONSE_CODES.ATTEMPT_CONNECT_TO_QUEUE_FAILED
+        ) {
+          this.fetchTestsFromQueue(true, false, onSuccess, onFailure);
+          return;
+        }
+
         const queueTestFiles = response.data.test_files;
         const isQueueEmpty = queueTestFiles.length === 0;
 
@@ -53,7 +68,7 @@ export class KnapsackProCore {
         onSuccess(queueTestFiles).then(
           ({ recordedTestFiles, isTestSuiteGreen }) => {
             this.updateRecordedTestFiles(recordedTestFiles, isTestSuiteGreen);
-            this.fetchTestsFromQueue(false, onSuccess, onFailure);
+            this.fetchTestsFromQueue(false, false, onSuccess, onFailure);
           }
         );
       })
