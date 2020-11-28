@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.0.1...HEAD)
+
+**Implemented enhancements:**
+
+- Add support for an attempt to connect to existing Queue on API side to reduce slow requests number [\#35](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/35) ([ArturT](https://github.com/ArturT))
+
 ## [v3.0.1](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v3.0.1) (2020-09-18)
 
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.0.0...v3.0.1)
