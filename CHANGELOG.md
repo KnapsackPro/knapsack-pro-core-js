@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.1.0...HEAD)
+
+**Merged pull requests:**
+
+- Update axios-retry from 3.1.2 to 3.1.9 [\#40](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/40) ([ArturT](https://github.com/ArturT))
+- Bump axios from 0.18.1 to 0.21.1 [\#39](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/39) ([haines](https://github.com/haines))
+- Bump node-notifier from 8.0.0 to 8.0.1 [\#37](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/37) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump ini from 1.3.5 to 1.3.7 [\#36](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/36) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v3.1.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v3.1.0) (2020-11-28)
 
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.0.1...v3.1.0)
