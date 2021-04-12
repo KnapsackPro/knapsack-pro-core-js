@@ -32,25 +32,11 @@ We keep this old FAQ in README to not break old links spread across the web.
 
 ### How to change log level?
 
-You can set log level with environment variable `KNAPSACK_PRO_LOG_LEVEL`.
-The default level is `info`.
-
-Available [log levels](https://github.com/winstonjs/winston#logging) (from most important to least important):
-
-- `error` - shows only critical errors
-- `warn` - shows warnings (e.g. Fallback Mode has started)
-- `info` - shows Knapsack Pro API request response body
-- `verbose`
-- `debug` - shows Knapsack Pro API request headers and body
-- `silly`
+https://knapsackpro.com/faq/question/how-to-change-log-level
 
 ### What happens when Knapsack Pro API is not available? How Fallback Mode works?
 
-When Knapsack Pro API is not available or temporarily unreachable due to network problems then Fallback Mode will be started and you will see a log warning in the output.
-
-In Fallback Mode your tests will be executed and split based on test file names across CI nodes. If in the meantime other CI nodes were able to connect to Knapsack Pro API then you may notice that some of the test files were executed twice across CI nodes. Fallback Mode guarantees each of test files is run at least once as a part of CI build.
-
-If during CI build runtime connection to Knapsack Pro API is lost, Fallback Mode would run tests except those executed so far.
+https://knapsackpro.com/faq/question/what-happens-when-knapsack-pro-api-is-not-available-how-fallback-mode-works
 
 ## Development
 
