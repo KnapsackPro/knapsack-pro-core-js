@@ -13,8 +13,6 @@ This package is the dependency of [Knapsack Pro clients in JavaScript](https://d
 ## Table of Contents
 
 - [FAQ](#faq)
-  - [How to change log level?](#how-to-change-log-level)
-  - [What happens when Knapsack Pro API is not available? How Fallback Mode works?](#what-happens-when-knapsack-pro-api-is-not-available-how-fallback-mode-works)
 - [Development](#development)
   - [Requirements](#requirements)
   - [Setup](#setup)
@@ -24,19 +22,7 @@ This package is the dependency of [Knapsack Pro clients in JavaScript](https://d
 
 ## FAQ
 
-:heavy_exclamation_mark: **NEW:** Up to date [FAQ for Knapsack Pro JavaScript clients can be found here](https://knapsackpro.com/faq).
-
-**OLD:** This README also contains FAQ questions but we keep adding new info only to our new FAQ page mentioned above.
-
-We keep this old FAQ in README to not break old links spread across the web.
-
-### How to change log level?
-
-https://knapsackpro.com/faq/question/how-to-change-log-level
-
-### What happens when Knapsack Pro API is not available? How Fallback Mode works?
-
-https://knapsackpro.com/faq/question/what-happens-when-knapsack-pro-api-is-not-available-how-fallback-mode-works
+[FAQ for Knapsack Pro JavaScript clients can be found here](https://knapsackpro.com/faq).
 
 ## Development
 
