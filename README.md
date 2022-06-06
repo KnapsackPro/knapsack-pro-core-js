@@ -30,7 +30,7 @@ This package is the dependency of [Knapsack Pro clients in JavaScript](https://d
 
 You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in development.
 
-- `>= Node 12.18.3 LTS`
+- `>= Node 16.15.1 LTS`
 
 ### Setup
 
