@@ -30,6 +30,7 @@
     "build": "gulp build",
     "lint": "npm run lint:js && npm run lint:format",
     "lint:js": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
     "lint:format": "prettier --check .",
     "test": "jest",
     "test:watch": "jest --watch",
