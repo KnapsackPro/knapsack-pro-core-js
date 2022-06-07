@@ -1,12 +1,14 @@
 import axios, { AxiosError, AxiosInstance, AxiosPromise } from 'axios';
-const axiosRetry = require('axios-retry');
 
 import { KnapsackProEnvConfig } from './config';
 import { KnapsackProLogger } from './knapsack-pro-logger';
 import { TestFile } from './models';
 
+const axiosRetry = require('axios-retry');
+
 export class KnapsackProAPI {
   private readonly api: AxiosInstance;
+
   private knapsackProLogger: KnapsackProLogger;
 
   constructor(clientName: string, clientVersion: string) {
@@ -21,11 +23,10 @@ export class KnapsackProAPI {
   public fetchTestsFromQueue(
     allTestFiles: TestFile[],
     initializeQueue: boolean,
-    attemptConnectToQueue: boolean
+    attemptConnectToQueue: boolean,
   ): AxiosPromise<any> {
     const url = '/v1/queues/queue';
-    const shouldSendTestFilesInPayload =
-      initializeQueue && !attemptConnectToQueue;
+    const shouldSendTestFilesInPayload = initializeQueue && !attemptConnectToQueue;
     const data = {
       test_suite_token: KnapsackProEnvConfig.testSuiteToken,
       can_initialize_queue: initializeQueue,
@@ -65,15 +66,15 @@ export class KnapsackProAPI {
     const { status } = response;
 
     return (
-      status === 400 || // params error
-      status === 422 || // validation error
-      status === 403 // trial ended
+      status === 400 // params error
+      || status === 422 // validation error
+      || status === 403 // trial ended
     );
   }
 
   private setUpApiClient(
     clientName: string,
-    clientVersion: string
+    clientVersion: string,
   ): AxiosInstance {
     const apiClient = axios.create({
       baseURL: KnapsackProEnvConfig.endpoint,
@@ -92,7 +93,9 @@ export class KnapsackProAPI {
     });
 
     apiClient.interceptors.request.use((config) => {
-      const { method, baseURL, url, headers, data } = config;
+      const {
+        method, baseURL, url, headers, data,
+      } = config;
 
       // when axios retries request then url includes baseURL so we remove it
       const apiUrl = baseURL + url.replace(baseURL, '');
@@ -102,11 +105,11 @@ export class KnapsackProAPI {
       this.knapsackProLogger.info(`${method.toUpperCase()} ${apiUrl}`);
       this.knapsackProLogger.debug(
         // tslint:disable-next-line:prefer-template
-        `${method.toUpperCase()} ${apiUrl}\n\n` +
-          'Request headers:\n' +
-          `${requestHeaders}\n\n` +
-          'Request body:\n' +
-          `${requestBody}`
+        `${method.toUpperCase()} ${apiUrl}\n\n`
+          + 'Request headers:\n'
+          + `${requestHeaders}\n\n`
+          + 'Request body:\n'
+          + `${requestBody}`,
       );
 
       return config;
@@ -118,17 +121,17 @@ export class KnapsackProAPI {
           status,
           statusText,
           data,
-          headers: { ['x-request-id']: requestId },
+          headers: { 'x-request-id': requestId },
         } = response;
         const responeseBody = KnapsackProLogger.objectInspect(data);
 
         this.knapsackProLogger.info(
           // tslint:disable-next-line:prefer-template
-          `${status} ${statusText}\n\n` +
-            'Request ID:\n' +
-            `${requestId}\n\n` +
-            'Response body:\n' +
-            `${responeseBody}`
+          `${status} ${statusText}\n\n`
+            + 'Request ID:\n'
+            + `${requestId}\n\n`
+            + 'Response body:\n'
+            + `${responeseBody}`,
         );
 
         return response;
@@ -141,24 +144,24 @@ export class KnapsackProAPI {
             status,
             statusText,
             data,
-            headers: { ['x-request-id']: requestId },
+            headers: { 'x-request-id': requestId },
           } = response;
           const responeseBody = KnapsackProLogger.objectInspect(data);
 
           this.knapsackProLogger.error(
             // tslint:disable-next-line:prefer-template
-            `${status} ${statusText}\n\n` +
-              'Request ID:\n' +
-              `${requestId}\n\n` +
-              'Response error body:\n' +
-              `${responeseBody}`
+            `${status} ${statusText}\n\n`
+              + 'Request ID:\n'
+              + `${requestId}\n\n`
+              + 'Response error body:\n'
+              + `${responeseBody}`,
           );
         } else {
           this.knapsackProLogger.error(error);
         }
 
         return Promise.reject(error);
-      }
+      },
     );
 
     return apiClient;
@@ -168,9 +171,9 @@ export class KnapsackProAPI {
   // https://github.com/softonic/axios-retry/blob/master/es/index.js
   private retryCondition(error: AxiosError): boolean {
     return (
-      axiosRetry.isNetworkError(error) ||
-      this.isRetriableRequestError(error) ||
-      !this.isExpectedErrorStatus(error)
+      axiosRetry.isNetworkError(error)
+      || this.isRetriableRequestError(error)
+      || !this.isExpectedErrorStatus(error)
     );
   }
 
@@ -192,7 +195,7 @@ export class KnapsackProAPI {
     const finalDelay = delay + randomSum;
 
     this.knapsackProLogger.info(
-      `(${retryCount}) Wait ${finalDelay} ms and retry request to Knapsack Pro API.`
+      `(${retryCount}) Wait ${finalDelay} ms and retry request to Knapsack Pro API.`,
     );
 
     return finalDelay;

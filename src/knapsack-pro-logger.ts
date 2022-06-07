@@ -1,6 +1,7 @@
+import {
+  createLogger, format, Logger, transports,
+} from 'winston';
 import util = require('util');
-import { createLogger, format, Logger, transports } from 'winston';
-
 import { KnapsackProEnvConfig } from './config';
 
 const { name: clientName } = require('../package.json');
@@ -24,9 +25,10 @@ export class KnapsackProLogger {
         format.timestamp(),
         format.colorize(),
         format.printf(
-          ({ timestamp, label, level, message }) =>
-            `\n${timestamp} [${label}] ${level}: ${message}`
-        )
+          ({
+            timestamp, label, level, message,
+          }) => `\n${timestamp} [${label}] ${level}: ${message}`,
+        ),
       ),
       transports: [new transports.Console()],
     });
