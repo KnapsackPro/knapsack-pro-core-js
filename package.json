@@ -28,8 +28,8 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
-    "lint": "npm run lint:js && npm run lint:ts && npm run lint:format",
     "lint:js": "eslint .",
+    "lint": "npm run lint:js && npm run lint:format",
     "lint:format": "prettier --check .",
     "test": "jest",
     "test:watch": "jest --watch",
