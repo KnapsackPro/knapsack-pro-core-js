@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.1.1...HEAD)
+
+**Merged pull requests:**
+
+- Update dependencies \(security update for axios\), update development setup [\#59](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/59) ([ArturT](https://github.com/ArturT))
+- Bump axios from 0.21.1 to 0.21.2 [\#52](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/52) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Remove FAQ questions from readme [\#44](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/44) ([ArturT](https://github.com/ArturT))
+- Add links to FAQ in the answers [\#43](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/43) ([ArturT](https://github.com/ArturT))
+
 ## [v3.1.1](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v3.1.1) (2021-01-07)
 
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.1.0...v3.1.1)
