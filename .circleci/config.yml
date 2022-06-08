@@ -30,11 +30,11 @@ jobs:
 
       # run code linters
       - run:
-          name: Run code linters (ESLint)
-          command: npm run lint:js
+          name: Run ESLint check
+          command: npm run eslint:check
       - run:
-          name: Run code linters (Prettier)
-          command: npm run lint:format
+          name: Run Prettier check
+          command: npm run prettier:check
 
       # run tests and generate code coverage report
       - run: npm run test:coverage
