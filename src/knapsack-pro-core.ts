@@ -39,7 +39,9 @@ export class KnapsackProCore {
   }
 
   private fetchTestsFromQueue(
+    // eslint-disable-next-line default-param-last
     initializeQueue = false,
+    // eslint-disable-next-line default-param-last
     attemptConnectToQueue = false,
     onSuccess: onQueueSuccessType,
     onFailure: onQueueFailureType,

@@ -5,6 +5,7 @@ export class SemaphoreCI extends CIProviderBase {
     return process.env.SEMAPHORE_THREAD_COUNT;
   }
 
+  // eslint-disable-next-line getter-return, consistent-return
   public static get ciNodeIndex(): string | void {
     const currentThread = process.env.SEMAPHORE_CURRENT_THREAD;
 

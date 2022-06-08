@@ -4,6 +4,7 @@ import { KnapsackProEnvConfig } from './config';
 import { KnapsackProLogger } from './knapsack-pro-logger';
 import { TestFile } from './models';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const axiosRetry = require('axios-retry');
 
 export class KnapsackProAPI {

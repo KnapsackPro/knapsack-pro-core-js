@@ -35,6 +35,7 @@ export class CIEnvConfig {
     return this.ciEnvFor('branch');
   }
 
+  // eslint-disable-next-line consistent-return
   private static ciEnvFor(functionName: string): string | void {
     const supportedCIProviders: any[] = [
       // load GitLab CI first to avoid edge case with order of loading envs for CI_NODE_INDEX
@@ -53,6 +54,7 @@ export class CIEnvConfig {
       TravisCI,
     ];
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const ciProvider of supportedCIProviders) {
       const value = ciProvider[functionName];
       if (value) {
