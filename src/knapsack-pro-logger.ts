@@ -1,5 +1,5 @@
-import { createLogger, format, Logger, transports } from 'winston';
 import util = require('util');
+import { createLogger, format, Logger, transports } from 'winston';
 import { KnapsackProEnvConfig } from './config';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
