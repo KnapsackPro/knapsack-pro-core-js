@@ -6,7 +6,7 @@ const tsProject = ts.createProject('tsconfig.json');
 
 const paths = {
   src: [...tsProject.config.include],
-  dest: tsProject.config.compilerOptions.outDir
+  dest: tsProject.config.compilerOptions.outDir,
 };
 
 function compile() {
