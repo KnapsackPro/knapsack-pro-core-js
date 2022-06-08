@@ -4,12 +4,12 @@ import { KnapsackProEnvConfig } from './config';
 
 const { name: clientName } = require('../package.json');
 
-export class KnapsackProLogger {
+export default class KnapsackProLogger {
   public static objectInspect(object: object): string {
     return util.inspect(object, {
       showHidden: false,
       depth: null,
-      colors: true
+      colors: true,
     });
   }
 
@@ -24,10 +24,10 @@ export class KnapsackProLogger {
         format.colorize(),
         format.printf(
           ({ timestamp, label, level, message }) =>
-            `\n${timestamp} [${label}] ${level}: ${message}`
-        )
+            `\n${timestamp} [${label}] ${level}: ${message}`,
+        ),
       ),
-      transports: [new transports.Console()]
+      transports: [new transports.Console()],
     });
   }
 

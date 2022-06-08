@@ -6,7 +6,7 @@ import { TestFile } from './models';
 
 const axiosRetry = require('axios-retry');
 
-export class KnapsackProAPI {
+export default class KnapsackProAPI {
   private readonly api: AxiosInstance;
 
   private knapsackProLogger: KnapsackProLogger;
@@ -23,7 +23,7 @@ export class KnapsackProAPI {
   public fetchTestsFromQueue(
     allTestFiles: TestFile[],
     initializeQueue: boolean,
-    attemptConnectToQueue: boolean
+    attemptConnectToQueue: boolean,
   ): AxiosPromise<any> {
     const url = '/v1/queues/queue';
     const shouldSendTestFilesInPayload =
@@ -38,7 +38,7 @@ export class KnapsackProAPI {
       node_total: KnapsackProEnvConfig.ciNodeTotal,
       node_index: KnapsackProEnvConfig.ciNodeIndex,
       node_build_id: KnapsackProEnvConfig.ciNodeBuildId,
-      ...(shouldSendTestFilesInPayload && { test_files: allTestFiles })
+      ...(shouldSendTestFilesInPayload && { test_files: allTestFiles }),
     };
 
     return this.api.post(url, data);
@@ -52,7 +52,7 @@ export class KnapsackProAPI {
       branch: KnapsackProEnvConfig.branch,
       node_total: KnapsackProEnvConfig.ciNodeTotal,
       node_index: KnapsackProEnvConfig.ciNodeIndex,
-      test_files: recordedTestFiles
+      test_files: recordedTestFiles,
     };
 
     return this.api.post(url, data);
@@ -75,22 +75,22 @@ export class KnapsackProAPI {
 
   private setUpApiClient(
     clientName: string,
-    clientVersion: string
+    clientVersion: string,
   ): AxiosInstance {
     const apiClient = axios.create({
       baseURL: KnapsackProEnvConfig.endpoint,
       timeout: 15000,
       headers: {
         'KNAPSACK-PRO-CLIENT-NAME': clientName,
-        'KNAPSACK-PRO-CLIENT-VERSION': clientVersion
-      }
+        'KNAPSACK-PRO-CLIENT-VERSION': clientVersion,
+      },
     });
 
     axiosRetry(apiClient, {
       retries: 2,
       shouldResetTimeout: true,
       retryDelay: this.retryDelay,
-      retryCondition: this.retryCondition
+      retryCondition: this.retryCondition,
     });
 
     apiClient.interceptors.request.use((config) => {
@@ -108,7 +108,7 @@ export class KnapsackProAPI {
           'Request headers:\n' +
           `${requestHeaders}\n\n` +
           'Request body:\n' +
-          `${requestBody}`
+          `${requestBody}`,
       );
 
       return config;
@@ -120,7 +120,7 @@ export class KnapsackProAPI {
           status,
           statusText,
           data,
-          headers: { 'x-request-id': requestId }
+          headers: { 'x-request-id': requestId },
         } = response;
         const responeseBody = KnapsackProLogger.objectInspect(data);
 
@@ -130,7 +130,7 @@ export class KnapsackProAPI {
             'Request ID:\n' +
             `${requestId}\n\n` +
             'Response body:\n' +
-            `${responeseBody}`
+            `${responeseBody}`,
         );
 
         return response;
@@ -143,7 +143,7 @@ export class KnapsackProAPI {
             status,
             statusText,
             data,
-            headers: { 'x-request-id': requestId }
+            headers: { 'x-request-id': requestId },
           } = response;
           const responeseBody = KnapsackProLogger.objectInspect(data);
 
@@ -153,14 +153,14 @@ export class KnapsackProAPI {
               'Request ID:\n' +
               `${requestId}\n\n` +
               'Response error body:\n' +
-              `${responeseBody}`
+              `${responeseBody}`,
           );
         } else {
           this.knapsackProLogger.error(error);
         }
 
         return Promise.reject(error);
-      }
+      },
     );
 
     return apiClient;
@@ -194,7 +194,7 @@ export class KnapsackProAPI {
     const finalDelay = delay + randomSum;
 
     this.knapsackProLogger.info(
-      `(${retryCount}) Wait ${finalDelay} ms and retry request to Knapsack Pro API.`
+      `(${retryCount}) Wait ${finalDelay} ms and retry request to Knapsack Pro API.`,
     );
 
     return finalDelay;
