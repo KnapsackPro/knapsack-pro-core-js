@@ -30,6 +30,7 @@ export class FallbackTestDistributor {
   }
 
   private orderByTestPath(testFiles: TestFile[]): TestFile[] {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const sortBy = (key: string) => (a: any, b: any) =>
       // eslint-disable-next-line no-nested-ternary
       a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0;

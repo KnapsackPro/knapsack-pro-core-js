@@ -25,6 +25,7 @@ export class KnapsackProAPI {
     allTestFiles: TestFile[],
     initializeQueue: boolean,
     attemptConnectToQueue: boolean,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): AxiosPromise<any> {
     const url = '/v1/queues/queue';
     const shouldSendTestFilesInPayload =
@@ -45,6 +46,7 @@ export class KnapsackProAPI {
     return this.api.post(url, data);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public createBuildSubset(recordedTestFiles: TestFile[]): AxiosPromise<any> {
     const url = '/v1/build_subsets';
     const data = {
