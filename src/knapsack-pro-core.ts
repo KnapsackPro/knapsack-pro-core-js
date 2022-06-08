@@ -7,18 +7,21 @@ import { onQueueFailureType, onQueueSuccessType } from './types';
 
 export class KnapsackProCore {
   private knapsackProAPI: KnapsackProAPI;
+
   private knapsackProLogger: KnapsackProLogger;
 
   // test files with recorded time execution
   private recordedTestFiles: TestFile[];
+
   // list of test files in whole user's test suite
   private allTestFiles: TestFile[];
+
   private isTestSuiteGreen: boolean;
 
   constructor(
     clientName: string,
     clientVersion: string,
-    allTestFiles: TestFile[]
+    allTestFiles: TestFile[],
   ) {
     this.recordedTestFiles = [];
     this.allTestFiles = allTestFiles;
@@ -30,22 +33,24 @@ export class KnapsackProCore {
 
   public runQueueMode(
     onSuccess: onQueueSuccessType,
-    onFailure: onQueueFailureType
+    onFailure: onQueueFailureType,
   ) {
     this.fetchTestsFromQueue(true, true, onSuccess, onFailure);
   }
 
   private fetchTestsFromQueue(
+    // eslint-disable-next-line default-param-last
     initializeQueue = false,
+    // eslint-disable-next-line default-param-last
     attemptConnectToQueue = false,
     onSuccess: onQueueSuccessType,
-    onFailure: onQueueFailureType
+    onFailure: onQueueFailureType,
   ) {
     this.knapsackProAPI
       .fetchTestsFromQueue(
         this.allTestFiles,
         initializeQueue,
-        attemptConnectToQueue
+        attemptConnectToQueue,
       )
       .then((response) => {
         const apiCode: QueueApiResponseCodes = response.data.code;
@@ -67,7 +72,7 @@ export class KnapsackProCore {
           ({ recordedTestFiles, isTestSuiteGreen }) => {
             this.updateRecordedTestFiles(recordedTestFiles, isTestSuiteGreen);
             this.fetchTestsFromQueue(false, false, onSuccess, onFailure);
-          }
+          },
         );
       })
       .catch((error) => {
@@ -76,32 +81,31 @@ export class KnapsackProCore {
           // this should prevent from running tests in Fallback Mode
           process.exitCode = 1;
           throw new Error(
-            'Knapsack Pro API returned an error. See the above logs.'
+            'Knapsack Pro API returned an error. See the above logs.',
           );
         }
 
         onFailure(error);
 
         this.knapsackProLogger.warn(
-          // tslint:disable-next-line:max-line-length
-          'Fallback Mode has started. We could not connect to Knapsack Pro API. Your tests will be executed based on test file names.\n\nIf other CI nodes were able to connect to Knapsack Pro API then you may notice that some of the test files were executed twice across CI nodes. Fallback Mode guarantees each of test files is run at least once as a part of CI build.'
+          'Fallback Mode has started. We could not connect to Knapsack Pro API. Your tests will be executed based on test file names.\n\nIf other CI nodes were able to connect to Knapsack Pro API then you may notice that some of the test files were executed twice across CI nodes. Fallback Mode guarantees each of test files is run at least once as a part of CI build.',
         );
 
         const fallbackTestDistributor = new FallbackTestDistributor(
           this.allTestFiles,
-          this.recordedTestFiles
+          this.recordedTestFiles,
         );
         const testFiles = fallbackTestDistributor.testFilesForCiNode();
 
         const executedTestFiles = KnapsackProLogger.objectInspect(
-          this.recordedTestFiles
+          this.recordedTestFiles,
         );
         this.knapsackProLogger.debug(
-          `Test files already executed:\n${executedTestFiles}`
+          `Test files already executed:\n${executedTestFiles}`,
         );
         const inspectedTestFiles = KnapsackProLogger.objectInspect(testFiles);
         this.knapsackProLogger.debug(
-          `Test files to be run in Fallback Mode:\n${inspectedTestFiles}`
+          `Test files to be run in Fallback Mode:\n${inspectedTestFiles}`,
         );
 
         onSuccess(testFiles).then(({ recordedTestFiles, isTestSuiteGreen }) => {
@@ -113,7 +117,7 @@ export class KnapsackProCore {
 
   private updateRecordedTestFiles(
     recordedTestFiles: TestFile[],
-    isTestSuiteGreen: boolean
+    isTestSuiteGreen: boolean,
   ) {
     this.recordedTestFiles = this.recordedTestFiles.concat(recordedTestFiles);
     this.isTestSuiteGreen = this.isTestSuiteGreen && isTestSuiteGreen;
@@ -126,9 +130,10 @@ export class KnapsackProCore {
 
   // saves recorded timing for tests executed on single CI node
   private createBuildSubset(testFiles: TestFile[]) {
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
     this.knapsackProAPI.createBuildSubset(testFiles).catch((error) => {
       this.knapsackProLogger.error(
-        'Could not save recorded timing of tests due to failed request to Knapsack Pro API.'
+        'Could not save recorded timing of tests due to failed request to Knapsack Pro API.',
       );
     });
   }

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { FallbackTestDistributor } from '../src/fallback-test-distributor';
 import { TestFile } from '../src/models';
 
@@ -18,7 +19,7 @@ describe('FallbackTestDistributor', () => {
         const fallbackTestDistributor = new FallbackTestDistributor(
           allTestFiles,
           executedTestFiles,
-          ciNodeTotal
+          ciNodeTotal,
         );
 
         const expectedTestFilesForCiNode0: TestFile[] = [
@@ -27,7 +28,7 @@ describe('FallbackTestDistributor', () => {
           { path: 'e.spec.js' },
         ];
         expect(fallbackTestDistributor.testFilesForCiNode(0)).toEqual(
-          expectedTestFilesForCiNode0
+          expectedTestFilesForCiNode0,
         );
 
         const expectedTestFilesForCiNode1: TestFile[] = [
@@ -35,7 +36,7 @@ describe('FallbackTestDistributor', () => {
           { path: 'd.spec.js' },
         ];
         expect(fallbackTestDistributor.testFilesForCiNode(1)).toEqual(
-          expectedTestFilesForCiNode1
+          expectedTestFilesForCiNode1,
         );
       });
     });
@@ -55,7 +56,7 @@ describe('FallbackTestDistributor', () => {
         const fallbackTestDistributor = new FallbackTestDistributor(
           allTestFiles,
           executedTestFiles,
-          ciNodeTotal
+          ciNodeTotal,
         );
 
         const expectedTestFilesForCiNode0: TestFile[] = [
@@ -64,7 +65,7 @@ describe('FallbackTestDistributor', () => {
           { path: 'e.spec.js' },
         ];
         expect(fallbackTestDistributor.testFilesForCiNode(0)).toEqual(
-          expectedTestFilesForCiNode0
+          expectedTestFilesForCiNode0,
         );
 
         const expectedTestFilesForCiNode1: TestFile[] = [
@@ -72,7 +73,7 @@ describe('FallbackTestDistributor', () => {
           { path: 'd.spec.js' },
         ];
         expect(fallbackTestDistributor.testFilesForCiNode(1)).toEqual(
-          expectedTestFilesForCiNode1
+          expectedTestFilesForCiNode1,
         );
       });
     });
@@ -96,17 +97,17 @@ describe('FallbackTestDistributor', () => {
         const fallbackTestDistributor = new FallbackTestDistributor(
           allTestFiles,
           executedTestFiles,
-          ciNodeTotal
+          ciNodeTotal,
         );
 
         const expectedTestFilesForCiNode0: TestFile[] = [{ path: 'c.spec.js' }];
         expect(fallbackTestDistributor.testFilesForCiNode(0)).toEqual(
-          expectedTestFilesForCiNode0
+          expectedTestFilesForCiNode0,
         );
 
         const expectedTestFilesForCiNode1: TestFile[] = [{ path: 'b.spec.js' }];
         expect(fallbackTestDistributor.testFilesForCiNode(1)).toEqual(
-          expectedTestFilesForCiNode1
+          expectedTestFilesForCiNode1,
         );
       });
     });

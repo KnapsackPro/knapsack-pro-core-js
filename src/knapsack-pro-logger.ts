@@ -1,8 +1,8 @@
 import util = require('util');
 import { createLogger, format, Logger, transports } from 'winston';
-
 import { KnapsackProEnvConfig } from './config';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { name: clientName } = require('../package.json');
 
 export class KnapsackProLogger {
@@ -25,8 +25,8 @@ export class KnapsackProLogger {
         format.colorize(),
         format.printf(
           ({ timestamp, label, level, message }) =>
-            `\n${timestamp} [${label}] ${level}: ${message}`
-        )
+            `\n${timestamp} [${label}] ${level}: ${message}`,
+        ),
       ),
       transports: [new transports.Console()],
     });

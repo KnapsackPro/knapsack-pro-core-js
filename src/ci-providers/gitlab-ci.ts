@@ -5,6 +5,7 @@ export class GitlabCI extends CIProviderBase {
     return process.env.CI_NODE_TOTAL;
   }
 
+  // eslint-disable-next-line getter-return, consistent-return
   public static get ciNodeIndex(): string | void {
     if (process.env.GITLAB_CI) {
       const index = process.env.CI_NODE_INDEX; // GitLab >= 11.5

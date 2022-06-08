@@ -5,6 +5,7 @@ export class SemaphoreCI2 extends CIProviderBase {
     return process.env.SEMAPHORE_JOB_COUNT;
   }
 
+  // eslint-disable-next-line getter-return, consistent-return
   public static get ciNodeIndex(): string | void {
     const jobIndex = process.env.SEMAPHORE_JOB_INDEX;
 
