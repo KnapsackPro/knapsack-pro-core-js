@@ -17,6 +17,7 @@
     "no-process-exit": "off",
     "object-shorthand": "off",
     "class-methods-use-this": "off",
-    "comma-dangle": ["error"]
+    "comma-dangle": ["error"],
+    "import/prefer-default-export": "off"
   }
 }

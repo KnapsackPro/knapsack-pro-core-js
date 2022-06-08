@@ -6,7 +6,7 @@ import { TestFile } from './models';
 
 const axiosRetry = require('axios-retry');
 
-export default class KnapsackProAPI {
+export class KnapsackProAPI {
   private readonly api: AxiosInstance;
 
   private knapsackProLogger: KnapsackProLogger;

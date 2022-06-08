@@ -4,7 +4,7 @@ import { KnapsackProEnvConfig } from './config';
 
 const { name: clientName } = require('../package.json');
 
-export default class KnapsackProLogger {
+export class KnapsackProLogger {
   public static objectInspect(object: object): string {
     return util.inspect(object, {
       showHidden: false,
