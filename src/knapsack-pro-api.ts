@@ -103,7 +103,6 @@ export class KnapsackProAPI {
 
       this.knapsackProLogger.info(`${method.toUpperCase()} ${apiUrl}`);
       this.knapsackProLogger.debug(
-        // tslint:disable-next-line:prefer-template
         `${method.toUpperCase()} ${apiUrl}\n\n` +
           'Request headers:\n' +
           `${requestHeaders}\n\n` +
@@ -125,7 +124,6 @@ export class KnapsackProAPI {
         const responeseBody = KnapsackProLogger.objectInspect(data);
 
         this.knapsackProLogger.info(
-          // tslint:disable-next-line:prefer-template
           `${status} ${statusText}\n\n` +
             'Request ID:\n' +
             `${requestId}\n\n` +
@@ -148,7 +146,6 @@ export class KnapsackProAPI {
           const responeseBody = KnapsackProLogger.objectInspect(data);
 
           this.knapsackProLogger.error(
-            // tslint:disable-next-line:prefer-template
             `${status} ${statusText}\n\n` +
               'Request ID:\n' +
               `${requestId}\n\n` +

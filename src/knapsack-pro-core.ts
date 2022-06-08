@@ -86,7 +86,6 @@ export class KnapsackProCore {
         onFailure(error);
 
         this.knapsackProLogger.warn(
-          // tslint:disable-next-line:max-line-length
           'Fallback Mode has started. We could not connect to Knapsack Pro API. Your tests will be executed based on test file names.\n\nIf other CI nodes were able to connect to Knapsack Pro API then you may notice that some of the test files were executed twice across CI nodes. Fallback Mode guarantees each of test files is run at least once as a part of CI build.',
         );
 
