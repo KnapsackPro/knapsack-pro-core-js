@@ -11,7 +11,7 @@ import {
   SemaphoreCI,
   SemaphoreCI2,
   SolanoCI,
-  TravisCI,
+  TravisCI
 } from '../ci-providers';
 
 export class CIEnvConfig {
@@ -50,7 +50,7 @@ export class CIEnvConfig {
       SemaphoreCI,
       SemaphoreCI2,
       SolanoCI,
-      TravisCI,
+      TravisCI
     ];
 
     for (const ciProvider of supportedCIProviders) {

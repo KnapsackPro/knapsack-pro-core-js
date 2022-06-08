@@ -30,7 +30,7 @@ export class KnapsackProEnvConfig {
 
     throw new Error(
       `Please set test suite API token in CI environment variables.
-      Please check README for the Knapsack Pro client library.`,
+      Please check README for the Knapsack Pro client library.`
     );
   }
 
@@ -56,7 +56,7 @@ export class KnapsackProEnvConfig {
 
     throw new Error(
       // tslint:disable-next-line:max-line-length
-      'Undefined number of total CI nodes! Please set KNAPSACK_PRO_CI_NODE_TOTAL environment variable.',
+      'Undefined number of total CI nodes! Please set KNAPSACK_PRO_CI_NODE_TOTAL environment variable.'
     );
   }
 
@@ -71,7 +71,7 @@ export class KnapsackProEnvConfig {
     }
 
     throw new Error(
-      'Undefined CI node index! Please set KNAPSACK_PRO_CI_NODE_INDEX environment variable.',
+      'Undefined CI node index! Please set KNAPSACK_PRO_CI_NODE_INDEX environment variable.'
     );
   }
 
@@ -93,13 +93,13 @@ export class KnapsackProEnvConfig {
 
     knapsackProLogger.warn(
       // tslint:disable-next-line:prefer-template
-      'CI node build ID not detected! Your tests will run anyway.\n\n'
+      'CI node build ID not detected! Your tests will run anyway.\n\n' +
         // tslint:disable-next-line:max-line-length
-        + 'If you want to be able to run more than one CI build at the same time for exactly the same commit hash, branch name and number of parallel CI nodes then you have to set unique KNAPSACK_PRO_CI_NODE_BUILD_ID environment variable.\n\n'
+        'If you want to be able to run more than one CI build at the same time for exactly the same commit hash, branch name and number of parallel CI nodes then you have to set unique KNAPSACK_PRO_CI_NODE_BUILD_ID environment variable.\n\n' +
         // tslint:disable-next-line:max-line-length
-        + 'For instance you can generate KNAPSACK_PRO_CI_NODE_BUILD_ID=$(openssl rand - base64 32)\n\n'
+        'For instance you can generate KNAPSACK_PRO_CI_NODE_BUILD_ID=$(openssl rand - base64 32)\n\n' +
         // tslint:disable-next-line:max-line-length
-        + 'Please ensure KNAPSACK_PRO_CI_NODE_BUILD_ID has the same value for all parallel CI nodes being part of the single CI build. Thanks to that the parallel nodes will consume tests from the same Queue.',
+        'Please ensure KNAPSACK_PRO_CI_NODE_BUILD_ID has the same value for all parallel CI nodes being part of the single CI build. Thanks to that the parallel nodes will consume tests from the same Queue.'
     );
 
     return process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID;
@@ -129,18 +129,18 @@ export class KnapsackProEnvConfig {
       // for instance when git command does not exist on the machine
       knapsackProLogger.error(
         // tslint:disable-next-line:max-line-length
-        'We tried to detect commit hash using git but it failed. Please ensure you have have git installed or set KNAPSACK_PRO_COMMIT_HASH environment variable.',
+        'We tried to detect commit hash using git but it failed. Please ensure you have have git installed or set KNAPSACK_PRO_COMMIT_HASH environment variable.'
       );
     } else {
       const gitErrorMessage = gitProcess.stderr.toString();
       knapsackProLogger.error(
-        'There was error in detecting commit hash using git installed on the machine:',
+        'There was error in detecting commit hash using git installed on the machine:'
       );
       knapsackProLogger.error(gitErrorMessage);
     }
 
     throw new Error(
-      'Undefined commit hash! Please set KNAPSACK_PRO_COMMIT_HASH environment variable.',
+      'Undefined commit hash! Please set KNAPSACK_PRO_COMMIT_HASH environment variable.'
     );
   }
 
@@ -168,18 +168,18 @@ export class KnapsackProEnvConfig {
       // for instance when git command does not exist on the machine
       knapsackProLogger.error(
         // tslint:disable-next-line:max-line-length
-        'We tried to detect branch name using git but it failed. Please ensure you have have git installed or set KNAPSACK_PRO_BRANCH environment variable.',
+        'We tried to detect branch name using git but it failed. Please ensure you have have git installed or set KNAPSACK_PRO_BRANCH environment variable.'
       );
     } else {
       const gitErrorMessage = gitProcess.stderr.toString();
       knapsackProLogger.error(
-        'There was error in detecting branch name using git installed on the machine:',
+        'There was error in detecting branch name using git installed on the machine:'
       );
       knapsackProLogger.error(gitErrorMessage);
     }
 
     throw new Error(
-      'Undefined branch name! Please set KNAPSACK_PRO_BRANCH environment variable.',
+      'Undefined branch name! Please set KNAPSACK_PRO_BRANCH environment variable.'
     );
   }
 

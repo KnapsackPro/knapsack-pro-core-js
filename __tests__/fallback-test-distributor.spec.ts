@@ -10,7 +10,7 @@ describe('FallbackTestDistributor', () => {
           { path: 'b.spec.js' },
           { path: 'c.spec.js' },
           { path: 'd.spec.js' },
-          { path: 'e.spec.js' },
+          { path: 'e.spec.js' }
         ];
         const executedTestFiles: TestFile[] = [];
         const ciNodeTotal = 2;
@@ -18,24 +18,24 @@ describe('FallbackTestDistributor', () => {
         const fallbackTestDistributor = new FallbackTestDistributor(
           allTestFiles,
           executedTestFiles,
-          ciNodeTotal,
+          ciNodeTotal
         );
 
         const expectedTestFilesForCiNode0: TestFile[] = [
           { path: 'a.spec.js' },
           { path: 'c.spec.js' },
-          { path: 'e.spec.js' },
+          { path: 'e.spec.js' }
         ];
         expect(fallbackTestDistributor.testFilesForCiNode(0)).toEqual(
-          expectedTestFilesForCiNode0,
+          expectedTestFilesForCiNode0
         );
 
         const expectedTestFilesForCiNode1: TestFile[] = [
           { path: 'b.spec.js' },
-          { path: 'd.spec.js' },
+          { path: 'd.spec.js' }
         ];
         expect(fallbackTestDistributor.testFilesForCiNode(1)).toEqual(
-          expectedTestFilesForCiNode1,
+          expectedTestFilesForCiNode1
         );
       });
     });
@@ -47,7 +47,7 @@ describe('FallbackTestDistributor', () => {
           { path: 'a.spec.js' },
           { path: 'e.spec.js' },
           { path: 'd.spec.js' },
-          { path: 'c.spec.js' },
+          { path: 'c.spec.js' }
         ];
         const executedTestFiles: TestFile[] = [];
         const ciNodeTotal = 2;
@@ -55,24 +55,24 @@ describe('FallbackTestDistributor', () => {
         const fallbackTestDistributor = new FallbackTestDistributor(
           allTestFiles,
           executedTestFiles,
-          ciNodeTotal,
+          ciNodeTotal
         );
 
         const expectedTestFilesForCiNode0: TestFile[] = [
           { path: 'a.spec.js' },
           { path: 'c.spec.js' },
-          { path: 'e.spec.js' },
+          { path: 'e.spec.js' }
         ];
         expect(fallbackTestDistributor.testFilesForCiNode(0)).toEqual(
-          expectedTestFilesForCiNode0,
+          expectedTestFilesForCiNode0
         );
 
         const expectedTestFilesForCiNode1: TestFile[] = [
           { path: 'b.spec.js' },
-          { path: 'd.spec.js' },
+          { path: 'd.spec.js' }
         ];
         expect(fallbackTestDistributor.testFilesForCiNode(1)).toEqual(
-          expectedTestFilesForCiNode1,
+          expectedTestFilesForCiNode1
         );
       });
     });
@@ -84,29 +84,29 @@ describe('FallbackTestDistributor', () => {
           { path: 'b.spec.js' },
           { path: 'c.spec.js' },
           { path: 'd.spec.js' },
-          { path: 'e.spec.js' },
+          { path: 'e.spec.js' }
         ];
         const executedTestFiles: TestFile[] = [
           { path: 'a.spec.js', time_execution: 0.1 },
           { path: 'd.spec.js', time_execution: 0.2 },
-          { path: 'e.spec.js', time_execution: 0.3 },
+          { path: 'e.spec.js', time_execution: 0.3 }
         ];
         const ciNodeTotal = 2;
 
         const fallbackTestDistributor = new FallbackTestDistributor(
           allTestFiles,
           executedTestFiles,
-          ciNodeTotal,
+          ciNodeTotal
         );
 
         const expectedTestFilesForCiNode0: TestFile[] = [{ path: 'c.spec.js' }];
         expect(fallbackTestDistributor.testFilesForCiNode(0)).toEqual(
-          expectedTestFilesForCiNode0,
+          expectedTestFilesForCiNode0
         );
 
         const expectedTestFilesForCiNode1: TestFile[] = [{ path: 'b.spec.js' }];
         expect(fallbackTestDistributor.testFilesForCiNode(1)).toEqual(
-          expectedTestFilesForCiNode1,
+          expectedTestFilesForCiNode1
         );
       });
     });
