@@ -68,7 +68,7 @@ You can use [NVM](https://github.com/nvm-sh/nvm) to manage Node version in devel
 
        Turn on `Format On Save` checkbox.
 
-   From now on every change in code base will be automatically formatted by [Prettier](https://prettier.io/). [ESLint](https://eslint.org/) automatically fixes errors on every file save.
+   From now on, every change in code base will be automatically formatted by [Prettier](https://prettier.io/). [ESLint](https://eslint.org/) shows errors and warnings in VSCode.
 
 5. Write some code.
 
