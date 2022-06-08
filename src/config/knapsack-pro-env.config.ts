@@ -55,7 +55,6 @@ export class KnapsackProEnvConfig {
     }
 
     throw new Error(
-      // tslint:disable-next-line:max-line-length
       'Undefined number of total CI nodes! Please set KNAPSACK_PRO_CI_NODE_TOTAL environment variable.',
     );
   }
@@ -92,13 +91,9 @@ export class KnapsackProEnvConfig {
     process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID = knapsackProMissingBuildIdKey;
 
     knapsackProLogger.warn(
-      // tslint:disable-next-line:prefer-template
       'CI node build ID not detected! Your tests will run anyway.\n\n' +
-        // tslint:disable-next-line:max-line-length
         'If you want to be able to run more than one CI build at the same time for exactly the same commit hash, branch name and number of parallel CI nodes then you have to set unique KNAPSACK_PRO_CI_NODE_BUILD_ID environment variable.\n\n' +
-        // tslint:disable-next-line:max-line-length
         'For instance you can generate KNAPSACK_PRO_CI_NODE_BUILD_ID=$(openssl rand - base64 32)\n\n' +
-        // tslint:disable-next-line:max-line-length
         'Please ensure KNAPSACK_PRO_CI_NODE_BUILD_ID has the same value for all parallel CI nodes being part of the single CI build. Thanks to that the parallel nodes will consume tests from the same Queue.',
     );
 
@@ -128,7 +123,6 @@ export class KnapsackProEnvConfig {
       // gitProcess may fail with stderr null,
       // for instance when git command does not exist on the machine
       knapsackProLogger.error(
-        // tslint:disable-next-line:max-line-length
         'We tried to detect commit hash using git but it failed. Please ensure you have have git installed or set KNAPSACK_PRO_COMMIT_HASH environment variable.',
       );
     } else {
@@ -167,7 +161,6 @@ export class KnapsackProEnvConfig {
       // gitProcess may fail with stderr null,
       // for instance when git command does not exist on the machine
       knapsackProLogger.error(
-        // tslint:disable-next-line:max-line-length
         'We tried to detect branch name using git but it failed. Please ensure you have have git installed or set KNAPSACK_PRO_BRANCH environment variable.',
       );
     } else {
