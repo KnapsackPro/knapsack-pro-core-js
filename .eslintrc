@@ -18,6 +18,8 @@
     "object-shorthand": "off",
     "class-methods-use-this": "off",
     "comma-dangle": ["error"],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off"
   }
 }
