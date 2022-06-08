@@ -32,7 +32,7 @@
     "eslint:check": "eslint . --ext .ts",
     "eslint:format": "eslint . --ext .ts --fix",
     "prettier:check": "prettier --check .",
-    "prettier:format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "prettier:format": "prettier --config .prettierrc.json 'src/**/*.ts' --write",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
