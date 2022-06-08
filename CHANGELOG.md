@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+## [v3.2.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v3.2.0) (2022-06-08)
 
-[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.1.1...HEAD)
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.1.1...v3.2.0)
 
 **Merged pull requests:**
 
