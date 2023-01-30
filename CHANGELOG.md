@@ -1,5 +1,15 @@
 # Changelog
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.3.0...HEAD)
+
+**Merged pull requests:**
+
+- Bump yargs-parser and yargs [\#63](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/63) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump json5 from 1.0.1 to 1.0.2 [\#61](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump decode-uri-component from 0.2.0 to 0.2.2 [\#60](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v3.3.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v3.3.0) (2023-01-30)
 
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.2.0...v3.3.0)
