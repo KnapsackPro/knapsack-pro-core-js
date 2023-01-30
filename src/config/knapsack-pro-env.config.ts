@@ -179,4 +179,8 @@ export class KnapsackProEnvConfig {
   public static get logLevel(): string {
     return logLevel();
   }
+
+  public static get testFileListSourceFile(): string | void {
+    return process.env.KNAPSACK_PRO_TEST_FILE_LIST_SOURCE_FILE;
+  }
 }
