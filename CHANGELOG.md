@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.2.0...HEAD)
+
+**Implemented enhancements:**
+
+- Add support for `KNAPSACK_PRO_TEST_FILE_LIST_SOURCE_FILE` to specify the set of test files to run [\#62](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/62) ([ArturT](https://github.com/ArturT))
+
 ## [v3.2.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v3.2.0) (2022-06-08)
 
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.1.1...v3.2.0)
