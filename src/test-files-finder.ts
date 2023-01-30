@@ -13,7 +13,7 @@ export class TestFilesFinder {
 
     const knapsackProLogger = new KnapsackProLogger();
     knapsackProLogger.debug(
-      `The KNAPSACK_PRO_TEST_FILE_LIST_SOURCE_FILE environment variable is defined. You will execute test files based on a list of test files from a file: ${KnapsackProEnvConfig.testFileListSourceFile}.`,
+      `The KNAPSACK_PRO_TEST_FILE_LIST_SOURCE_FILE environment variable is defined. Knapsack will execute test files based on a list of test files from a file: ${KnapsackProEnvConfig.testFileListSourceFile}.`,
     );
 
     const allFileContents = fs.readFileSync(
