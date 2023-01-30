@@ -2,6 +2,7 @@ import { KnapsackProAPI } from './knapsack-pro-api';
 import { QueueApiResponseCodes } from './api-response-codes';
 import { KnapsackProLogger } from './knapsack-pro-logger';
 import { FallbackTestDistributor } from './fallback-test-distributor';
+import { TestFilesFinder } from './test-files-finder';
 import { TestFile } from './models';
 import { onQueueFailureType, onQueueSuccessType } from './types';
 
@@ -24,7 +25,8 @@ export class KnapsackProCore {
     allTestFiles: TestFile[],
   ) {
     this.recordedTestFiles = [];
-    this.allTestFiles = allTestFiles;
+    this.allTestFiles =
+      TestFilesFinder.testFilesFromSourceFile() ?? allTestFiles;
 
     this.knapsackProAPI = new KnapsackProAPI(clientName, clientVersion);
     this.knapsackProLogger = new KnapsackProLogger();
