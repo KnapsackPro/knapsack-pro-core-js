@@ -1,4 +1,5 @@
 import { KnapsackProEnvConfig } from './config';
+import { KnapsackProLogger } from './knapsack-pro-logger';
 import { TestFile } from './models';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -9,6 +10,11 @@ export class TestFilesFinder {
     if (!KnapsackProEnvConfig.testFileListSourceFile) {
       return null;
     }
+
+    const knapsackProLogger = new KnapsackProLogger();
+    knapsackProLogger.debug(
+      `The KNAPSACK_PRO_TEST_FILE_LIST_SOURCE_FILE environment variable is defined. You will execute test files based on a list of test files from a file: ${KnapsackProEnvConfig.testFileListSourceFile}.`,
+    );
 
     const allFileContents = fs.readFileSync(
       KnapsackProEnvConfig.testFileListSourceFile,
