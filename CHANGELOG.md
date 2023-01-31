@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/HEAD)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.3.1...HEAD)
+
+**Fixed bugs:**
+
+- fix\(feature\): When the test file list source file is defined, then don't scan the disk for test files in the default location [\#64](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/64) ([ArturT](https://github.com/ArturT))
+
 ## [v3.3.1](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v3.3.1) (2023-01-30)
 
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v3.3.0...v3.3.1)
