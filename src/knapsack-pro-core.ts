@@ -4,7 +4,11 @@ import { KnapsackProLogger } from './knapsack-pro-logger';
 import { FallbackTestDistributor } from './fallback-test-distributor';
 import { TestFilesFinder } from './test-files-finder';
 import { TestFile } from './models';
-import { onQueueFailureType, onQueueSuccessType } from './types';
+import {
+  onQueueFailureType,
+  onQueueSuccessType,
+  testFilesToExecuteType,
+} from './types';
 
 export class KnapsackProCore {
   private knapsackProAPI: KnapsackProAPI;
@@ -22,11 +26,11 @@ export class KnapsackProCore {
   constructor(
     clientName: string,
     clientVersion: string,
-    allTestFiles: TestFile[],
+    testFilesToExecute: testFilesToExecuteType,
   ) {
     this.recordedTestFiles = [];
     this.allTestFiles =
-      TestFilesFinder.testFilesFromSourceFile() ?? allTestFiles;
+      TestFilesFinder.testFilesFromSourceFile() ?? testFilesToExecute();
 
     this.knapsackProAPI = new KnapsackProAPI(clientName, clientVersion);
     this.knapsackProLogger = new KnapsackProLogger();
