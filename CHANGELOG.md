@@ -6,7 +6,7 @@
 
 **Fixed bugs:**
 
-- fix\(feature\): When the test file list source file is defined, then don't scan the disk for test files in the default location [\#64](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/64) ([ArturT](https://github.com/ArturT))
+- \[breaking change\] fix\(feature\): When the test file list source file is defined, then don't scan the disk for test files in the default location [\#64](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/64) ([ArturT](https://github.com/ArturT))
 
 ## [v3.3.1](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v3.3.1) (2023-01-30)
 
