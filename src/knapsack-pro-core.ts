@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { KnapsackProAPI } from './knapsack-pro-api';
 import { QueueApiResponseCodes } from './api-response-codes';
 import { KnapsackProLogger } from './knapsack-pro-logger';
@@ -41,6 +42,9 @@ export class KnapsackProCore {
     onSuccess: onQueueSuccessType,
     onFailure: onQueueFailureType,
   ) {
+    const val = this.sha256('test');
+    this.knapsackProLogger.info('### TEST 2');
+    this.knapsackProLogger.info(val);
     this.fetchTestsFromQueue(true, true, onSuccess, onFailure);
   }
 
@@ -142,5 +146,9 @@ export class KnapsackProCore {
         'Could not save recorded timing of tests due to failed request to Knapsack Pro API.',
       );
     });
+  }
+
+  private sha256(content: string) {
+    return createHash('sha256').update(content).digest('hex');
   }
 }
