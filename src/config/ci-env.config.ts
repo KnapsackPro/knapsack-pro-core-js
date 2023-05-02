@@ -10,7 +10,6 @@ import {
   HerokuCI,
   SemaphoreCI,
   SemaphoreCI2,
-  SolanoCI,
   TravisCI,
 } from '../ci-providers';
 
@@ -51,7 +50,6 @@ export class CIEnvConfig {
       HerokuCI,
       SemaphoreCI,
       SemaphoreCI2,
-      SolanoCI,
       TravisCI,
     ];
 

@@ -10,5 +10,4 @@ export * from './gitlab-ci';
 export * from './heroku-ci';
 export * from './semaphore-ci';
 export * from './semaphore-ci-2';
-export * from './solano-ci';
 export * from './travis-ci';
