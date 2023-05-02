@@ -20,4 +20,8 @@ export class TravisCI extends CIProviderBase {
   public static get branch(): string | void {
     return process.env.TRAVIS_BRANCH;
   }
+
+  public static get userSeat(): void {
+    return undefined;
+  }
 }

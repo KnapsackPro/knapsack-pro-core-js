@@ -20,4 +20,10 @@ export class Buildkite extends CIProviderBase {
   public static get branch(): string | void {
     return process.env.BUILDKITE_BRANCH;
   }
+
+  public static get userSeat(): string | void {
+    return (
+      process.env.BUILDKITE_BUILD_AUTHOR || process.env.BUILDKITE_BUILD_CREATOR
+    );
+  }
 }

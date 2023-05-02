@@ -20,4 +20,8 @@ export class CircleCI extends CIProviderBase {
   public static get branch(): string | void {
     return process.env.CIRCLE_BRANCH;
   }
+
+  public static get userSeat(): string | void {
+    return process.env.CIRCLE_USERNAME || process.env.CIRCLE_PR_USERNAME;
+  }
 }

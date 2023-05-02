@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import childProcess = require('child_process');
 import { CIEnvConfig } from '.';
 import { KnapsackProLogger } from '../knapsack-pro-logger';
@@ -182,5 +183,22 @@ export class KnapsackProEnvConfig {
 
   public static get testFileListSourceFile(): string | void {
     return process.env.KNAPSACK_PRO_TEST_FILE_LIST_SOURCE_FILE;
+  }
+
+  public static get userSeatHash(): string | void {
+    if (process.env.KNAPSACK_PRO_USER_SEAT) {
+      return this.sha256(process.env.KNAPSACK_PRO_USER_SEAT);
+    }
+
+    const { userSeat } = CIEnvConfig;
+    if (userSeat) {
+      return this.sha256(userSeat);
+    }
+
+    return undefined;
+  }
+
+  private static sha256(content: string) {
+    return createHash('sha256').update(content).digest('hex');
   }
 }

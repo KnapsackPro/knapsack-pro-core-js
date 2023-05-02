@@ -26,4 +26,8 @@ export class GithubActions extends CIProviderBase {
     // If neither a branch or tag is available for the event type, the variable will not exist.
     return process.env.GITHUB_REF || process.env.GITHUB_SHA;
   }
+
+  public static get userSeat(): string | void {
+    return process.env.GITHUB_ACTOR;
+  }
 }

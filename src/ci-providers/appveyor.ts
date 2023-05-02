@@ -21,4 +21,8 @@ export class AppVeyor extends CIProviderBase {
   public static get branch(): string | void {
     return process.env.APPVEYOR_REPO_BRANCH;
   }
+
+  public static get userSeat(): void {
+    return undefined;
+  }
 }

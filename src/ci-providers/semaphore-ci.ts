@@ -25,4 +25,8 @@ export class SemaphoreCI extends CIProviderBase {
   public static get branch(): string | void {
     return process.env.BRANCH_NAME;
   }
+
+  public static get userSeat(): void {
+    return undefined;
+  }
 }
