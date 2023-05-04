@@ -34,6 +34,10 @@ export class CIEnvConfig {
     return this.ciEnvFor('branch');
   }
 
+  public static get userSeat(): string | void {
+    return this.ciEnvFor('userSeat');
+  }
+
   // eslint-disable-next-line consistent-return
   private static ciEnvFor(functionName: string): string | void {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

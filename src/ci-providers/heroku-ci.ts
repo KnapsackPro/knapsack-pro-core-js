@@ -20,4 +20,8 @@ export class HerokuCI extends CIProviderBase {
   public static get branch(): string | void {
     return process.env.HEROKU_TEST_RUN_BRANCH;
   }
+
+  public static get userSeat(): void {
+    return undefined;
+  }
 }

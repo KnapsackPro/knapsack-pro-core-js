@@ -18,4 +18,8 @@ export abstract class CIProviderBase {
   public static get branch(): string | void {
     throw new Error('branch getter is not implemented!');
   }
+
+  public static get userSeat(): string | void {
+    throw new Error('userSeat getter is not implemented!');
+  }
 }

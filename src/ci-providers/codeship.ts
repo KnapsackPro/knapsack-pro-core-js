@@ -20,4 +20,8 @@ export class Codeship extends CIProviderBase {
   public static get branch(): string | void {
     return process.env.CI_BRANCH;
   }
+
+  public static get userSeat(): void {
+    return undefined;
+  }
 }
