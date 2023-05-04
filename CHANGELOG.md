@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v4.0.0...HEAD)
 
+**Implemented enhancements:**
+
+- Send distinguishable user seat info over to the API [\#65](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/65) ([ArturT](https://github.com/ArturT))
+
 **Merged pull requests:**
 
 - Remove Solano CI support because Solano does not exist anymore [\#66](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/66) ([ArturT](https://github.com/ArturT))
