@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import childProcess = require('child_process');
 import { CIEnvConfig } from '.';
 import { KnapsackProLogger } from '../knapsack-pro-logger';
+import * as Urls from '../urls';
 
 const { spawnSync } = childProcess;
 
@@ -85,20 +86,9 @@ export class KnapsackProEnvConfig {
       return ciNodeBuildId;
     }
 
-    // this is key known to Knapsack Pro API, do not change it!
-    const knapsackProMissingBuildIdKey = 'missing-build-id';
-
-    // set env variable so next function call won't show information about missing build ID
-    process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID = knapsackProMissingBuildIdKey;
-
-    knapsackProLogger.warn(
-      'CI node build ID not detected! Your tests will run anyway.\n\n' +
-        'If you want to be able to run more than one CI build at the same time for exactly the same commit hash, branch name and number of parallel CI nodes then you have to set unique KNAPSACK_PRO_CI_NODE_BUILD_ID environment variable.\n\n' +
-        'For instance you can generate KNAPSACK_PRO_CI_NODE_BUILD_ID=$(openssl rand - base64 32)\n\n' +
-        'Please ensure KNAPSACK_PRO_CI_NODE_BUILD_ID has the same value for all parallel CI nodes being part of the single CI build. Thanks to that the parallel nodes will consume tests from the same Queue.',
+    throw new Error(
+      `Missing environment variable KNAPSACK_PRO_CI_NODE_BUILD_ID. Read more at ${Urls.KNAPSACK_PRO_CI_NODE_BUILD_ID}`,
     );
-
-    return process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID;
   }
 
   public static get commitHash(): string | never {
