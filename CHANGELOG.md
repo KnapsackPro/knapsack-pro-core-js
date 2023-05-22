@@ -1,5 +1,13 @@
 # Changelog
 
+## [v5.0.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v5.0.0) (2023-05-22)
+
+[Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v4.1.0...v5.0.0)
+
+**Merged pull requests:**
+
+- \[breaking change\] feat: KNAPSACK\_PRO\_CI\_NODE\_BUILD\_ID required [\#67](https://github.com/KnapsackPro/knapsack-pro-core-js/pull/67) ([3v0k4](https://github.com/3v0k4))
+
 ## [v4.1.0](https://github.com/KnapsackPro/knapsack-pro-core-js/tree/v4.1.0) (2023-05-04)
 
 [Full Changelog](https://github.com/KnapsackPro/knapsack-pro-core-js/compare/v4.0.0...v4.1.0)
