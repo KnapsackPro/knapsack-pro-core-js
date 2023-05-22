@@ -29,7 +29,7 @@ describe('KnapsackProEnvConfig', () => {
       });
     });
 
-    describe('when KNAPSACK_PRO_CI_NODE_BUILD_ID is defined on the environment', () => {
+    describe('when KNAPSACK_PRO_CI_NODE_BUILD_ID is defined on the environment AND the build id is defined on a supported CI environment', () => {
       it('returns it', () => {
         const ciBuildId = 'some-build-id';
         process.env.KNAPSACK_PRO_CI_NODE_BUILD_ID = ciBuildId;
