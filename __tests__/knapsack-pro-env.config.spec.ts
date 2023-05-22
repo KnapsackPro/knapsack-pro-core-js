@@ -21,7 +21,7 @@ describe('KnapsackProEnvConfig', () => {
     });
 
     describe('when the build id is defined on a supported CI environment', () => {
-      it('returns it', () => {
+      it('returns the CI build ID for the supported CI provider', () => {
         const ciBuildId = 'some-build-id';
         process.env.GITHUB_RUN_ID = ciBuildId;
 
