@@ -13,6 +13,10 @@ export class Codeship extends CIProviderBase {
     return process.env.CI_BUILD_NUMBER;
   }
 
+  public static get ciNodeRetryCount(): void {
+    return undefined;
+  }
+
   public static get commitHash(): string | void {
     return process.env.CI_COMMIT_ID;
   }

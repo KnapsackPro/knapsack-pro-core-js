@@ -13,6 +13,10 @@ export class CirrusCI extends CIProviderBase {
     return process.env.CIRRUS_BUILD_ID;
   }
 
+  public static get ciNodeRetryCount(): void {
+    return undefined;
+  }
+
   public static get commitHash(): string | void {
     return process.env.CIRRUS_CHANGE_IN_REPO;
   }

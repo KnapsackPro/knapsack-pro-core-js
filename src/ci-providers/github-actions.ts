@@ -16,6 +16,19 @@ export class GithubActions extends CIProviderBase {
     return process.env.GITHUB_RUN_ID;
   }
 
+  public static get ciNodeRetryCount(): string | void {
+    // A unique number for each attempt of a particular workflow run in a repository.
+    // This number begins at 1 for the workflow run's first attempt, and increments with each re-run.
+    const runAttempt = process.env.GITHUB_RUN_ATTEMPT;
+
+    if (runAttempt) {
+      const runAttemptNumber = parseInt(runAttempt, 10) - 1;
+      return String(runAttemptNumber);
+    }
+
+    return undefined;
+  }
+
   public static get commitHash(): string | void {
     return process.env.GITHUB_SHA;
   }

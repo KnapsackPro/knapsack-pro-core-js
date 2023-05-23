@@ -39,4 +39,30 @@ describe('KnapsackProEnvConfig', () => {
       });
     });
   });
+
+  describe('.ciNodeRetryCount', () => {
+    it('returns a default retry count', () => {
+      expect(KnapsackProEnvConfig.ciNodeRetryCount).toEqual(0);
+    });
+
+    describe('when the CI provider is Buildkite', () => {
+      describe('when BUILDKITE_RETRY_COUNT is set', () => {
+        it('returns the retry count', () => {
+          process.env.BUILDKITE_RETRY_COUNT = '1';
+
+          expect(KnapsackProEnvConfig.ciNodeRetryCount).toEqual(1);
+        });
+      });
+    });
+
+    describe('when the CI provider is GitHub Actions', () => {
+      describe('when GITHUB_RUN_ATTEMPT is set', () => {
+        it('returns the retry count', () => {
+          process.env.GITHUB_RUN_ATTEMPT = '2';
+
+          expect(KnapsackProEnvConfig.ciNodeRetryCount).toEqual(1);
+        });
+      });
+    });
+  });
 });

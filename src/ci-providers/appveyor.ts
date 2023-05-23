@@ -14,6 +14,10 @@ export class AppVeyor extends CIProviderBase {
     return process.env.APPVEYOR_BUILD_ID;
   }
 
+  public static get ciNodeRetryCount(): void {
+    return undefined;
+  }
+
   public static get commitHash(): string | void {
     return process.env.APPVEYOR_REPO_COMMIT;
   }

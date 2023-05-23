@@ -18,6 +18,10 @@ export class SemaphoreCI extends CIProviderBase {
     return process.env.SEMAPHORE_BUILD_NUMBER;
   }
 
+  public static get ciNodeRetryCount(): void {
+    return undefined;
+  }
+
   public static get commitHash(): string | void {
     return process.env.REVISION;
   }

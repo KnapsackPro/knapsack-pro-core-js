@@ -18,6 +18,10 @@ export class SemaphoreCI2 extends CIProviderBase {
     return process.env.SEMAPHORE_WORKFLOW_ID;
   }
 
+  public static get ciNodeRetryCount(): void {
+    return undefined;
+  }
+
   public static get commitHash(): string | void {
     return process.env.SEMAPHORE_GIT_SHA;
   }
