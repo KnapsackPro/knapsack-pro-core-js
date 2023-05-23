@@ -1,5 +1,6 @@
 import { KnapsackProAPI } from './knapsack-pro-api';
 import { QueueApiResponseCodes } from './api-response-codes';
+import { KnapsackProEnvConfig } from './config';
 import { KnapsackProLogger } from './knapsack-pro-logger';
 import { FallbackTestDistributor } from './fallback-test-distributor';
 import { TestFilesFinder } from './test-files-finder';
@@ -9,6 +10,7 @@ import {
   onQueueSuccessType,
   testFilesToExecuteType,
 } from './types';
+import * as Urls from './urls';
 
 export class KnapsackProCore {
   private knapsackProAPI: KnapsackProAPI;
@@ -92,6 +94,12 @@ export class KnapsackProCore {
         }
 
         onFailure(error);
+
+        if (KnapsackProEnvConfig.ciNodeRetryCount > 0) {
+          throw new Error(
+            `No connection to Knapsack Pro API to determine the set of tests that should run on the retried CI node. Please retry the CI node to reconnect with the API or create a new commit to start another CI build that could run tests in Fallback Mode in case of persisting connection issues with the API. Learn more ${Urls.QUEUE_MODE_CONNECTION_ERROR_AND_POSITIVE_RETRY_COUNT}`,
+          );
+        }
 
         this.knapsackProLogger.warn(
           'Fallback Mode has started. We could not connect to Knapsack Pro API. Your tests will be executed based on test file names.\n\nIf other CI nodes were able to connect to Knapsack Pro API then you may notice that some of the test files were executed twice across CI nodes. Fallback Mode guarantees each of test files is run at least once as a part of CI build.',
