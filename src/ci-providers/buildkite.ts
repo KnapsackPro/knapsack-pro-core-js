@@ -13,6 +13,10 @@ export class Buildkite extends CIProviderBase {
     return process.env.BUILDKITE_BUILD_NUMBER;
   }
 
+  public static get ciNodeRetryCount(): string | void {
+    return process.env.BUILDKITE_RETRY_COUNT;
+  }
+
   public static get commitHash(): string | void {
     return process.env.BUILDKITE_COMMIT;
   }

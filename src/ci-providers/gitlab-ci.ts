@@ -21,6 +21,10 @@ export class GitlabCI extends CIProviderBase {
     return process.env.CI_PIPELINE_ID || process.env.CI_BUILD_ID;
   }
 
+  public static get ciNodeRetryCount(): void {
+    return undefined;
+  }
+
   public static get commitHash(): string | void {
     // GitLab Release 9.0+ || GitLab Release 8.x
     return process.env.CI_COMMIT_SHA || process.env.CI_BUILD_REF;

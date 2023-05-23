@@ -13,6 +13,10 @@ export class HerokuCI extends CIProviderBase {
     return process.env.HEROKU_TEST_RUN_ID;
   }
 
+  public static get ciNodeRetryCount(): void {
+    return undefined;
+  }
+
   public static get commitHash(): string | void {
     return process.env.HEROKU_TEST_RUN_COMMIT_VERSION;
   }

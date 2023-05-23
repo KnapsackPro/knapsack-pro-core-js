@@ -26,6 +26,10 @@ export class CIEnvConfig {
     return this.ciEnvFor('ciNodeBuildId');
   }
 
+  public static get ciNodeRetryCount(): string | void {
+    return this.ciEnvFor('ciNodeRetryCount');
+  }
+
   public static get commitHash(): string | void {
     return this.ciEnvFor('commitHash');
   }

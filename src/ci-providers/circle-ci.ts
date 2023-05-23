@@ -13,6 +13,10 @@ export class CircleCI extends CIProviderBase {
     return process.env.CIRCLE_BUILD_NUM;
   }
 
+  public static get ciNodeRetryCount(): void {
+    return undefined;
+  }
+
   public static get commitHash(): string | void {
     return process.env.CIRCLE_SHA1;
   }

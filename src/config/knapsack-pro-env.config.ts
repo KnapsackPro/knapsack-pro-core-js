@@ -91,6 +91,19 @@ export class KnapsackProEnvConfig {
     );
   }
 
+  public static get ciNodeRetryCount(): number {
+    if (process.env.KNAPSACK_PRO_CI_NODE_RETRY_COUNT) {
+      return parseInt(process.env.KNAPSACK_PRO_CI_NODE_RETRY_COUNT, 10);
+    }
+
+    const { ciNodeRetryCount } = CIEnvConfig;
+    if (ciNodeRetryCount) {
+      return parseInt(ciNodeRetryCount, 10);
+    }
+
+    return 0;
+  }
+
   public static get commitHash(): string | never {
     if (process.env.KNAPSACK_PRO_COMMIT_HASH) {
       return process.env.KNAPSACK_PRO_COMMIT_HASH;

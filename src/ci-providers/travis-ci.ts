@@ -13,6 +13,10 @@ export class TravisCI extends CIProviderBase {
     return process.env.TRAVIS_BUILD_NUMBER;
   }
 
+  public static get ciNodeRetryCount(): void {
+    return undefined;
+  }
+
   public static get commitHash(): string | void {
     return process.env.TRAVIS_COMMIT;
   }

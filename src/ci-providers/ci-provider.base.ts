@@ -11,6 +11,10 @@ export abstract class CIProviderBase {
     throw new Error('nodeBuildId getter is not implemented!');
   }
 
+  public static get ciNodeRetryCount(): string | void {
+    throw new Error('ciNodeRetryCount getter is not implemented!');
+  }
+
   public static get commitHash(): string | void {
     throw new Error('commitHash getter is not implemented!');
   }
